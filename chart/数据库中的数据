@@ -1,0 +1,24 @@
+$mongo = new Mongo("192.168.1.110:27017");
+
+$query1=array("name"=>'new product');
+$query2=array("name"=>'data acquisition');
+$query3=array("name"=>'Analytic');
+
+$cursor=$mongo->amazon->system->find($query1);
+foreach($cursor as $a){
+    $a['name'];
+    (integer)$a['value'];
+    $a['updatetime'];
+}
+$cursor=$mongo->amazon->system->find($query2);
+foreach($cursor as $a){
+    $a['name'];
+    (integer)$a['value'];
+    $a['updatetime'];
+}
+$cursor=$mongo->amazon->system->find($query3);
+foreach($cursor as $a){
+    $a['name'];
+    (integer)$a['value'];
+    $a['updatetime'];
+}

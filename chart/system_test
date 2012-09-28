@@ -1,0 +1,67 @@
+<?php
+//test data
+$mongo = new Mongo("192.168.1.110:27017");
+$chart = array(
+'#chart_id'=>'System',
+'#title'=> chart_title(t('System'),'cc0000',15),
+'#type'=> CHART_TYPE_LINE,
+'#size'=> chart_size(600,300),
+'#grid_lines' => chart_grid_lines(12.5, 10),
+'#bar_size' => chart_bar_size(20, 15),
+'#adjust_resolution'=> TRUE,
+'#chart_fill'=> chart_fill('c','eeeeee'), 
+);
+
+$query1=array("name"=>'new product');
+$query2=array("name"=>'data acquisition');
+$query3=array("name"=>'Analytic');
+
+$cursor=$mongo->amazon->system->find($query1);
+foreach($cursor as $a){
+    $chart['#data']['new product'][]=(integer)$a['value'];
+    $np[]=$a['updatetime'];
+}
+$cursor=$mongo->amazon->system->find($query2);
+foreach($cursor as $a){
+    $chart['#data']['data acquisition'][]=(integer)$a['value'];
+    $da[]=$a['updatetime'];
+}
+$cursor=$mongo->amazon->system->find($query3);
+foreach($cursor as $a){
+    $chart['#data']['Analytic'][]=(integer)$a['value'];
+    $aa[]=$a['updatetime'];
+}
+echo "<br>";
+var_dump($chart['#data']['new product']);
+echo "<br>";
+var_dump($chart['#data']['data acquisition']);
+echo "<br>";
+var_dump($chart['#data']['Analytic']);
+echo "<br>";
+var_dump($np);
+echo "<br>";
+var_dump($da);
+echo "<br>";
+var_dump($aa);
+echo "<br>";
+$chart['#legends'][]= t('new product');
+$chart['#legends'][]= t('data acquisition');
+$chart['#legends'][]= t('Analytic');
+$chart['#data_colors'][]='00ff00';
+$chart['#data_colors'][]='ff0000';
+$chart['#data_colors'][]='0000ff';
+
+$chart['#mixed_axis_labels'][CHART_AXIS_Y_LEFT][0][]= chart_mixed_axis_range_label(0,200);
+$chart['#mixed_axis_labels'][CHART_AXIS_Y_LEFT][1][]= chart_mixed_axis_label(t('Values'),100);
+$chart['#mixed_axis_labels'][CHART_AXIS_X_BOTTOM][1][]= chart_mixed_axis_label($aa);
+$chart['#mixed_axis_labels'][CHART_AXIS_X_BOTTOM][2][]= chart_mixed_axis_label(t('Date'),100);
+
+echo "<pre><br>";
+print_r($chart);
+echo theme('chart', array('chart' => $chart));
+//echo "<br>";
+$obj=$mongo->amazon->system->find();//find all data,return MongoCursor Object
+//print find result
+//foreach($obj as $a){var_dump($a);echo "<br>";}
+
+?>

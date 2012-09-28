@@ -1,0 +1,39 @@
+Drupal
+=============
+Google chart API
+http://drupal.org/project/chart
+pChart
+http://drupal.org/project/pchart
+Google Chart Tools
+http://drupal.org/project/google_chart_tools
+SWF Embed
+http://drupal.org/project/swfembed
+Charts
+http://drupal.org/project/charts
+Charts and Graphs
+http://drupal.org/project/charts_graphs
+==============
+http://code.google.com/p/drupal-chart-api/wiki/Examples
+http://php.jz123.cn/ Php 中文手册
+http://kb.cnblogs.com/a/1274156/ Google Chart API 参考中文版
+http://www.ruanyifeng.com/blog/2007/12/google_chart_api.html
+http://code.google.com/apis/chart/index.html
+Drupal图表生成模块（选取）
+http://zhupou.cn/book/export/html/1668
+Google chart docs
+https://developers.google.com/chart/interactive/docs/gallery/linechart?hl=zh-CN
+===============
+Open Flash Chart(ofc)
+http://www.teethgrinder.co.uk/open-flash-chart/
+FusionCharts
+http://www.fusioncharts.com/demos/gallery/#line-and-area
+XML/SWF Charts
+http://www.maani.us/xml_charts/index.php?menu=Gallery
+amCharts
+http://www.amcharts.com/
+Bluff
+http://bluff.jcoglan.com/
+pChart
+http://www.pchart.net/
+==================
+http://485567.blog.51cto.com/475567/98437

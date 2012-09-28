@@ -1,0 +1,18 @@
+FusionCharts
+
+** 曲线图
+
+jpgraph
+
+**曲线图
+
+Open Flash Chart
+
+**Gallery - Data
+
+1. 在站点根目录里创建一个chart.html文件
+2. chart.html内的Flash两个标签和复制一个Open Flash Chart 的应用程序(open-flash-chart.swf)到根目录
+3. 创建Open Flash Chart 所需的JSON数据文件
+4. Open Flash Chart 读取JSON数据文件,显示相应的图表(?ofc=data.json)
+
+

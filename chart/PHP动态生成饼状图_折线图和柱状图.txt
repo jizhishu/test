@@ -1,0 +1,46 @@
+PHP动态生成饼状图、折线图和柱状图
+
+【flash图表组件对比】
+http://wenku.baidu.com/view/7bc01cb565ce0508763213be.html
+介绍了4种产品：
+
+1、FusionCharts
+URL: http://www.fusioncharts.com/
+有破解版，但右键菜单里还有“About FusionCharts”；
+有FusionCharts Free版，但版本较老，图形较少
+优点：3.2已经支持html5和ipad；swf文件较小，一般60k-70k，个别较大；数据格式支持XML、JSON
+参考：
+http://hi.baidu.com/getpost/blog/item/e9357616be4aeb48f3de329c.html
+
+2、Open Flash Chart2
+URL:http://teethgrinder.co.uk/open-flash-chart-2/
+开源，采用AS3，仅支持JSON，文档没有FusionCharts全面，swf文件体积较大，270k；不支持html5和ipad
+
+3、AnyChart
+有破解版，被很多知名大公司使用，最新版支持html5和ipad，采用AS3，swf文件体积较大，399k
+
+4、Finger Chart
+国产，轻量级，2010年10月推出，目前支持图形比较少，还没有复合图形，bug较多。
+
+
+【PHP】
+jpgraph
+http://jpgraph.net/
+
+libchart
+http://code.google.com/p/libchart/
+
+XML/SWF Charts
+http://www.maani.us/xml_charts/index.php
+
+
+【其它】
+PHP轻量级图表类PHP Light Chart:PLChart
+http://blog.csdn.net/wztgq/archive/2008/01/17/2048490.aspx
+
+如何使用PHP动态生成饼状图、柱状图和折线图
+
+http://hi.baidu.com/dreamtonk/blog/item/582151121c8c88d9f6039ee1.html
+
+
+

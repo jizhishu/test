@@ -1,0 +1,38 @@
+<?php
+//test data
+$mongo = new Mongo("192.168.1.110:27017");
+$obj=$mongo->amazon->system->remove();
+$day="20120801";
+$value=150;
+for($i=0;$i<15;$i++){
+$as=$day+$i;
+$syss[$i]=array(
+                 "name"=>"Analytic",
+                 "value"=>$value+$i,
+                 "updatetime"=>"".$as,
+         );
+}
+for($i=0;$i<15;$i++)$insert=$mongo->amazon->system->insert($syss[$i]);//insert
+for($i=0;$i<15;$i++){
+$as=$day+$i;
+$syss[$i]=array(
+                 "name"=>"new product",
+                 "value"=>$value-$i,
+                 "updatetime"=>"".$as,
+         );
+}
+for($i=0;$i<15;$i++)$insert=$mongo->amazon->system->insert($syss[$i]);//insert
+for($i=0;$i<15;$i++){
+$as=$day+$i;
+$syss[$i]=array(
+                 "name"=>"data acquisition",
+                 "value"=>$value-$i-10,
+                 "updatetime"=>"".$as,
+         );
+}
+for($i=0;$i<15;$i++)$insert=$mongo->amazon->system->insert($syss[$i]);//insert
+$obj=$mongo->amazon->system->find();//find all data,return MongoCursor Object
+//print find result
+foreach($obj as $a){var_dump($a);echo "<br>";}
+
+?>

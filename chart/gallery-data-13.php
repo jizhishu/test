@@ -1,0 +1,14 @@
+&title=Many+data+lines,{font-size: 20px; color: #736AFF}&
+&x_label_style=10,0x000000,0,2&
+&x_axis_steps=1&
+&y_legend=Open Flash Chart,12,#736AFF&
+&y_ticks=5,10,4&
+&line=2,0x9933CC,Page views,10&
+&line_dot_2=3,0xCC3399,Downloads,10,5&
+&line_hollow_3=2,0x80a033,Bounces,10,4&
+&values=18,14,14,16,17,16,18,15,19,18,19,15&
+&values_2=10,10,10,11,13,10,13,13,13,13,11,12&
+&values_3=3,4,6,6,1,5,5,4,6,3,6,2&
+&x_labels=January,February,March,April,May,June,July,August,Spetember,October,November,December&
+&y_min=0&
+&y_max=20&
