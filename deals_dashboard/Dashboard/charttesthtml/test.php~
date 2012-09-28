@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="Contents/Style.css" type="text/css" />
+<script language="JavaScript" src="FusionCharts.js"></script>
+<td valign="top" class="text" align="center"> 
+   <div id="chartdiv" align="center"> FusionCharts. </div>
+   <script type="text/javascript">
+      var chart = new FusionCharts("FCF_MSLine.swf", "ChartId", "600", "400");
+      chart.setDataURL("data.php");		   
+      chart.render("chartdiv");
+   </script>
+</td>
+

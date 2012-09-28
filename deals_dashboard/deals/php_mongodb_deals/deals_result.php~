@@ -1,0 +1,211 @@
+<!-- URL：deals/result -->
+
+<?php if(count($_POST)==0)header("Location:../deals");?>
+
+<p align="left"><a href="../deals">back</a></p> 
+
+<?php
+try{
+    $mongo = new Mongo("192.168.1.110:27017"); //create a connection to MongoDB serverip=192.168.1.110 port=27017
+?>
+
+<?php
+function form($type=0,$ASIN='',$name='',$price='',$expiration_time='',$content='')
+{
+?>
+<form method="post">
+<?php
+    switch ($type)
+    {
+        case 1:echo "<p>update(ASIN can't be updated!):";$submit='update'; break;  
+        case 2:echo "<p>insert:";$submit='insert';break;
+        case 3:echo "<p>find(You can fill only one!):";$submit='find';break;
+        default:echo "<p>No action!";
+    }
+?>
+    <table>
+        <tr><td width="100">ASIN:</td><td><input type="text" name="ASIN" value=<?php echo $ASIN;?>></td></tr>
+        <tr><td width="100">name:</td><td><input type="text" name="name" value=<?php echo $name;?>></td></tr>
+        <tr><td width="100">price:</td><td><input type="text" name="price" value=<?php echo $price;?>></td></tr>
+        <tr><td width="100">expiration_time:</td><td><input type="text" name="expiration_time" value=<?php echo $expiration_time;?>> </td></tr>
+        <tr><td width="100">content:</td><td><input type="text" name="content" value=<?php echo $content;?>></td></tr>
+    </table>
+        <input type="submit" name="submit" value=<?php echo $submit;?>>
+</form>
+<?php
+}
+?>
+
+<!-- action:delete-->
+<?php 
+    if(isset($_POST['rad'])&&($_POST['rad']=='delete'))
+    {
+        if(isset($_POST['chk']))
+         {
+            $chk=$_POST['chk'];
+            $n=count($chk);
+            for($i=0;$i<$n;$i++)
+             {
+                $query=array("_id"=>$chk[$i]);
+                $result=$mongo->amazon->deals->remove($query);
+             }
+            if($result)header("Location:../deals");
+            else drupal_set_message('delete failed!');
+        }
+       else  drupal_set_message('Nothing deleted!');
+    }
+?>
+
+
+<!-- action:update -->
+<?php
+    if(isset($_POST['rad'])&&($_POST['rad']=='update'))
+    {
+        if(isset($_POST['chk']))
+         {
+            $chk=$_POST['chk'];
+            $where=0;
+            $query=array("_id"=>$chk[0]);
+            $where=$mongo->amazon->deals->find($query);
+            if($where)
+             {
+                foreach($where as $a)
+                  {
+	          $ASIN=$a['_id'];$name=$a['name'];$price=$a['price'];
+	          $expiration_time=$a['expiration_time'];$content=$a['content'];
+                  form(1,$ASIN,$name,$price,$expiration_time,$content);
+                  }
+             }
+         }
+    }
+    if(isset($_POST['submit'])&&($_POST['submit']=='update')&&isset($_POST['ASIN']))
+    {
+       if(strlen($_POST['ASIN']!=0))
+        {
+            $ASIN=$_POST['ASIN'];$name=$_POST['name'];$price=$_POST['price'];
+            $expiration_time=$_POST['expiration_time'];$content=$_POST['content'];
+            $timey=date('Y',strtotime($expiration_time));
+            $update=0;
+            if($timey<2012||$timey>2100)drupal_set_message('illegal time!');
+            else
+            {
+                $query=array("_id"=>$ASIN);
+                $deals=array(
+                       "_id"=>"$ASIN",
+                       "name"=>"$name",
+                       "price"=>"$price",
+                       "expiration_time"=>"$expiration_time",
+                       "content"=>"$content"
+                  );
+	       $update=$mongo->amazon->deals->update($query,$deals);
+           }
+           if($update) header("Location:../deals");
+           else drupal_set_message('Insert failed');
+       }
+       else drupal_set_message('ERROR:ASIN illegal!');
+    }
+?> 
+
+
+<!--action:insert -->
+<?php
+    if(isset($_POST['rad'])&&($_POST['rad']=='insert'))
+    {
+        form(2);
+    }
+    if(isset($_POST['submit'])&&($_POST['submit']=='insert'))
+    {   
+        if(isset($_POST['ASIN']))
+         {
+          $ASIN=$_POST['ASIN'];
+          $is_num=is_numeric($ASIN);
+           if(strlen($_POST['ASIN'])!=0 && $is_num)
+            {
+                $ASIN=$_POST['ASIN'];$name=$_POST['name'];$price=$_POST['price'];
+                $expiration_time=$_POST['expiration_time'];$content=$_POST['content'];
+                $insert=0;
+                $timey=date('Y',strtotime($expiration_time));
+                if($timey<2012||$timey>2100)drupal_set_message('illegal time!');
+               else
+                 {
+                   $deals=array(
+                        "_id"=>"$ASIN",
+                        "name"=>"$name",
+                        "price"=>"$price",
+                        "expiration_time"=>"$expiration_time",
+                        "content"=>"$content"
+                   );
+	           $find=$mongo->amazon->deals->find(array("_id"=>"$ASIN"))->count();
+                   if($find) drupal_set_message('ASIN exist! ');
+                  else $insert=$mongo->amazon->deals->insert($deals);
+                }
+              if($insert) header("Location:../deals");
+              else
+              {
+                   drupal_set_message('Insert failed!'); 
+                   form(2);
+               }
+           }
+          else
+         {
+              drupal_set_message('ERROR:ASIN illegal!');
+              form(2);
+          }
+        }
+    else drupal_set_message('Please,input data!');
+    }
+?> 
+
+
+<!--action: find -->
+<?php
+    if(isset($_POST['rad'])&&($_POST['rad']=='find'))
+    {
+        form(3);
+    }
+    if(isset($_POST['submit'])&&($_POST['submit']=='find'))
+    {   
+         if(isset($_POST['ASIN'])&&($_POST['ASIN']!='')){$ASIN=$_POST['ASIN'];$query=array("_id"=>$ASIN);}
+	 if(isset($_POST['name'])&&($_POST['name']!='')){$name=$_POST['name'];$query=array("name"=>$name);}
+	 if(isset($_POST['price'])&&($_POST['price']!='')){$price=$_POST['price'];$query=array("price"=>$price);}
+	 if(isset($_POST['expiration_time'])&&($_POST['expiration_time']!='')){$expiration_time=$_POST['expiration_time'];$query=array("expiration_time"=>$expiration_time);}
+	 if(isset($_POST['content'])&&($_POST['content']!='')){$ASIN=$_POST['content'];$query=array("content"=>$content);}
+	 $result=$mongo->amazon->deals->find($query);//find by query
+         if($result->count()!=0)
+         {
+ ?> 
+<form>find result:
+    <table>
+        <tr>
+            <th width="100">ASIN</th><th width="100">name</th><th width="100">price</th><th width="100">expiration_time</th><th width="100">content</th>
+        </tr>
+<?php
+            foreach($result as $o)
+              {
+?>
+        <tr>
+            <td width="100"><?php echo $o["_id"];?></td>
+            <td width="100"><?php echo $o["name"];?></td>
+            <td width="100"><?php echo $o["price"];?></td>
+            <td width="100"><?php echo $o["expiration_time"];?></td>
+            <td width="100"><?php echo $o["content"];?></td>
+        </tr>
+<?php
+              }
+?>
+    </table>
+</form>
+<?php
+         }
+        else drupal_set_message('No find！');
+    }
+?> 
+<?php
+}
+catch(MongoConnectionException $e) {
+//handle connection error
+//die($e->getMessage());
+drupal_set_message($e->getMessage());
+echo "handle connection error!<br>serverip:192.168.1.110<br>port:27017";
+}
+?>

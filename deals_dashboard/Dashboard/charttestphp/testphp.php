@@ -1,0 +1,47 @@
+<?php
+include("FusionCharts.php");
+?>
+<HEAD>
+   <SCRIPT LANGUAGE="Javascript" SRC="FusionCharts.js"></SCRIPT>
+</HEAD>
+<?php
+   $day=date("Ymd",strtotime("-7 day"));
+   $mongo = new Mongo("192.168.1.110:27017");
+   $query[]=array("name"=>'new product',"updatetime"=>array('$gt'=>$day));
+   $query[]=array("name"=>'data acquisition',"updatetime"=>array('$gt'=>$day));
+   $query[]=array("name"=>'Analytic',"updatetime"=>array('$gt'=>$day));
+   foreach($query as $q)
+      $cursor[]=$mongo->amazon->system->find($q)->sort(array('updatetime'=>1));
+   for($i=0;$i<3;$i++)
+      foreach($cursor[$i] as $c){
+        $result[$i][]=array(
+                      "name"=>$c['name'],
+                      "value"=>$c['value'],
+                      "updatetime"=>$c['updatetime'],
+                   );
+       }
+   //$strXML will be used to store the entire XML document generated
+   //Generate the graph element
+   $strXML = "<graph caption='system' subCaption='value' decimalPrecision='0' showNames='1' showValues='1' xAxisName= 'date' yAxisName= 'value'  rotateNames='1' formatNumberScale='0'>";
+
+   //Iterate through each factory
+   $strXML .= "<categories>";
+   foreach($result[1] as $ors) {
+         $strXML .= "<category name='" . $ors['updatetime']."' />";
+      }
+       $strXML .= "</categories>";
+   $color[0]='1D8BD1';$color[1]='F1683C';$color[2]='2AD62A';
+   for($j=0;$j<3;$j++){
+      if ($result[$j]) {
+          $strXML .= "<dataset seriesName='".$result[$j][1]['name']."' color='".$color[$j]."' anchorBorderColor='".$color[$j]."' anchorBgColor='".$color[$j]."'>";
+         foreach($result[$j] as $ors) {
+         $strXML .= "<set value='" . $ors['value'] . "' />";
+          }
+      $strXML .= "</dataset>";
+   }
+   }
+   //Finally, close <graph> element
+   $strXML .= "</graph>";
+   $mongo->close();
+   echo renderChart("FCF_MSLine.swf", "", $strXML, "haha", 650, 450);
+?>
