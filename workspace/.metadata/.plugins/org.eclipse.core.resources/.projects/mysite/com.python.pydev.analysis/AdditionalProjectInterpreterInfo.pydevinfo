@@ -1,0 +1,87 @@
+-- VERSION_3
+-- START DISKCACHE
+/home/jizhishu/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/mysite/com.python.pydev.analysis/v1_indexcache
+.v1_indexcache
+mysite.settings|0|/home/jizhishu/workspace/mysite/mysite/settings.py
+mysite.urls|0|/home/jizhishu/workspace/mysite/mysite/urls.py
+-- END DISKCACHE
+-- START DICTIONARY
+17
+13=Book
+2=mysite.wsgi
+5=mysite.views
+4=books.admin
+12=Author
+15=AuthorAdmin
+10=mysite.urls
+11=Publisher
+14=BookAdmin
+3=books.models
+1=mysite.settings
+9=blog.tests
+8=books.tests
+6=mysite.models
+7=books.views
+17=SimpleTest
+16=Publisher.Meta
+-- END DICTIONARY
+-- START TREE 1
+33
+adm|1|ADMINS!11@
+app|1|application!19@
+aut|2|Author!25@AuthorAdmin!33@
+bad|1|bad_search!42@
+boo|4|Book!25@Book!49@BookAdmin!33@book_list!42@
+cur|3|current_datetime!42@current_url_view_good!42@current_url_view_bad!42@
+dat|1|DATABASES!11@
+deb|1|DEBUG!11@
+dis|1|display_meta!42@
+hel|1|hello!42@
+hou|1|hours_ahead!42@
+ins|1|INSTALLED_APPS!11@
+lan|1|LANGUAGE_CODE!11@
+lat|1|latest_books!42@
+log|1|LOGGING!11@
+man|1|MANAGERS!11@
+med|2|MEDIA_URL!11@MEDIA_ROOT!11@
+mid|1|MIDDLEWARE_CLASSES!11@
+my_|1|my_homepage_view!42@
+p|1|p!59@
+pub|1|Publisher!25@
+roo|1|ROOT_URLCONF!11@
+sea|2|search!42@search_form!42@
+sec|1|SECRET_KEY!11@
+sim|2|SimpleTest!65@SimpleTest!73@
+sit|1|SITE_ID!11@
+sta|5|STATICFILES_DIRS!11@STATICFILES_FINDERS!11@STATIC_PATH!11@STATIC_URL!11@STATIC_ROOT!11@
+tem|3|TEMPLATE_DIRS!11@TEMPLATE_LOADERS!11@TEMPLATE_DEBUG!11@
+tim|1|TIME_ZONE!11@
+ua_|3|ua_display_good1!42@ua_display_good2!42@ua_display_bad!42@
+url|1|urlpatterns!83@
+use|3|USE_L10N!11@USE_TZ!11@USE_I18N!11@
+wsg|1|WSGI_APPLICATION!11@
+-- END TREE
+-- START TREE 2
+21
+__u|3|__unicode__!11&26@__unicode__!12&26@__unicode__!13&26@
+add|1|address!11&27@
+aut|1|authors!13&27@
+cit|1|city!11&27@
+cou|1|country!11&27@
+dat|1|date_hierarchy!14&35@
+ema|1|email!12&27@
+fil|1|filter_horizontal!14&35@
+fir|1|first_name!12&27@
+las|1|last_name!12&27@
+lis|3|list_filter!14&35@list_display!15&35@list_display!14&35@
+met|1|Meta!11&25@
+nam|1|name!11&27@
+ord|2|ordering!16&27@ordering!14&35@
+pub|3|publisher!13&27@publication_date!13&27@pub_date!13&51@
+raw|1|raw_id_fields!14&35@
+sea|1|search_fields!15&35@
+sta|1|state_province!11&27@
+tes|2|test_basic_addition!17&66@test_basic_addition!17&74@
+tit|2|title!13&51@title!13&27@
+web|1|website!11&27@
+-- END TREE

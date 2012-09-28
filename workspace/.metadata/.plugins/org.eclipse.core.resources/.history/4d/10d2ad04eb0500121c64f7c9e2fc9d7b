@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}operate{% endblock %}
+
+{% block h1 %}operate{% endblock %}
+
+{% block content %}
+<table>
+<tr>
+<td valign='top' width=20% bgcolor='lavenderblush'>
+
+<table width="100%" valign='top'>
+	<ul>
+	{% for cate in category %}
+		<tr width=20% valign='top'>
+	    	<li><a href="/main/operate/category/{{ cate.nodeID }}">{{cate.nodeName }}</a></li>
+	    </tr>
+    {% endfor %}
+	</ul>
+</table>
+
+</td>
+<td valign='top' width=85% bgcolor='ivory'>
+
+<table align="left" valign='top'>
+{% for li in list %}
+	<tr>
+	{% for ll in li %}
+    	<td width=500px valign='top'>
+    	<form action='/main/operate' method='get'>
+    		<table>
+    	    	<tr valign='top'>
+    	    		<td>
+    	    			<table>
+    						<tr><td bgcolor='linen' height=90px width=300px>
+    						<a href="/main/operate/ASIN/{{ ll.ASIN }}"><font size="0.5">{{ ll.title }}</font></a>
+    						</td></tr>
+    						<tr>
+    						{% if ll.image %}
+	       				<td><img src='{{ ll.image.0 }}' height=80px  border=0 /></td>
+	       				{% endif %}
+	       				</tr>
+	       				<tr height=100px color='blue'valign='top'>
+	       				<td>
+	       					<table>
+	       					<td valign='top'>note:</td><td>
+	       					{% for note in ll.note %}
+	       					<li>{{ note }}</li>
+	       					{% endfor %}
+	       					</td>
+	       					</table>
+	       				</td>
+	      			 		</tr> 
+	       			</table>
+	       		</td>
+	       		<td valign='top'>
+	       		<input type='image' src='http://ico.ooopic.com/iconset02/3/gif/2817.gif' name='delete' value='{{ de.ASIN }}' height=20 border=0>
+					</td>
+	       	</tr>
+	       </table>
+	   </form>
+	  	</td>
+	{% endfor %}
+    </tr>
+{% endfor %}
+
+{% for de in detail %}
+<form action='main/operate/' method='post'>
+{% csrf_token %}
+<table valign='top'>
+<tr valign='top'><td valign='top'>
+    <table valign='top'>
+	<tr><td>ASIN:</td><td>{{ de.ASIN }}</td></tr>
+	<tr><td>title:</td><td>{{ de.title }}</td></tr>
+	<tr><td>rating:</td><td>{{ de.rating }}</td></tr>
+	<tr><td>nodeName:</td><td>{{ de.nodeName }}</td></tr>
+	<tr><td>price:</td><td>${{ de.price }}</td></tr>
+	<tr><td></td><td><img src='{{ de.image.0 }}' height=160 border=0 /></td></tr>
+	<tr><td valign='top'>note:</td><td>
+	<table>
+	{% for note in de.note %}
+		<li>{{ note }}</li>
+	{% endfor %}
+	</table>
+	</td></tr>
+	<tr><td></td><td>
+	<table><tr><td>
+	<textarea name='note' style='width:400px' wrap='virtual'></textarea></td>
+	<td><input type='image' src='http://ico.ooopic.com/iconset01/Colorful-Stickers-Icons/gif/115759.gif' name='submit' value='{{ de.ASIN }}' height=50 width=50></td></tr>
+	</table>
+	</td></tr>
+	</table>
+</td>
+<td valign='top'>
+<input type='image' src='http://ico.ooopic.com/iconset02/3/gif/2817.gif' name='delete' value='{{ de.ASIN }}' height=20 border=0>
+</td>
+</tr>
+</table>
+</form>
+{% endfor %}
+
+</table>
+
+</td>
+</tr>
+</table>
+{% endblock %}

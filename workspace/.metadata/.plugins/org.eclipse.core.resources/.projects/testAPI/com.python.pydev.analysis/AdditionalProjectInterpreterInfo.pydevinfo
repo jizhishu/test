@@ -1,0 +1,58 @@
+-- VERSION_3
+-- START DISKCACHE
+/home/jizhishu/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/testAPI/com.python.pydev.analysis/v1_indexcache
+.v1_indexcache
+mymodule|0|/home/jizhishu/workspace/testAPI/mymodule.py
+mysqldb|0|/home/jizhishu/workspace/testAPI/mysqldb.py
+testAPI|0|/home/jizhishu/workspace/testAPI/testAPI.py
+-- END DISKCACHE
+-- START DICTIONARY
+10
+8=ASIN.setImportance
+7=ASIN.setFindTime
+5=ASIN
+4=ASIN.__init__
+10=ASIN.setRootCategory
+2=mymodule
+3=mysqldb
+9=ASIN.setProductName
+1=testAPI
+6=ASIN.setASIN
+-- END DICTIONARY
+-- START TREE 1
+14
+asi|4|asins!11@asin!11@asin_list!11@ASIN!17@
+del|1|delete!26@
+fd|1|fd!11@
+ins|1|insert!26@
+mai|1|main!26@
+not|1|noteDelete!10@
+pag|3|page!10@page!11@page_content!11@
+reg|2|regex_asin!11@regex_asins!11@
+req|1|req!11@
+res|1|result!11@
+sel|1|select!26@
+tim|2|time2!11@time1!11@
+upd|1|update!26@
+url|1|url!11@
+-- END TREE
+-- START TREE 2
+17
+__c|1|__connection!4&19@
+__i|1|__init__!5&18@
+_as|2|_ASIN!6&19@_ASIN!5&19@
+_fi|2|_find_time!7&19@_find_time!5&19@
+_im|2|_importance!8&19@_importance!5&19@
+_pr|2|_product_name!9&19@_product_name!5&19@
+_ro|2|_root_category!10&19@_root_category!5&19@
+ass|1|assemble!5&18@
+con|1|connection!5&19@
+del|3|deleteRootCategory!5&18@deleteByName!5&18@deleteByASIN!5&18@
+get|5|getASIN!5&18@getFindTime!5&18@getImportance!5&18@getProductName!5&18@getRootCategory!5&18@
+res|1|result!5&19@
+sav|1|saveToDB!5&18@
+sea|2|searchByName!5&18@searchByASIN!5&18@
+set|5|setProductName!5&18@setFindTime!5&18@setImportance!5&18@setASIN!5&18@setRootCategory!5&18@
+tes|1|testASIN!5&19@
+upd|1|updateToDb!5&18@
+-- END TREE

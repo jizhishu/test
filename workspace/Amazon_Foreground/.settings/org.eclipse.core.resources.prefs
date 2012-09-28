@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//MongoDB/deals_item_test.py=utf-8
+encoding//MongoDB/mongo_API.py=utf-8
+encoding//MongoDB/mongo_utility.py=utf-8
+encoding//MongoDB/mongo_utility_test.py=utf-8
+encoding//MongoDB/product_item.py=utf-8
+encoding//MongoDB/product_item_test.py=utf-8
+encoding//MongoDB/snapshot_item.py=utf-8
+encoding//MongoDB/snapshot_item_test.py=utf-8
+encoding//src/test_mongo_xcl.py=utf-8

@@ -1,0 +1,97 @@
+<?php 
+require ('mongo_API.php');
+function listasin()
+{
+	$a=new asin();
+	$db=$a->conn();
+	$list=$a->getList($db);
+	$n=count($list);
+	$m=1;
+	echo "<form action='deleteasin.php' method='post'>";
+	echo"<tr>";
+	foreach($list as $a)
+	{
+		$mm=$m%5;
+		echo "<td><input type='checkbox' name='chk[]' id='chk[]'value='$a[_id]'></td>";
+		echo "<td><a href='operate.php?asin=$a[_id]'>$a[_id]</a></td>";
+		if(!$mm) echo "</tr><tr>";
+		$m++;
+		
+	}
+	echo"</tr>";
+	echo "<tr><input type='submit' value='submit'></tr>";
+	echo "</form>";
+}
+function listdetail($asin)
+{
+	$a=new asin();
+	$db=$a->conn();
+	$list=$a->getList($db,$asin);
+	foreach($list as $a)
+	{
+		echo "<tr><td>ASIN:</td><td>$a[_id]</td></tr>";
+		echo "<tr><td>name:</td><td>$a[name]</td></tr>";
+		echo "<tr><td>image:</td><td>$a[img]</td></tr>";
+		echo "<tr><td>price:</td><td>$a[price]</td></tr>";
+		echo "<tr><td>category:</td><td>".$a[category][0]."</td></tr>";
+		echo "<tr><td>rank:</td><td>$a[rank]</td></tr>";
+		echo "<tr><td>note:</td><td>$a[note]</td></tr>";
+	}
+}
+?>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Data operate</title>
+</head>
+<!-- 
+<frameset rows="70,*"  frameborder="yes" framespacing="30" bordercolor="#cccccc">
+    <frame  src="operate_top.php" name="topframe" scrolling="no"/>
+    <frameset cols="150,*" framespacing="2"  frameborder="yes" bordercolor="#cccccc">
+      <frame src="operate_left.php" name="leftFrame" id="leftFrame" frameborder="0"  scrolling="yes"/>
+      <frame src="operate_main.php" name="mainFrame" id="mainFrame" frameborder="0" />
+    </frameset>
+</frameset>
+<noframes>
+<body>
+</body>
+</noframes>
+ -->
+ <table align="center">
+   <tr>
+   <td height="30px">
+      <h1 style="color:green">
+          <!-- <img src="http://wiki.starmerx.com/logo/th.jpg" width="30px" height="30px"/> -->
+         Operate
+      </h1>
+   </td>
+   </tr>
+</table>
+<table style="color:blue;">
+   <tr>
+   <td width="50">
+	   <table width="110">
+  			<tr height="30" align="center"><td><a> </a></td></tr>
+      		<tr height="30" align="center"><td><a> </a></td></tr>
+    		<tr height="30" align="center"><td><a> </a></td></tr>
+    		<tr align="center">
+    			
+    		</tr>
+		</table>
+   </td>
+   <td>
+   <table>
+    	<?php 
+    	if(isset($_GET['asin']))
+    	{
+    		$asin=$_GET['asin'];
+    		listdetail($asin);
+    	}
+    	else
+    		listasin();
+    	?>
+   </table>
+   </td>
+   </tr>
+</table>
+</html>

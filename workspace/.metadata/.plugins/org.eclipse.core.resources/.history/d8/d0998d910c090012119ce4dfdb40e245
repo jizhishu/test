@@ -1,0 +1,254 @@
+from django.db import models
+
+# Create your models here.
+from mongoengine import *
+
+import datetime
+
+connect('store',host='192.168.1.110')
+
+class StoreCategory(Document):
+    ID      =   StringField(primary_key=True)
+    name    =   StringField()
+    path    =   ListField(ListField())
+    children=   ListField()
+    parents =   ListField()
+    
+class StoreRating(Document):
+    ID                          =   StringField(primary_key=True)
+    lifetime                    =   FloatField()
+    product_services_pricing    =   FloatField()
+    chance_of_future_purchase   =   FloatField()
+    shipping_packaging          =   FloatField()
+    customer_service            =   FloatField()
+    return_replacement_policy   =   FloatField()
+    
+class StoreInfo(Document):
+    ID              =   StringField(primary_key=True)
+    address         =   StringField()
+    contact         =   EmailField()
+    phone           =   StringField()
+    customer_support=   StringField()
+    business_hours  =   StringField()
+    fax             =   StringField()
+class StoreUrlPrefix(Document):
+    ID = StringField(primary_key=True)
+    
+class Store(Document):
+    ID          =   StringField(primary_key=True)
+    name        =   StringField()
+    image       =   ImageField()
+    url         =   URLField()
+    category    =   ReferenceField(StoreCategory)
+    rating      =   ReferenceField(StoreRating)
+    info        =   ReferenceField(StoreInfo)
+    url_prefix  =   ReferenceField(StoreUrlPrefix)
+
+class store():
+    def total(self):
+        return Store.objects.all().count()
+    
+    def getList(self,page=1):
+        result=Store.objects.all().order_by('-rating').skip((page-1)*15).limit(15)
+        return result
+        
+    def updateStore(self,id,key,value):
+        test=Store.objects(ID=id)
+        if key=='name':
+            if test.update(set__name=value):
+                return 1
+            else:
+                return 0
+        if key=='image':
+            if test.update(set__image=value):
+                return 1
+            else:
+                return 0
+        if key=='url':
+            if test.update(set__url=value):
+                return 1
+            else:
+                return 0
+        if key=='category':
+            value1={ "$ref" : "store_category", "$id" : value }
+            if test.update(set__category=value1):
+                return 1
+            else:
+                return 0
+        if key=='rating':
+            value1={ "$ref" : "store_rating", "$id" : value }
+            if test.update(set__rating=value1):
+                return 1
+            else:
+                return 0
+        if key=='info':
+            value1={ "$ref" : "store_info", "$id" : value }
+            if test.update(set__info=value1):
+                return 1
+            else:
+                return 0
+        if key=='url_prefix':
+            value1={ "$ref" : "store_url_prefix", "$id" : value }
+            if test.update(url_prefix=value1):
+                return 1
+            else:
+                return 0
+       
+    def updateStoreCategory(self,id,key,value):
+        test=StoreCategory.objects(ID=id)
+        if key=='name':
+            if test.update(set__name=value):
+                return 1
+            else:
+                return 0
+        if key=='path':
+            if test.update(set__path=value):
+                return 1
+            else:
+                return 0
+        if key=='children':
+            if test.update(set__children=value):
+                return 1
+            else:
+                return 0
+        if key=='parents':
+            if test.update(set__parents=value):
+                return 1
+            else:
+                return 0
+    
+    def saveList(self,store_doc,store_category_doc,store_rating_doc,store_info_doc,store_url_prefix_doc):
+        store_category=StoreCategory(
+                                     ID      =   store_category_doc['ID'],
+                                     name    =   store_category_doc['name'],
+                                     path    =   store_category_doc['path'],
+                                     children=   store_category_doc['children'],
+                                     parents =   store_category_doc['parents']
+                                     )
+        store_rating=StoreRating(
+                                 ID                          =   store_rating_doc['ID'],
+                                 lifetime                    =   store_rating_doc['lifetime'],
+                                 product_services_pricing    =   store_rating_doc['product_services_pricing'],
+                                 chance_of_future_purchase   =   store_rating_doc['chance_of_future_purchase'],
+                                 shipping_packaging          =   store_rating_doc['shipping_packaging'],
+                                 customer_service            =   store_rating_doc['customer_service'],
+                                 return_replacement_policy   =   store_rating_doc['return_replacement_policy']
+                                 
+                                 )
+        store_info=StoreInfo(
+                             ID              =   store_info_doc['ID'],
+                             address         =   store_info_doc['adress'],
+                             contact         =   store_info_doc['contact'],
+                             phone           =   store_info_doc['phone'],
+                             customer_support=   store_info_doc['customer_support'],
+                             business_hours  =   store_info_doc['business_hours'],
+                             fax             =   store_info_doc['fax']
+                             )
+        store_url_prefix=StoreUrlPrefix(
+                                        ID = store_url_prefix_doc['ID'],
+                                        )
+        test=Store(
+                   ID           =   store_doc['ID'],
+                   name         =   store_doc['name'],
+                   image        =   store_doc['image'],
+                   url          =   store_doc['url'],
+                   category     =   store_category,
+                   rating       =   store_rating,
+                   info         =   store_info,
+                   url_prefix   =   store_url_prefix
+                   )
+        result=test.save()
+        if result:
+            return 1
+        else:
+            return 0
+        
+    def saveStore(self,doc):
+        test=Store(
+                   ID           =   doc['ID'],
+                   name         =   doc['name'],
+                   image        =   doc['image'],
+                   url          =   doc['url'],
+                   category     =   { "$ref" : "store_category", "$id" : doc['category'] },
+                   rating       =   { "$ref" : "store_rating", "$id" : doc['store_rating'] },
+                   info         =   { "$ref" : "store_info", "$id" : doc['info'] },
+                   url_prefix   =   { "$ref" : "store_url_prefix", "$id" : doc['url_prefix'] }
+                      )
+        
+        if test.save():
+            return 1
+        else:
+            return 0
+        
+    def saveStoreCategory(self,doc):
+        test=Store(
+                   ID           =   doc['ID'],
+                   name         =   doc['name'],
+                   image        =   doc['image'],
+                   url          =   doc['url'],
+                   category     =   { "$ref" : "store_category", "$id" : doc['category'] },
+                   rating       =   { "$ref" : "store_rating", "$id" : doc['store_rating'] },
+                   info         =   { "$ref" : "store_info", "$id" : doc['info'] },
+                   url_prefix   =   { "$ref" : "store_url_prefix", "$id" : doc['url_prefix'] }
+                      )
+        
+        if test.save():
+            return 1
+        else:
+            return 0
+        
+    def saveStoreRating(self,doc):
+        test=Store(
+                   ID           =   doc['ID'],
+                   name         =   doc['name'],
+                   image        =   doc['image'],
+                   url          =   doc['url'],
+                   category     =   { "$ref" : "store_category", "$id" : doc['category'] },
+                   rating       =   { "$ref" : "store_rating", "$id" : doc['store_rating'] },
+                   info         =   { "$ref" : "store_info", "$id" : doc['info'] },
+                   url_prefix   =   { "$ref" : "store_url_prefix", "$id" : doc['url_prefix'] }
+                      )
+        
+        if test.save():
+            return 1
+        else:
+            return 0
+        
+    def saveStoreInfo(self,doc):
+        test=Store(
+                   ID           =   doc['ID'],
+                   name         =   doc['name'],
+                   image        =   doc['image'],
+                   url          =   doc['url'],
+                   category     =   { "$ref" : "store_category", "$id" : doc['category'] },
+                   rating       =   { "$ref" : "store_rating", "$id" : doc['store_rating'] },
+                   info         =   { "$ref" : "store_info", "$id" : doc['info'] },
+                   url_prefix   =   { "$ref" : "store_url_prefix", "$id" : doc['url_prefix'] }
+                      )
+        
+     def saveStoreUrlPrefix(self,doc):
+        test=Store(
+                   ID           =   doc['ID'],
+                   name         =   doc['name'],
+                   image        =   doc['image'],
+                   url          =   doc['url'],
+                   category     =   { "$ref" : "store_category", "$id" : doc['category'] },
+                   rating       =   { "$ref" : "store_rating", "$id" : doc['store_rating'] },
+                   info         =   { "$ref" : "store_info", "$id" : doc['info'] },
+                   url_prefix   =   { "$ref" : "store_url_prefix", "$id" : doc['url_prefix'] }
+                      )
+        
+        if test.save():
+            return 1
+        else:
+            return 0
+        
+    def deleteByID(self,id):
+        Store.objects(ID=id).delete()
+        #StoreRating.objects(ID=id).delete()
+        #StoreInfo.objects(ID=id).delete()
+        #StoreUrlPrefix.objects(ID=id).delete()
+        
+    def findByID(self,id):
+        result=Store.objects(ID=id)
+        

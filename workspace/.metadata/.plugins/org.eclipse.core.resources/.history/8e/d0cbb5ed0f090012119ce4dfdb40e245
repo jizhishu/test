@@ -1,0 +1,13 @@
+# Create your views here.
+
+from models import *
+
+def test1():
+    a=store()
+    print a.getList()
+    
+    
+if __name__=='__main__':
+    result=test1()
+    result[0]
+    

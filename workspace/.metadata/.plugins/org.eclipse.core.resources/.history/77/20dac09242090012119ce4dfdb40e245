@@ -1,0 +1,20 @@
+# Create your views here.
+
+from models import *
+
+from django.shortcuts import render_to_response
+from django.http import HttpResponse
+import store_item
+
+def show(request):
+    a=store_item.store()
+    for each in a.findByID('1'):
+        img=each.image.read()
+    #response = HttpResponse(img, content_type="application/png")
+    #response['Content-Disposition'] = 'inline; filename=test.png'
+    #return response
+    return HttpResponse(img, mimetype="image/png")
+def storeInput(request):
+    img=show(request)
+    
+    return render_to_response('StoreInput.html',{'img':img})

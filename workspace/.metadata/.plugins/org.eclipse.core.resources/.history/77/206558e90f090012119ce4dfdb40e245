@@ -1,0 +1,14 @@
+# Create your views here.
+
+from models import *
+
+def test1():
+    a=store()
+    print a.getList()
+    
+    
+if __name__=='__main__':
+    result=test1()
+    for each in result:
+        print each
+    

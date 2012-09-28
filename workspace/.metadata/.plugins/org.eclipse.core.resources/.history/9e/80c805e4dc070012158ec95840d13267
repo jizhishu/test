@@ -1,0 +1,10 @@
+{% extends "Base.html" %}
+
+{% block h2 %}Manual Deals Input{% endblock %}
+{% block input %}
+
+
+
+
+
+{% endblock %}

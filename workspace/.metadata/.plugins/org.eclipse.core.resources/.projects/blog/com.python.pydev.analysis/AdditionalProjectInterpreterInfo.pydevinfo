@@ -1,0 +1,58 @@
+-- VERSION_3
+-- START DISKCACHE
+/home/jizhishu/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/blog/com.python.pydev.analysis/v1_indexcache
+.v1_indexcache
+__init__|0|/home/jizhishu/workspace/blog/__init__.py
+urls|0|/home/jizhishu/workspace/blog/urls.py
+blogapp.views|0|/home/jizhishu/workspace/blog/blogapp/views.py
+settings|0|/home/jizhishu/workspace/blog/settings.py
+blogapp.tests|0|/home/jizhishu/workspace/blog/blogapp/tests.py
+manage|0|/home/jizhishu/workspace/blog/manage.py
+blogapp.models|0|/home/jizhishu/workspace/blog/blogapp/models.py
+blogapp.__init__|0|/home/jizhishu/workspace/blog/blogapp/__init__.py
+-- END DISKCACHE
+-- START DICTIONARY
+7
+6=Post
+5=urls
+2=blogapp.views
+1=settings
+4=blogapp.tests
+7=SimpleTest
+3=blogapp.models
+-- END DICTIONARY
+-- START TREE 1
+24
+adm|2|ADMIN_MEDIA_PREFIX!11@ADMINS!11@
+app|1|APP_DIR!11@
+dat|1|DATABASES!11@
+dbn|1|DBNAME!11@
+deb|1|DEBUG!11@
+del|1|delete!18@
+ind|1|index!18@
+ins|1|INSTALLED_APPS!11@
+lan|1|LANGUAGE_CODE!11@
+log|1|LOGGING!11@
+man|1|MANAGERS!11@
+med|2|MEDIA_ROOT!11@MEDIA_URL!11@
+mid|1|MIDDLEWARE_CLASSES!11@
+pos|1|Post!25@
+roo|1|ROOT_URLCONF!11@
+sec|1|SECRET_KEY!11@
+sim|1|SimpleTest!33@
+sit|1|SITE_ID!11@
+sta|4|STATIC_URL!11@STATICFILES_FINDERS!11@STATICFILES_DIRS!11@STATIC_ROOT!11@
+tem|3|TEMPLATE_DEBUG!11@TEMPLATE_DIRS!11@TEMPLATE_LOADERS!11@
+tim|1|TIME_ZONE!11@
+upd|1|update!18@
+url|1|urlpatterns!43@
+use|2|USE_L10N!11@USE_I18N!11@
+-- END TREE
+-- START TREE 2
+5
+con|1|content!6&27@
+las|1|last_update!6&27@
+tag|1|tags!6&27@
+tes|1|test_basic_addition!7&34@
+tit|1|title!6&27@
+-- END TREE

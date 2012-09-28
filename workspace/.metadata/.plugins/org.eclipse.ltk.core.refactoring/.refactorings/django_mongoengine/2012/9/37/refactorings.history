@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;django_mongoengine/django_mongoengine/modules&apos; to &apos;modules.py&apos;" description="Rename resource &apos;modules&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="django_mongoengine/modules" name="modules.py" stamp="1347246317419" updateReferences="true"/>
+</session>

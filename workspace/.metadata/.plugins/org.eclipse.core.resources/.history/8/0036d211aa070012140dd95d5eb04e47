@@ -1,0 +1,190 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{% block title %}Manual Deals{% endblock %}</title>
+</head>
+<body>
+    <h1 style="color:green" align="center">{% block h1 %}Manual Deals{% endblock %}</h1>
+    <hr>
+    {{ id }}
+    {{ ex }}
+    {% if doc %}
+    {{ doc }}
+    {% endif %}
+    <table>
+    <tr>
+    <td valign='top'>
+{% block input %}
+<form action='' method="post">
+{% csrf_token %}
+<table>
+  <tr>
+    <th valign='top'>deal title</th>
+    <td>
+    <textarea name='deal_title' style='width:200px'></textarea>
+    </td>
+  </tr>
+  <tr>
+    <th valign='top'>content</th>
+    <td>
+    <textarea name='content' style='width:200px'></textarea>
+    </td>
+  </tr>
+  <tr>
+    <th valign='top'>current price</th>
+    <td><input type="float" name="current_price" style="width:200px"></td>
+  </tr>
+  <tr>
+    <th valign='top'>ASIN</th>
+    <td><input type="text" name="ASIN" style="width:200px"></td>
+  </tr>
+  <tr>
+    <th valign='top'>name</th>
+    <td><input type="text" name="name" style="width:200px"></td>
+  </tr>
+  <tr>
+    <th valign='top'>start time</th>
+    <td><input type="text" name="start_time" style="width:200px"></td>
+  </tr>
+  <tr>
+    <th valign='top'>expiration time</th>
+    <td><input type="date" name="expiration_time" style="width:200px"></td>
+  </tr>
+  <tr>
+    <th valign='top'>link</th>
+    <td><input type="url" name="link" style="width:200px"></td>
+  </tr>
+  <tr>
+    <th valign='top'>image link</th>
+    <td><input type="url" name="img_link" style="width:200px"></td>
+  </tr>
+  <tr>
+    <th valign='top'>stores</th>
+    <td>
+    <select name="stores">
+    	<option value="amazon">amazon</option>
+		<option value="GNU">GNU</option>
+		<option value="Kohl's">Kohl's</option>
+		<option value="Buy.com">Buy.com</option>
+		<option value="Moosejaw">Moosejaw</option>
+		<option value="Road Runner Sports">Road Runner Sports</option>
+		<option value="Altrec Outdoors">Altrec Outdoors</option>
+		<option value="Sierra Trading Post">Sierra Trading Post</option>
+		<option value="Best Buy">Best Buy</option>
+		<option value="Walmart">Walmart</option>
+		<option value="HSN">HSN</option>
+		<option value="other">other</option>
+	</select>
+   </td>
+  </tr>
+  <tr>
+    <th valign='top'>audience</th>
+    <td>
+    <select name="audience">
+		<option value="other">other</option>
+		<option value="man">man</option>
+		<option value="woman">woman</option>
+		<option value="children">children</option>
+		<option value="the_aged">the aged</option>
+	</select>
+	</td>
+  </tr>
+  <tr>
+	<th valign='top'>category</th>
+	<td>
+    {% if category %}
+    {{ category }}
+    {% for a in category %}
+	<button type="onclick" name="cate" value={{ a.id}} style="width:80px">{{a.name}}</button><br/>
+	{% endfor %}
+	{% endif %}
+	</td>
+  </tr> 
+  <tr align='center'><td></td><td>
+  <input type="submit" value='submit' style="width:80px">
+  <button type="reset"style="width:80px">reset</button>
+  </td></tr>
+</table>
+</form>
+{% endblock %}
+	</td>	
+    <td valign='top'>
+{% block show %}
+
+{% for each in find %}
+<form method="post" action=''>
+{% csrf_token %}
+	<table>
+		<tr>
+			<td>
+				<table>
+				<tr>
+			{% if each.img_link %}
+				<td><img src={{ each.img_link }} style="width:200px"></img></td>
+			{% endif %}
+				</tr>
+				</table>
+			</td>
+			<td style="width:700px">
+				<table>
+					<tr>
+						<td style="width:700px"><b>{{ each.deal_title }}</b><br/></td>
+					</tr>
+					<tr>
+						<td style="width:700px">{{ each.content }}<br/></td>
+					</tr>
+					<tr>
+						<td style="width:700px">${{ each.current_price }}</td>
+					</tr>
+					<tr>
+						<td style="width:700px">{{ each.start_time }}</td>
+					</tr>
+					<tr>
+						<td style="width:700px">{{ each.stores }}</td>
+					</tr>
+						{% if each.ASIN %}
+					<tr>
+						<td style="width:700px">{{ each.ASIN }}</td>
+					</tr>
+						{% endif %}
+						{% if each.name %}
+					<tr>
+						<td style="width:700px"><a href={{ each.link }}>{{ each.name }}</a></td>
+					</tr>
+						{% endif %}
+						{% if each.category %}
+					<tr>
+						<td style="width:700px">{{ each.category }}</td>
+					</tr>
+						{% endif %}
+					<tr>
+						<td style="width:700px">{{ each.audiences }}</td>
+					</tr>
+						{% if each.expiration_time %}
+					<tr>
+						<td style="width:700px">{{ each.expiration_time }}</td>
+					</tr>
+						{% endif %}
+				</table>
+			</td>
+			<td valign='top' width=80px>
+				<button type="submit" name="expired" value={{each.id}} style="width:80px">expired</button><br/>
+				<button type="submit" name="delete" value={{each.id}} style="width:80px">delete</button>
+			</td>
+		</tr>
+	</table>
+</form>
+<br/><br/>
+{% endfor %}
+
+</table>
+{% endblock %}
+	</td>
+    </tr>
+    </table>    
+    {% block footer %}
+    <hr>
+    <p align="center">Thanks for visiting my site.</p>
+    {% endblock %}
+</body>
+</html>

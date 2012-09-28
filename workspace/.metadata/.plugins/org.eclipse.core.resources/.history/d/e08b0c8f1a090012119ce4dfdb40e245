@@ -1,0 +1,12 @@
+# Create your views here.
+
+from models import *
+
+from django.shortcuts import render_to_response
+
+import store_item
+def operate(request):
+    a=asin()
+    category=a.getCategory()
+    Li=List(offset)
+    return render_to_response('operate.html',{'category':category,'list':Li})

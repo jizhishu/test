@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;getASIN_seller.py&apos; to &apos;ProcurementApp&apos;" description="Move &apos;getASIN_seller.py&apos; to &apos;ProcurementApp&apos;" destination="ProcurementApp" element1="asinapp/getASIN_seller.py" element2="asinapp/getDetail_ASIN.py" element3="asinapp/getImage_ASIN.py" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="3" stamp="1348132230292" updateReferences="true"/>
+</session>

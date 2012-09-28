@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1 style="color:green" align="center">Store information input</h1>
+    <hr>
+    <form action='' method="post">
+	{% csrf_token %}
+    <h3 style="color:rgb(0,100,255)" align='center'>Store information</h3><tr><th>
+    <table align='center' valign='top'>
+    <tr>
+    {% block base %}
+    <td>
+    <table align='center' valign='top'>
+	<tbody>
+    	<tr>
+    		<th valign='top'align='right'>ID</th>
+    		<td><input type="text" name="ID" style="width:200px"></td>
+  		</tr>
+    	<tr>
+    		<th valign='top' align='right'>name</th>
+    		<td><input type="text" name="name" style="width:200px"></td>
+  		</tr>
+    	<tr>
+    		<th valign='top' align='right'>image</th>
+    		<td><input type="image" name="image" style="width:200px"></td>
+  		</tr>
+    	<tr>
+    		<th valign='top' align='right'>url</th>
+    		<td><input type="url" name="url" style="width:200px"></td>
+  		</tr>
+		<tr>
+			<th valign='top' align='right'>category</th>
+			<td>
+				<select name="category">
+					<option value='ALL' style="width:400px">ALL</option>
+    				{% if category %}
+    					{% for a in category %}
+    				<optgroup label="{{a.name}}">
+    				<option value={{ a.id}} style="width:400px">{{a.name}}</option>
+    				</optgroup>
+						{% endfor %}
+					{% endif %}
+				</select>
+			</td>
+  		</tr>
+    {% endblock %}
+    </tbody>
+    </table>
+    </td>
+    <td>
+    <table valign='top'>
+    <tbody>
+    {% block info %}
+    <tr><th><p style="color:rgb(255,100,0) "align="center">contact information</p></th></tr>
+       <tr>
+    		<th valign='top' align='right'>address</th>
+    		<td><input type="text" name="address" style="width:200px"></td>
+  		</tr>
+        	<tr>
+    		<th valign='top' align='right'>contact e-mail</th>
+    		<td><input type="email" name="contact" style="width:200px"></td>
+  		</tr>
+       <tr>
+    		<th valign='top' align='right'>phone</th>
+    		<td><input type="text" name="phone" style="width:200px"></td>
+  		</tr>
+       <tr>
+    		<th valign='top' align='right'>customer support</th>
+    		<td><input type="text" name="customer_support" style="width:200px"></td>
+  		</tr>
+       <tr>
+    		<th valign='top' align='right'>business hours</th>
+    		<td><input type="text" name="business_hours" style="width:200px"></td>
+  		</tr>
+       <tr>
+    		<th valign='top' align='right'>fax</th>
+    		<td><input type="text" name="fax" style="width:200px"></td>
+  		</tr>
+	{% endblock %}
+	</tbody>
+	</table>
+	</td>
+	    <td>
+    <table valign='top'>
+    <tbody>
+    	<tr><th><p style="color:rgb(255,100,0) "align="center">Full Rating Profile</p></th></tr>
+    {% block rating %}
+    	<tr><th><p style="color:rgb(255,100,0) "align="center">Lifetime review profile</p></th></tr>
+      	<tr>
+    		<th valign='top' align='right'>Lifetime Rating</th>
+    		<td><input type="text" name="lifetime" value=0.0 style="width:200px"></td>
+  		</tr>
+  		<tr>
+    		<th valign='top' align='right'>Negative Reviews</th>
+    		<td><input type="text" name="negative_reviews" value=0 style="width:200px"></td>
+  		</tr>
+  		<tr>
+    		<th valign='top' align='right'>Postive Reviews</th>
+    		<td><input type="text" name="postive_reviews" value=0 style="width:200px"></td>
+  		</tr>
+    	<tr><th><p style="color:rgb(255,100,0) "align="center">6-month review profile</p></th></tr>
+      	<tr>
+    		<th valign='top' align='right'>Product & services pricing</th>
+    		<td><input type="text" name="product_services_pricing" value=0.0 style="width:200px"></td>
+  		</tr>
+  		<tr>
+    		<th valign='top' align='right'>Chance of future purchase</th>
+    		<td><input type="text" name="chance_of_future_purchase" value=0.0 style="width:200px"></td>
+  		</tr>
+  		<tr>
+    		<th valign='top' align='right'>Shipping & packaging</th>
+    		<td><input type="text" name="shipping_packaging" value=0.0 style="width:200px"></td>
+  		</tr>
+  		<tr>
+    		<th valign='top' align='right'>Customer service</th>
+    		<td><input type="text" name="customer_service" value=0.0 style="width:200px"></td>
+  		</tr>
+  		<tr>
+    		<th valign='top' align='right'>Return/Replacement policy</th>
+    		<td><input type="text" name="return_replacement_policy" value=0.0 style="width:200px"></td>
+  		</tr>
+    {% endblock %}
+    </tbody>
+    </table>
+    </td>
+	</tr>
+    </table>
+	</form>
+    {% block footer %}
+    <hr>
+    <p align="center">Thanks for visiting my site.</p>
+    {% endblock %}
+<img src='storeimage/{{ id }}'></img>
+</body>
+</html>

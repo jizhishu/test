@@ -1,0 +1,18 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dataimport_ASIN</title>
+<h1 align="center" style="color:green">Data import from ASIN</h1>
+</head>
+<?php
+require("mongo_API.php");
+if(isset($_POST['ASIN']))
+{
+	$asin=$_POST['ASIN'];
+	$result=insertinto($asin);
+	if($result)echo "<p>Insert ture!";
+	else echo "<p>Insert false!";
+}
+else echo "<p>Nothing import!";
+?>
+</html>

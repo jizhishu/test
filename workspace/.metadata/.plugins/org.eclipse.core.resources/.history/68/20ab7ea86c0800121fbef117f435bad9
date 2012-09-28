@@ -1,0 +1,39 @@
+'''
+Created on 2012-9-10
+
+@author: jizhishu
+'''
+
+from mongoengine import *
+import datetime
+
+connect('test')
+
+class StoreCategory(Document):
+    
+class Store(Document):
+    ID=StringField(primary_key=True)
+    name=StringField()
+    image=ImageField()
+    URL=URLField()
+    category=ReferenceField(StoreCategory)
+
+class User(Document):
+    name = StringField()
+
+    meta = {"db_alias": "user-db"}
+
+class Book(Document):
+    name = StringField()
+
+    meta = {"db_alias": "book-db"}
+
+class AuthorBooks(Document):
+    author = ReferenceField(User)
+    book = ReferenceField(Book)
+
+    meta = {"db_alias": "users-books-db"}
+
+class Page(Document):
+    title = StringField(max_length=200, required=True)
+    date_modified = DateTimeField(default=datetime.datetime.now)

@@ -1,0 +1,69 @@
+'''
+Created on 2012-9-18
+
+@author: jizhishu
+'''
+import re
+import urllib2
+import string
+import sys
+
+def noteDelete(page_content):
+    noteContentArray = re.compile('<!--(.*?)-->', re.S).findall(page_content)
+    if len(noteContentArray) == 0:
+        return page_content
+    else:
+        for each in noteContentArray:
+            page_content = page_content.replace("<!--" + each + "-->", "")
+            return page_content
+
+def page(page_content):
+    regex_results=r'Showing(.+?)sults';
+    regex_result=r'\s(.+?)Re';
+    regex_find=r'(of)';
+    regex_result_2=r'of (.+?)\s';
+    results=re.compile(regex_results,re.S).findall(page_content)
+    for content in results:
+        result=re.compile(regex_result).findall(content)
+        for content2 in result:
+            find=re.compile(regex_find).search(content2)
+            if find:
+                result=re.compile(regex_result_2).search(content2)
+            else:
+                result=re.compile(regex_result).search(content)    
+        result=result.group(1)
+    s=result.split(',')
+    result=''.join(s)
+    result=string.atoi(result)
+    mod=result%24
+    if mod==0:
+        page=result/24
+    else:
+        page=result/24+1
+    return page
+    
+url=sys.argv[1]
+req=urllib2.Request(url)
+fd=urllib2.urlopen(req)
+page_content=fd.read()
+page=page(page_content)
+asin_list=[]
+for i in range(1,page+1):
+    result=url+"&page="+str(i)
+    req=urllib2.Request(result)
+    fd=urllib2.urlopen(req)
+    page_content=fd.read()
+    page_content=noteDelete(page_content)
+    regex_asins=r'<div id="(.+?)" class="productTitle">'
+    regex_asin=r'srProductTitle_(.+?)_'
+    asins=re.compile(regex_asins,re.S).findall(page_content)
+    for content in asins:
+        asin=re.compile(regex_asin).search(content)
+        asin=asin.group(1)
+        asin_list.append(asin)
+        print asin
+
+
+
+if __name__ == '__main__':
+    pass

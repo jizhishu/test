@@ -1,0 +1,212 @@
+#coding=utf-8
+'''
+Created on 2012-9-21
+deals class
+@author: WLS
+'''
+
+import types
+import item
+
+class MyDeals(item.Item):
+    _id = None
+    ASIN =None
+    content =None
+    last_price = 0.0
+    current_price = 0.0
+    name = None
+    deal_title = None
+    start_time = None
+    expiration_time = None
+    link = None
+    stores = None
+    category = []
+    audiences = None
+    like = 0
+    dislike = 0
+    type='manual'
+    expired=False
+    img_link=None
+    
+    def __init__(self,useConnection):
+        self._item_connect=useConnection#
+        self._item_connect.useCollection('deals')
+
+
+    def assemble(self):
+        '''功能：把self组装成一个商品+评论列表的文档，用于插入数据库
+        '''
+        postdoc={
+                 "_id":self.get_id(),
+                 "ASIN":self.get_asin(),
+                 "content":self.get_content(),
+                 "last_price":self.get_last_price(),
+                 "current_price":self.get_current_price(),
+                 "name":self.get_name(),
+                 "deal_title":self.get_deal_title(),
+                 "start_time":self.get_start_time(),
+                 "expiration_time":self.get_expiration_time(),
+                 "link":self.get_link(),
+                 "stores":self.get_stores(),
+                 "category":self.get_category(),
+                 "audiences":self.get_audiences(),
+                 "like":self.get_like(),
+                 "dislike":self.get_dislike(),
+                 "type":self.get_type(),
+                 "expired":self.get_expired(),
+                 'img_link':self.get_img_link()
+                 }
+        return postdoc 
+    
+    def save(self):
+        return self._item_connect.save( self.assemble())
+    
+    def searchCount(self):
+        return self._item_connect.search().count() 
+    
+    def searchAll(self):
+        '''功能：按name搜索文档
+        '''
+        return self._item_connect.searchAll() 
+    
+    def searchLikeByContent(self,value):
+        '''功能：按value模糊搜索content
+        '''
+        return self._item_connect.searchLike("content",value)
+    
+    def searchByName(self):
+        '''功能：按name搜索文档
+        '''
+        if self.getName()==None or self.getName()=='':
+            return None
+        else:
+            return self._item_connect.search("name",self._name)      
+    
+    def delete(self,key,value): 
+        if value==None or key==None:
+            print 'Delete error: value and key can not be none!'
+            return 0
+        else:
+            self._item_connect.delete(key,value)
+            return 1
+        
+
+    def get_id(self):
+        return self._id
+
+
+    def get_asin(self):
+        return self.ASIN
+
+
+    def get_content(self):
+        return self.content
+
+
+    def get_last_price(self):
+        return self.last_price
+
+    def get_current_price(self):
+        return self.current_price
+
+    def get_name(self):
+        return self.name
+
+
+    def get_deal_title(self):
+        return self.deal_title
+
+
+    def get_start_time(self):
+        return self.start_time
+
+
+    def get_expiration_time(self):
+        return self.expiration_time
+
+
+    def get_link(self):
+        return self.link
+
+
+    def get_stores(self):
+        return self.stores
+
+
+    def get_category(self):
+        return self.category
+
+
+    def get_audiences(self):
+        return self.audiences
+    
+    def get_like(self):
+        return self.like
+    
+    def get_dislike(self):
+        return self.dislike
+
+    def get_type(self):
+        return self.type
+
+    def get_expired(self):
+        return self.expired
+    
+    def get_img_link(self):
+        return self.img_link
+
+    def set_id(self, value):
+        self._id = value
+
+    def set_asin(self, value):
+        self.ASIN = value
+
+    def set_content(self, value):
+        self.content = value
+
+    def set_last_price(self, value):
+        self.last_price = value
+
+    def set_current_price(self,value):
+        self.current_price = value
+
+    def set_name(self, value):
+        self.name = value
+
+    def set_deal_title(self, value):
+        self.deal_title = value
+
+    def set_start_time(self, value):
+        self.start_time = value
+
+    def set_expiration_time(self, value):
+        self.expiration_time = value
+
+    def set_link(self, value):
+        self.link = value
+
+    def set_stores(self, value):
+        self.stores = value
+
+    def set_category(self, value):
+        self.category = value
+
+    def set_audiences(self, value):
+        self.audiences = value
+        
+    def set_like(self,value):
+        self.like = value
+        
+    def set_dislike(self,value):
+        self.dislike = value
+
+    def set_type(self,value):
+        self.type = value
+
+    def set_expired(self,value):
+        self.expired = value
+
+    def set_img_link(self,value):
+        self.img_link = value
+
+        

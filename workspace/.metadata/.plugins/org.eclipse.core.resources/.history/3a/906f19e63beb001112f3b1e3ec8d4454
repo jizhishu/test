@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Data operate</title>
+</head>
+<!-- 
+<frameset rows="70,*"  frameborder="yes" framespacing="30" bordercolor="#cccccc">
+    <frame  src="operate_top.php" name="topframe" scrolling="no"/>
+    <frameset cols="150,*" framespacing="2"  frameborder="yes" bordercolor="#cccccc">
+      <frame src="operate_left.php" name="leftFrame" id="leftFrame" frameborder="0"  scrolling="yes"/>
+      <frame src="operate_main.php" name="mainFrame" id="mainFrame" frameborder="0" />
+    </frameset>
+</frameset>
+<noframes>
+<body>
+</body>
+</noframes>
+ -->
+ <table>
+   <tr>
+   <td height="30px" width="300px">
+      <h1 style="color:red">
+          <img src="http://wiki.starmerx.com/logo/th.jpg" width="30" height="30"/>
+         星商网络科技
+      </h1>
+   </td>
+   </tr>
+</table>
+<table style="color:blue; text-align:top">
+   <tr>
+   <td height="120" width="50">left</td>
+   <td height="120" width="150">right</td>
+   </tr>
+</table>
+</html>

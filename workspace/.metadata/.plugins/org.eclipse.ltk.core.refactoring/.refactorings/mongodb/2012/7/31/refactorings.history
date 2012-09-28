@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;mongodb/src/error_item.py&apos; to &apos;error_log_item.py&apos;" description="Rename resource &apos;error_item.py&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/error_item.py" name="error_log_item.py" stamp="1343724807128" updateReferences="true"/>
+</session>

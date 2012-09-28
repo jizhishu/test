@@ -1,0 +1,174 @@
+from django.db import models
+
+# Create your models here.
+from mongoengine import *
+
+import datetime
+
+connect('store',host='192.168.1.110')
+
+class StoreCategory(Document):
+    ID      =   StringField(primary_key=True)
+    name    =   StringField()
+    path    =   ListField(ListField())
+    children=   ListField()
+    parents =   ListField()
+    
+class StoreRating(Document):
+    ID                          =   StringField(primary_key=True)
+    lifetime                    =   FloatField()
+    Product_services_pricing    =   FloatField()
+    chance_of_future_purchase   =   FloatField()
+    shipping_packaging          =   FloatField()
+    customer_service            =   FloatField()
+    return_replacement_policy   =   FloatField()
+    
+class StoreInfo(Document):
+    ID              =   StringField(primary_key=True)
+    address         =   StringField()
+    contact         =   EmailField()
+    phone           =   StringField()
+    customer_support=   StringField()
+    business_hours  =   StringField()
+    Fax             =   StringField()
+class StoreUrlPrefix(Document):
+    ID = StringField(primary_key=True)
+    
+class Store(Document):
+    ID          =   StringField(primary_key=True)
+    name        =   StringField()
+    image       =   ImageField()
+    url         =   URLField()
+    category    =   ReferenceField(StoreCategory)
+    rating      =   ReferenceField(StoreRating)
+    info        =   ReferenceField(StoreInfo)
+    url_prefix  =   ReferenceField(StoreUrlPrefix)
+
+class store():
+    def total(self):
+        return Store.objects.all().count()
+    
+    def getList(self,page=1):
+        result=Store.objects.all().order_by('-rating').skip((page-1)*15).limit(15)
+        return result
+        
+    def updateStore(self,id,key,value):
+        test=Store.objects(ID=id)
+        if key=='name':
+            if test.update(set__name=value):
+                return 1
+            else:
+                return 0
+        if key=='image':
+            if test.update(set__image=value):
+                return 1
+            else:
+                return 0
+        if key=='url':
+            if test.update(set__url=value):
+                return 1
+            else:
+                return 0
+        if key=='category':
+            value1={ "$ref" : "store_category", "$id" : value }
+            if test.update(set__category=value1):
+                return 1
+            else:
+                return 0
+        if key=='rating':
+            value1={ "$ref" : "store_rating", "$id" : value }
+            if test.update(set__rating=value1):
+                return 1
+            else:
+                return 0
+        if key=='info':
+            value1={ "$ref" : "store_info", "$id" : value }
+            if test.update(set__info=value1):
+                return 1
+            else:
+                return 0
+        if key=='url_prefix':
+            value1={ "$ref" : "store_url_prefix", "$id" : value }
+            if test.update(url_prefix=value1):
+                return 1
+            else:
+                return 0
+       
+    def updateStoreCategory(self,id,key,value):
+        test=StoreCategory.objects(ID=id)
+        if key=='name':
+            if test.update(set__name=value):
+                return 1
+            else:
+                return 0
+        if key=='path':
+            if test.update(set__path=value):
+                return 1
+            else:
+                return 0
+        if key=='children':
+            if test.update(set__children=value):
+                return 1
+            else:
+                return 0
+        if key=='parents':
+            if test.update(set__parents=value):
+                return 1
+            else:
+                return 0
+        
+    def saveList(self,list):
+        test=Store(
+                   ID=list['ID'],
+                   name=list['name'],
+                   image=list['image'],
+                   url=list['url'],
+                   category={ "$ref" : "store_category", "$id" : list['category'] },
+                   rating={ "$ref" : "store_rating", "$id" : list['store_rating'] },
+                   info={ "$ref" : "store_info", "$id" : list['info'] },
+                   url_prefix={ "$ref" : "store_url_prefix", "$id" : list['url_prefix'] }
+
+                      )
+        
+        if test.save():
+            return 1
+        else:
+            return 0
+        
+    def deleteByASIN(self,asin):
+        Procurement.objects(ASIN=asin).delete()
+        
+    def findByASIN(self,asin):
+        result=Procurement.objects(ASIN=asin)
+        list=[]
+        if result:
+            for t in result:
+                r={
+                   'ASIN'   :   t.ASIN,
+                   'title'  :   t.title,
+                   'price'  :   t.price,
+                   'rating' :   t.rating,
+                   'nodeID' :   t.nodeID,
+                   'nodeName':  t.nodeName,
+                   'image'  :   t.image,
+                   'note'   :   t.note
+                    }
+                list.append(r)
+            return list
+        else:
+            return 0
+      
+    def getCategory(self):
+        node=[]
+        Node=[]
+        result=Procurement.objects.all()
+        for i in result():
+            if i['nodeID'] in node:
+                pass
+            else:
+                nodeID=i['nodeID']
+                nodeName=i['nodeName']
+                node.append(nodeID)
+                BNode={'nodeID':nodeID,'nodeName': nodeName}
+                Node.append(BNode)
+        return Node

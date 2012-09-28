@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;amazon_web/store/templates/store.html&apos; to &apos;storeimage.html&apos;" description="Rename resource &apos;store.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="store/templates/store.html" name="storeimage.html" stamp="1348819818006" updateReferences="true"/>
+</session>

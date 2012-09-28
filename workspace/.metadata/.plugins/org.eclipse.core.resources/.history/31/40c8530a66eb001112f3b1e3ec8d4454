@@ -1,0 +1,8 @@
+<?php
+if(isset($_POST['chk']))
+{
+	$chk[]=$_POST['chk'];
+	var_dump($chk);
+}
+
+?>

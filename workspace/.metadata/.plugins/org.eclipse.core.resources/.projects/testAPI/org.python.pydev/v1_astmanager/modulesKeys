@@ -1,0 +1,4 @@
+MODULES_MANAGER_V2
+mymodule|/home/jizhishu/workspace/testAPI/mymodule.py
+mysqldb|/home/jizhishu/workspace/testAPI/mysqldb.py
+testAPI|/home/jizhishu/workspace/testAPI/testAPI.py

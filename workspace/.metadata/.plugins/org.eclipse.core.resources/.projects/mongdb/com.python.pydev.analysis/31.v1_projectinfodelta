@@ -1,0 +1,11 @@
+INSTUPstore_item
+/home/jizhishu/workspace/mongdb/store_item.py
+INFOS:&&1|1|2|0&&3|3|2|1&&3|4|2|1&&3|5|2|1&&2|6|2|1&&3|7|2|8
+_item_connect=7
+__init__=6
+store_item=2
+_value=4
+Store=1
+_name=3
+_updatetime=5
+Store.__init__=8

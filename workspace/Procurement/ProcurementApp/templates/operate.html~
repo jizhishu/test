@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}operate{% endblock %}
+
+{% block h1 %}operate{% endblock %}
+
+{% block content %}
+<hr>
+<div>
+<table>
+<tr>
+<td>
+    <ul>
+	 {% for cate in category %}
+	  <!-- <tr>-->
+	 	{% for ca in cate %}
+	       <!--<td width=20% valign='top'>-->
+	       <li><a href="operate?category={{ ca.id }}">{{ ca.name }}</a></li>
+	       <!--</td>-->
+	    {% endfor %}
+	    <!--</tr>-->
+    {% endfor %}
+	</ul>
+</td>
+<!-- width="100%" valign='top'  style="color:blue;" align="center" valign='top'-->
+<!--<hr>-->
+<td>
+   <ul>
+    	{% for li in list %}
+    		<tr>
+    		  {% for l in li %}
+    		  <td width=30%>
+	         <li>{{ l.name }}</li>
+	         <p><img src='http://ecx.images-amazon.com/images/P/{{ l.id }}.jpg' height=160 border=0 /></p>
+	         <p>{{ l.note }}</p>
+	         </td>
+	       {% endfor %} 
+	       </tr>
+          {% endfor %}
+    </ul>
+        {% for de in detail %}
+        
+        {% endfor %}
+</td>
+</tr>
+</div>
+</table>
+{% endblock %}

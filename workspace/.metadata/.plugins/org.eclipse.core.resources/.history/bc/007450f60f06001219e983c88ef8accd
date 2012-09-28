@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <h1 style="color:green" align="center">{% block h1 %}{% endblock %}</h1>
+    <hr>
+    <table>
+    <tr>
+    <td>
+    {% block left %}{% endblock %}
+    </td>
+    <td>
+    {% block right %}{% endblock %}
+    </td>
+    </tr>
+    </table>
+    
+    {% block footer %}
+    <hr>
+    <p align="center">Thanks for visiting my site.</p>
+    {% endblock %}
+</body>
+</html>

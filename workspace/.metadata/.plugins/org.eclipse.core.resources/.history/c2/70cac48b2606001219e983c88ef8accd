@@ -1,0 +1,35 @@
+import mongo_utility, myDeals_item
+
+
+_connection=mongo_utility.MongoUtility(serverip='192.168.1.110')
+
+def insertdealsList():
+    dealsItem = myDeals_item.MyDeals(_connection)
+    
+    for a in range(9):
+        id = '123456789'+ str(a)
+        dealsItem.set_id(id)
+        dealsItem.set_asin('UIOEUR3445')
+        dealsItem.set_audiences('men')
+        dealsItem.set_content('this is a electronic product')
+        dealsItem.set_deal_title('deal_title')
+        dealsItem.set_start_time('2012-09-21')
+        dealsItem.set_expiration_time('2012-09-22')
+        dealsItem.set_link('www.kkkkfasdfasdfasdfas')
+        dealsItem.set_name('computer')
+        price =3456 + a * 100 
+        dealsItem.set_price(price)
+        dealsItem.set_stores('myStores')
+        dealsItem.set_category(['172282'])
+        
+        deal = dealsItem.assemble()
+        print deal
+        dealsItem.save()
+    return 1
+    
+    
+    
+if __name__ == "__main__":
+    
+    deal = insertdealsList()
+    

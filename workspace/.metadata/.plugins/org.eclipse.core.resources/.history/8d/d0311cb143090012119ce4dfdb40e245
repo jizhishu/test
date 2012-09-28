@@ -1,0 +1,16 @@
+# Create your views here.
+
+from models import *
+
+from django.shortcuts import render_to_response
+from django.http import HttpResponse
+import store_item
+
+def show(request,offset):
+    a=store_item.store()
+    for each in a.findByID(offset):
+        img=each.image.read()
+    return HttpResponse(img, mimetype="image/png")
+def storeInput(request):
+    
+    return render_to_response('StoreInput.html')

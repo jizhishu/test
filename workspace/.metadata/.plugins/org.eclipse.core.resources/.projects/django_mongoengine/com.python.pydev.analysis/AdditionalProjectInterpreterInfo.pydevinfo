@@ -1,0 +1,93 @@
+-- VERSION_3
+-- START DISKCACHE
+/home/jizhishu/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/django_mongoengine/com.python.pydev.analysis/v1_indexcache
+.v1_indexcache
+django_mongoengine.test|0|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/test.py
+django_mongoengine.models|0|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/models.py
+django_mongoengine.views|0|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/views.py
+manage|0|/home/jizhishu/workspace/django_mongoengine/manage.py
+django_mongoengine.wsgi|0|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/wsgi.py
+django_mongoengine.urls|0|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/urls.py
+django_mongoengine.settings|0|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/settings.py
+django_mongoengine.__init__|0|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/__init__.py
+-- END DISKCACHE
+-- START DICTIONARY
+15
+15=User
+14=Book
+7=Store
+12=AuthorBooks
+4=django_mongoengine.models
+8=StoreUrlPrefix
+9=StoreInfo
+2=django_mongoengine.settings
+5=django_mongoengine.test
+13=Page
+1=django_mongoengine.views
+3=django_mongoengine.wsgi
+11=StoreCategory
+6=django_mongoengine.urls
+10=StoreRating
+-- END DICTIONARY
+-- START TREE 1
+30
+a|1|a!11@
+adm|1|ADMINS!19@
+app|1|application!27@
+aut|2|AuthorBooks!33@AUTHENTICATION_BACKENDS!19@
+boo|1|Book!33@
+c|1|c!11@
+dat|1|DATABASES!19@
+deb|1|DEBUG!19@
+fil|1|filename!43@
+fs|1|fs!43@
+ins|1|INSTALLED_APPS!19@
+lan|1|LANGUAGE_CODE!19@
+log|1|LOGGING!19@
+man|1|MANAGERS!19@
+med|2|MEDIA_URL!19@MEDIA_ROOT!19@
+mid|1|MIDDLEWARE_CLASSES!19@
+pag|1|Page!33@
+roo|1|ROOT_URLCONF!19@
+sec|1|SECRET_KEY!19@
+sho|1|show!10@
+sit|1|SITE_ID!19@
+sta|4|STATICFILES_FINDERS!19@STATIC_URL!19@STATICFILES_DIRS!19@STATIC_ROOT!19@
+sto|5|StoreRating!33@StoreUrlPrefix!33@StoreCategory!33@StoreInfo!33@Store!33@
+tem|3|TEMPLATE_DEBUG!19@TEMPLATE_LOADERS!19@TEMPLATE_DIRS!19@
+tes|2|test!10@test1!10@
+tim|1|TIME_ZONE!19@
+upd|1|update!10@
+url|1|urlpatterns!51@
+use|4|USE_L10N!19@User!33@USE_I18N!19@USE_TZ!19@
+wsg|1|WSGI_APPLICATION!19@
+-- END TREE
+-- START TREE 2
+26
+ID|5|ID!7&35@ID!8&35@ID!9&35@ID!10&35@ID!11&35@
+add|1|address!9&35@
+aut|1|author!12&35@
+boo|1|book!12&35@
+bus|1|business_hours!9&35@
+cat|1|category!7&35@
+cha|1|chance_of_future_purchase!10&35@
+chi|1|children!11&35@
+con|1|contact!9&35@
+cus|2|customer_service!10&35@customer_support!9&35@
+dat|1|date_modified!13&35@
+fax|1|Fax!9&35@
+ima|1|image!7&35@
+inf|1|info!7&35@
+lif|1|lifetime!10&35@
+met|3|meta!12&35@meta!14&35@meta!15&35@
+nam|4|name!14&35@name!15&35@name!7&35@name!11&35@
+par|1|parents!11&35@
+pat|1|path!11&35@
+pho|1|phone!9&35@
+pro|1|Product_services_pricing!10&35@
+rat|1|rating!7&35@
+ret|1|return_replacement_policy!10&35@
+shi|1|shipping_packaging!10&35@
+tit|1|title!13&35@
+url|2|url_prefix!7&35@url!7&35@
+-- END TREE

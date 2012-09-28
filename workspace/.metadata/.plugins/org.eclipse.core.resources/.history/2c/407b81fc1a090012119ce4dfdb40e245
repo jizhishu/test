@@ -1,0 +1,44 @@
+from amazon_web.views import *
+from django.conf.urls import patterns, include, url
+
+# Uncomment the next two lines to enable the admin:
+# from django.contrib import admin
+# admin.autodiscover()
+
+urlpatterns = patterns('',
+    ('^category/$', category),
+    ('.*getchildcategory/(\d+)/$', category),
+    ('^category/products?(.*)',getproduct),
+    ('^category/nextproducts(.*)',getnextproduct),
+    ('^category/preproducts(.*)',getpreproduct),
+    ('^deals/$',getDeals),
+
+    # Examples:
+    # url(r'^$', 'amazon_web.views.home', name='home'),
+    # url(r'^amazon_web/', include('amazon_web.foo.urls')),
+
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Uncomment the next line to enable the admin:
+    # url(r'^admin/', include(admin.site.urls)),
+)
+
+urlpatterns += patterns('ProcurementApp.views',
+    url(r'^procurement/$','main'),
+    url(r'^procurement/import/$','dataimport'),
+    url(r'^procurement/operate/$','operate'),
+    url(r'^procurement/import/file/$','dataimport_file'),
+    url(r'^procurement/operate/category/(.+?)/$','operate'),
+    url(r'^procurement/operate/ASIN/(.+?)/$','operateDetail'),
+)
+
+urlpatterns += patterns('manualdeal.views',
+    url(r'^manualdeal/$','dealsShow'),
+    url(r'^manualdealinput/$','dealsInput'),
+)
+
+urlpatterns += patterns('store.views',
+    url(r'^show/$','show'),
+    url(r'^manualdealinput/$','dealsInput'),
+)

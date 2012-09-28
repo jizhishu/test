@@ -1,0 +1,25 @@
+'''
+Created on 2012-9-10
+
+@author: jizhishu
+'''
+
+class User(Document):
+    name = StringField()
+
+    meta = {"db_alias": "user-db"}
+
+class Book(Document):
+    name = StringField()
+
+    meta = {"db_alias": "book-db"}
+
+class AuthorBooks(Document):
+    author = ReferenceField(User)
+    book = ReferenceField(Book)
+
+    meta = {"db_alias": "users-books-db"}
+
+class Page(Document):
+    title = StringField(max_length=200, required=True)
+    date_modified = DateTimeField(default=datetime.datetime.now)

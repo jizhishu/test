@@ -1,0 +1,53 @@
+"""
+This file demonstrates writing tests using the unittest module. These will pass
+when you run "manage.py test".
+
+Replace this with more appropriate tests for your application.
+"""
+
+from django.test import TestCase
+
+
+class SimpleTest(TestCase):
+    def test_basic_addition(self):
+        """
+        Tests that 1 + 1 always equals 2.
+        """
+        self.assertEqual(1 + 1, 2)
+
+
+from MongoDB import myDeals_item,mongo_utility,node_item
+
+connection=mongo_utility.MongoUtility(serverip='192.168.1.110')
+
+deals = myDeals_item.MyDeals(connection)
+def getDealsbyType(type='manual'):
+        '''
+        get all the manual Deals 
+        '''
+        DealList = []
+        List=deals.searchbyType('manual')
+        #List = deals.search('type','manual')
+        for each in List:
+            print each
+            '''
+            deal = {
+                'id':each['_id'],
+                'deal_title': each['deal_title'],
+                'current_price': each['current_price'],
+                'name': each['name'],
+                'content':each['content'],
+                'link':each['link'],
+                'stores':each['stores'],
+                'category':each['category'],
+                'ASIN':each['ASIN'],
+                'audiences':each['audiences'],
+                'start_time':each['start_time'],
+                'expiration_time':each['expiration_time'],
+                'expired':each['expired'],
+                'img_link':each['img_link'],
+                }
+            DealList.append(deal)
+            '''
+        return DealList
+getDealsbyType()

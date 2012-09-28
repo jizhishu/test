@@ -1,0 +1,21 @@
+'''
+Created on 2012-9-27
+
+@author: jizhishu
+'''
+from mongoengine.django.storage import GridFSStorage
+from mongoengine.django.storage import FileDocument
+if __name__ == '__main__':
+    
+    fs = GridFSStorage()
+
+    filename = fs.save('hello.txt', 'Hello, World!')
+    
+    if fs.exists('hello.txt'):
+        print fs.open('hello.txt').read()
+        print fs.size('hello.txt')
+        print fs.url('hello.txt')
+        print fs.open('hello.txt').name
+        print fs.listdir()
+        print FileDocument.objects()
+        

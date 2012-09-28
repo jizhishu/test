@@ -1,0 +1,7 @@
+MODULES_MANAGER_V2
+getASIN_seller|/home/jizhishu/workspace/detail/getASIN_seller.py
+getData_seller|/home/jizhishu/workspace/detail/getData_seller.py
+getDetail_ASIN|/home/jizhishu/workspace/detail/getDetail_ASIN.py
+getImage_ASIN|/home/jizhishu/workspace/detail/getImage_ASIN.py
+image|/home/jizhishu/workspace/detail/image.py
+test|/home/jizhishu/workspace/detail/test.py

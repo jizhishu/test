@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{% block title %}Manual Deals{% endblock %}</title>
+</head>
+<body>
+    <h1 style="color:green" align="center">{% block h1 %}Manual Deals{% endblock %}</h1>
+    <hr>
+{% block show %}
+
+{% for each in find %}
+<form method="post" action=''>
+{% csrf_token %}
+	<table align="center">
+		<tr>
+			<td>
+				<table>
+				<tr>
+			{% if each.img_link %}
+				<td><img src={{ each.img_link }} style="width:200px"></img></td>
+			{% endif %}
+				</tr>
+				</table>
+			</td>
+			<td style="width:700px">
+				<table>
+					<tr>
+						<td style="width:700px"><b>{{ each.deal_title }}</b><br/></td>
+					</tr>
+					<tr>
+						<td style="width:700px">{{ each.content }}<br/></td>
+					</tr>
+					{% if each.current_price %}
+					<tr>
+						<td style="color:maroon;width:700px">${{ each.current_price }}</td>
+					</tr>
+					{% endif %}
+					<tr>
+						<td style="width:700px">{{ each.start_time }}</td>
+					</tr>
+					<tr>
+						<td style="width:700px">{{ each.stores }}</td>
+					</tr>
+						{% if each.ASIN %}
+					<tr>
+						<td style="width:700px">{{ each.ASIN }}</td>
+					</tr>
+						{% endif %}
+						{% if each.name %}
+					<tr>
+						<td style="width:700px"><a href={{ each.link }}>{{ each.name }}</a></td>
+					</tr>
+						{% endif %}
+						{% if each.category %}
+					<tr>
+						<td style="width:700px">{{ each.category }}</td>
+					</tr>
+						{% endif %}
+					<tr>
+						<td style="width:700px">{{ each.audiences }}</td>
+					</tr>
+						{% if each.expiration_time %}
+					<tr>
+						<td style="color:blue;width:700px">{{ each.expiration_time }}</td>
+					</tr>
+						{% endif %}
+						{% if each.expired %}
+					<tr>
+						<td style="color:red;width:700px">expired</td>
+					</tr>
+						{% else %}
+					<tr>
+						<td style="color:green;width:700px">UNexpired</td>
+					</tr>
+						{% endif %}
+				</table>
+			</td>
+			<td valign='top' width=80px>
+				<button type="submit" name="expired" value={{each.id}} style="width:80px">expired</button><br/>
+				<button type="submit" name="delete" value={{each.id}} style="width:80px">delete</button>
+			</td>
+		</tr>
+	</table>
+</form>
+<br/><br/>
+{% endfor %}
+
+</table>
+{% endblock %}
+    {% block footer %}
+    <hr>
+    <p align="center">Thanks for visiting my site.</p>
+    {% endblock %}
+</body>
+</html>

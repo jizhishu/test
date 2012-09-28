@@ -1,0 +1,111 @@
+from django.db import models
+
+# Create your models here.
+
+from MongoDB import myDeals_item,mongo_utility,node_item
+
+connection=mongo_utility.MongoUtility(serverip='192.168.1.110')
+
+def savelist(dealslist):
+    deals = myDeals_item.MyDeals(connection)
+    result = None
+    if dealslist:
+        deals.savelist(dealslist)
+    '''
+    
+        deals.set_id(dealslist['_id'])
+        deals.set_asin(dealslist['ASIN'])
+        deals.set_audiences(dealslist['audience'])
+        deals.set_content(dealslist['content'])
+        deals.set_deal_title(dealslist['deal_title'])
+        deals.set_expiration_time(dealslist['expiration_time'])
+        deals.set_link(dealslist['link'])
+        deals.set_name(dealslist['name'])
+        deals.set_current_price(dealslist['current_price'])
+        deals.set_start_time(dealslist['start_time'])
+        deals.set_stores(dealslist['stores'])
+        deals.set_type(dealslist['type'])
+        deals.set_expired(dealslist['expired'])
+        deals.set_img_link(dealslist['img_link'])
+        deals.set_category(dealslist['category'])
+        result = deals.save()
+        '''
+        if(result != 1):
+            return 0;
+        else:
+            return 1
+def getDealsbyType(type='manual'):
+        '''
+        get all the manual Deals 
+        '''
+        deals = myDeals_item.MyDeals(connection)
+        DealList = []
+        List=deals.searchbyType('manual')
+        for each in List:
+            deal = {
+                'id':each['_id'],
+                'deal_title': each['deal_title'],
+                'current_price': each['current_price'],
+                'name': each['name'],
+                'content':each['content'],
+                'link':each['link'],
+                'stores':each['stores'],
+                'category':each['category'],
+                'ASIN':each['ASIN'],
+                'audiences':each['audiences'],
+                'start_time':each['start_time'],
+                'expiration_time':each['expiration_time'],
+                'expired':each['expired'],
+                'img_link':each['img_link'],
+                }
+            DealList.append(deal)
+        return DealList
+
+def delete(id):
+    deals = myDeals_item.MyDeals(connection)
+    deals.delete('_id',id)
+
+def getNode(nodeID):
+    browsenode=node_item.NodeItem(connection)
+    result=browsenode.search('_id',nodeID)
+    r=0
+    for a in result:
+        r={
+           'id'     :   nodeID,
+           'name'   :   a['name'],
+           }
+    if r:
+        return r
+    else:
+        return {'id':nodeID,'name':'more'}
+
+def getChildren(nodeID):
+    browsenode=node_item.NodeItem(connection)
+    result=browsenode.search('_id',nodeID)
+    r=None
+    for a in result:
+        r=a['children']
+    if r:
+        return r
+    else:
+        return 0
+    
+def getRootAncestor():
+    browsenode=node_item.NodeItem(connection)
+    result=browsenode.search('ancestors',[])
+    r=[]
+    for a in result:
+        id={
+            'id'    :   a['_id'],
+            'name'  :   a['name']
+            }
+        r.append(id)
+    if r:
+        return r
+    else:
+        return 0
+
+#print getRootAncestor()
+
+#for a in getRootAncestor():
+    #print getNode(a['id'])

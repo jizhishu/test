@@ -1,0 +1,49 @@
+# Create your views here.
+from django.shortcuts import render_to_response
+from django.views.decorators.csrf import csrf_exempt
+from models import *
+import time
+
+@csrf_exempt
+def main(request):
+    doc={}
+    id=0
+    ex=0
+    if request.method == 'POST':
+        if request.POST.has_key('delete'):
+            id = request.POST['delete']
+            delete(id)
+            
+        if request.POST.has_key('expired'):
+            ex = request.POST['expired']
+            
+        #assert False
+        if request.POST.has_key('ASIN'):
+            if request.POST['ASIN']:
+                doc={
+                     '_id':str(time.time())[0:10]+request.POST['ASIN']+'manual',
+                     'ASIN':request.POST['ASIN'],
+                     'content':request.POST['content'],
+                     'current_price':request.POST['current_price'],
+                     'last_price':request.POST['last_price'],
+                     'name':request.POST['name'],
+                     'deal_title':request.POST['deal_title'],
+                     'start_time':request.POST['start_time'],
+                     'expiration_time':request.POST['expiration_time'],
+                     'like':0,
+                     'dislike':0,
+                     'DHI':0,
+                     'link':request.POST['link'],
+                     'stores':request.POST['stores'],
+                     'audiences':request.POST['audience'],
+                     'type':'manual',
+                     'expired':False,
+                     'img_link':request.POST['img_link'],
+                     'category':[request.POST['category']]
+                     }
+                savelist(doc)
+    category=getRootAncestor()
+        #assert False
+    find=getDealsbyType()  
+    #find=[]
+    return render_to_response('manualdeal.html',{'doc':doc,'find':find,'id':id,'ex':ex,'category':category})

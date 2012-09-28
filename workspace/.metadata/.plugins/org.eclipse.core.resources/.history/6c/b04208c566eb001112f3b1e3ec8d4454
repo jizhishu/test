@@ -1,0 +1,18 @@
+<?php
+require ('mongo_API.php');
+if(isset($_POST['chk']))
+{
+	$chk[]=$_POST['chk'];
+	foreach($chk as $a)
+	{
+		$n=count($a);
+		while($n--)
+		{
+			$a=new asin();
+			$db=$a->conn();
+			deleteByAsin($db,$a[$n]);
+		}
+	}
+}
+
+?>

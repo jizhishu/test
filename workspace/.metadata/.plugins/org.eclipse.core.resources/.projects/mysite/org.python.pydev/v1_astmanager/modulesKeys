@@ -1,0 +1,17 @@
+MODULES_MANAGER_V2
+blog.__init__|/home/jizhishu/workspace/mysite/blog/__init__.py
+blog.models|/home/jizhishu/workspace/mysite/blog/models.py
+blog.tests|/home/jizhishu/workspace/mysite/blog/tests.py
+blog.views|/home/jizhishu/workspace/mysite/blog/views.py
+books.__init__|/home/jizhishu/workspace/mysite/books/__init__.py
+books.admin|/home/jizhishu/workspace/mysite/books/admin.py
+books.models|/home/jizhishu/workspace/mysite/books/models.py
+books.tests|/home/jizhishu/workspace/mysite/books/tests.py
+books.views|/home/jizhishu/workspace/mysite/books/views.py
+manage|/home/jizhishu/workspace/mysite/manage.py
+mysite.__init__|/home/jizhishu/workspace/mysite/mysite/__init__.py
+mysite.models|/home/jizhishu/workspace/mysite/mysite/models.py
+mysite.settings|/home/jizhishu/workspace/mysite/mysite/settings.py
+mysite.urls|/home/jizhishu/workspace/mysite/mysite/urls.py
+mysite.views|/home/jizhishu/workspace/mysite/mysite/views.py
+mysite.wsgi|/home/jizhishu/workspace/mysite/mysite/wsgi.py

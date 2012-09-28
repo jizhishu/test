@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}operate{% endblock %}
+
+{% block h1 %}operate{% endblock %}
+
+{% block content %}
+<table>
+<tr>
+<td valign='top' width=20% bgcolor='lavenderblush'>
+
+<table width="100%" valign='top'>
+	<ul>
+	{% for cate in category %}
+		<tr width=20% valign='top'>
+	    	<li><a href="/main/operate/category/{{ cate.id }}">{{cate.name }}</a></li>
+	    </tr>
+    {% endfor %}
+	</ul>
+</table>
+
+</td>
+<td valign='top' width=85% bgcolor='ivory'>
+
+<table align="left" valign='top'>
+{% for li in list %}
+	<tr>
+	{% for ll in li %}
+    	<td width=500px valign='top'>
+    		<table>
+    	    	<tr valign='top'>
+    	    		<td>
+    	    			<table>
+    						<tr><td bgcolor='linen' height=50px width=300px>
+    						<a href="/main/operate/ASIN/{{ ll.id }}">{{ ll.name }}</a>
+    						</td></tr>
+	       				<!-- <tr><td><img src='http://ecx.images-amazon.com/images/P/{{ ll.id }}.jpg' height=160 border=0 /></td></tr> -->
+	       				<tr height=100px color='blue'valign='top'>
+	       					<td valign='top'>note:</td>
+	       					{% for note in ll.note %}
+	       					<td>{{ note }}</td>
+	       					{% endfor %}
+	      			 		</tr>
+	       			</table>
+	       		</td>
+	       		<td valign='top'><img src='http://ico.ooopic.com/iconset02/3/gif/2817.gif' height=20 border=0 /></td>
+	       	</tr>
+	       </table>
+	  	</td>
+	{% endfor %}
+    </tr>
+{% endfor %}
+
+{% for de in detail %}
+<form action='' method='post'>
+<table>
+<tr><td>
+    <table>
+	<tr><td>ASIN:</td><td>{{ de.id }}</td></tr>
+	<tr><td>name:</td><td>{{ de.name }}</td></tr>
+	<tr><td></td><td><img src='http://ecx.images-amazon.com/images/P/{{ de.id }}.jpg' height=160 border=0 /></td></tr>
+	<tr><td>root_category:</td><td>
+	{% for root in de.root_category %}
+		{{ root }}
+	{% endfor %}
+	</td></tr>
+	<tr><td>note:</td><td>
+	{% for note in de.note %}
+		<tr>{{ note }}</tr>
+	{% endfor %}
+	</td></tr>
+	<tr><td></td><td>
+	<table><tr><td>
+	<textarea name='note' style='width:400px' wrap='virtual'></textarea></td>
+	<td><input type='image' src='http://ico.ooopic.com/iconset01/Colorful-Stickers-Icons/gif/115759.gif' name='submit' value='{{ de.id }}' height=50 width=50></td></tr>
+	</table>
+	</td></tr>
+	</table>
+</td>
+<td valign='top'><img src='http://ico.ooopic.com/iconset02/3/gif/2817.gif' height=20 border=0 /></td>
+</tr>
+</table>
+</form>
+{% endfor %}
+
+</table>
+
+</td>
+</tr>
+</table>
+{% endblock %}

@@ -1,0 +1,9 @@
+MODULES_MANAGER_V2
+__init__|/home/jizhishu/workspace/blog/__init__.py
+blogapp.__init__|/home/jizhishu/workspace/blog/blogapp/__init__.py
+blogapp.models|/home/jizhishu/workspace/blog/blogapp/models.py
+blogapp.tests|/home/jizhishu/workspace/blog/blogapp/tests.py
+blogapp.views|/home/jizhishu/workspace/blog/blogapp/views.py
+manage|/home/jizhishu/workspace/blog/manage.py
+settings|/home/jizhishu/workspace/blog/settings.py
+urls|/home/jizhishu/workspace/blog/urls.py

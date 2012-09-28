@@ -1,0 +1,29 @@
+-- VERSION_3
+-- START DISKCACHE
+/home/jizhishu/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/detail/com.python.pydev.analysis/v1_indexcache
+.v1_indexcache
+getASIN_seller|0|/home/jizhishu/workspace/detail/getASIN_seller.py
+test|0|/home/jizhishu/workspace/detail/test.py
+image|0|/home/jizhishu/workspace/detail/image.py
+getImage_ASIN|0|/home/jizhishu/workspace/detail/getImage_ASIN.py
+getDetail_ASIN|0|/home/jizhishu/workspace/detail/getDetail_ASIN.py
+getData_seller|0|/home/jizhishu/workspace/detail/getData_seller.py
+-- END DISKCACHE
+-- START DICTIONARY
+6
+1=getASIN_seller
+4=test
+6=image
+5=getImage_ASIN
+3=getDetail_ASIN
+2=getData_seller
+-- END DICTIONARY
+-- START TREE 1
+3
+get|7|getUseMYI!10@getUseMYI!18@getData_seller!10@getData!10@getData!18@getDetail!26@getData_seller!18@
+ima|3|image!34@image!42@image!50@
+use|4|use_httplib!26@use_httplib!42@use_httplib!34@use_httplib!50@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

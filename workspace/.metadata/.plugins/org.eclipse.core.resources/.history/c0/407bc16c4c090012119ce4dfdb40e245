@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1 style="color:green" align="center">Store information input</h1>
+    <hr>
+    <h2 style="color:purple"align="center">Store information</h2>
+    {% block base %}
+    ID          =   StringField(primary_key=True)
+    name        =   StringField()
+    image       =   ImageField()
+    url         =   URLField()
+    category    =   ReferenceField(StoreCategory)
+    rating      =   ReferenceField(StoreRating)
+    info        =   ReferenceField(StoreInfo)
+    url_prefix  =   ReferenceField(StoreUrlPrefix)
+    {% endblock %}
+    <h3 style="color:rgb(255,100,0) "align="center">Store information</h3>
+    {% block rating %}
+    lifetime                    =   FloatField()
+    negative_reviews            =   IntField()
+    postive_reviews             =   IntField()
+    product_services_pricing    =   FloatField()
+    chance_of_future_purchase   =   FloatField()
+    shipping_packaging          =   FloatField()
+    customer_service            =   FloatField()
+    return_replacement_policy   =   FloatField()
+    {% endblock %}
+    {% block info %}
+    address         =   StringField()
+    contact         =   EmailField()
+    phone           =   StringField()
+    customer_support=   StringField()
+    business_hours  =   StringField()
+    fax             =   StringField()
+	{% endblock %}
+    {% block footer %}
+    <hr>
+    <p align="center">Thanks for visiting my site.</p>
+    {% endblock %}
+<img src='storeimage/{{ id }}'></img>
+</body>
+</html>

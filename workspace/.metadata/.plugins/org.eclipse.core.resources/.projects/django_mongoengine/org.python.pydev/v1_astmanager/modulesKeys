@@ -1,0 +1,9 @@
+MODULES_MANAGER_V2
+django_mongoengine.__init__|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/__init__.py
+django_mongoengine.models|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/models.py
+django_mongoengine.settings|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/settings.py
+django_mongoengine.test|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/test.py
+django_mongoengine.urls|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/urls.py
+django_mongoengine.views|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/views.py
+django_mongoengine.wsgi|/home/jizhishu/workspace/django_mongoengine/django_mongoengine/wsgi.py
+manage|/home/jizhishu/workspace/django_mongoengine/manage.py

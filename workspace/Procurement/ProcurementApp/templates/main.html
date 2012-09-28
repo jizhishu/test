@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}main{% endblock %}
+
+{% block h1 %}主界面{% endblock %}
+
+{% block content %}
+<table align="center"style="width:300px">
+  <tr>
+    <td align="center">
+      <input type="button" value="data import" onclick=window.location.href="import" style="width:100px">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <input type="button" value="operate" onclick=window.location.href="operate" style="width:100px">
+    </td>
+  </tr>
+</table>
+{% endblock %}

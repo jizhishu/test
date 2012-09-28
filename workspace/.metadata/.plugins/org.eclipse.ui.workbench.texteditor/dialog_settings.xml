@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="312" key="DIALOG_WIDTH"/>
+		<item value="125" key="DIALOG_Y_ORIGIN"/>
+		<item value="588" key="DIALOG_HEIGHT"/>
+		<item value="78" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Cantarell|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="p" key="selection"/>
+		<list key="findhistory">
+			<item value="h5"/>
+			<item value="h4"/>
+			<item value="left"/>
+			<item value="200px"/>
+			<item value="700px"/>
+			<item value="each"/>
+			<item value="manualdeal"/>
+			<item value="app"/>
+		</list>
+		<list key="replacehistory">
+			<item value="p"/>
+			<item value="right"/>
+			<item value="400px"/>
+			<item value="800px"/>
+			<item value="doc"/>
+			<item value="self"/>
+			<item value="style=&quot;width:700px&quot;"/>
+			<item value=""/>
+		</list>
+	</section>
+</section>
