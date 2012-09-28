@@ -1,0 +1,40 @@
+原文中的SQL语句可以修改为自己的使用。下面是浩江在文中布置的作业代码：
+drupal安装目录：D:/xampp/htdocs/drupal/
+在下面新建个文件夹anywhere，里面新建个文件dbquery.php内容如下：
+
+<?php
+chdir('D:/xampp/htdocs/drupal/');
+require_once './includes/bootstrap.inc';
+drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+//上面三行是通用代码
+$sql = "SELECT uid,name FROM  `users`"; //查询users表，结果中只列出uid和name，如果是*会列出所有字段
+$result=db_query_range($sql,1,10);//查询符合上述语句的结果，从第1个开始，列出10个结果
+while($rows = db_fetch_object($result)){
+print_r($rows);
+}
+$result=NULL;
+//到这里结束，不用php的结束符了
+
+
+db_query_range(); 执行SQL语句，并取结果的一部分。
+db_fetch_object(); 从db_query_range()返回的结果中获取结果对象。
+
+
+预览：http://localhost/drupal/anywhere/dbquery.php
+
+预览效果如下：
+stdClass Object
+(
+[uid] => 1
+[name] => admin
+)
+stdClass Object
+(
+[uid] => 9
+[name] => cepiswiwreth
+)
+stdClass Object
+(
+[uid] => 2
+[name] => neclirehonup
+)

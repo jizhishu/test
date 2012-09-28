@@ -1,0 +1,1475 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-hans" xml:lang="zh-hans">
+  <head>
+    <title>Drupal 中文教程</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+    <base href="http://lugir.com" />
+    <link type="text/css" rel="stylesheet" href="misc/print.css" />
+      </head>
+  <body>
+            <div id="node-378" class="section-1">
+  <h1 class="book-heading">Drupal 中文教程</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　Drupal 是全球最流行的CMS，被广泛应用于网站建设和系统开发。目前国内也有越来越多的爱好者看上了 Drupal，然而因为 Drupal 学习曲线陡峭，且没有很好的Drupal 中文教程，使得很多 Drupal 爱好者苦恼不已。</p>
+<p>　　本站本着学习交流的目的，编写此 Drupal 中文教程，抛砖引玉，以吸取更多更好的 Drupal 资源，供大家参考、交流、学习。</p>
+<p>　　内容不断更新中……</p></div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  <div id="node-447" class="section-2">
+  <h1 class="book-heading">Drupal 中的基本概念和相关术语</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　本节将介绍 Drupal 中的一些常用词语/术语，了解这些概念对你探索 Drupal 将会有莫大的帮助。</p>
+<h2>模块（Module）</h2>
+<p>　　模块是用于扩展 Drupal 特性和功能性的一些代码文件。Drupal 发行包中包含了一系列核心模块，你可以直接启用这些模块来增加 Drupal 的功能。不过 Drupal 核心模块的功能比较简单，提供了一些基本的功能。Drupal 有非常丰富的第三方模块可供使用，你只需要从 Drupal 第三方模块下载页面下载并安装启用即可。你也可以创建自己的自定义模块，不过这需要对 Drupal 有比较深入的了解，也需要熟悉 Drupal API 和具备一定的 PHP 编程能力。</p>
+<p>Drupal 第三方模块下载页面：<a href="http://drupal.org/project/modules" target="_blank">http://drupal.org/project/modules</a></p>
+<h2>用户、权限和角色</h2>
+<p>　　每一位网站的访问者，不论是使用帐户登录的注册用户，还是匿名用户，都被视为 Drupal 的用户。每个用户都有一个用户ID（User ID - uid），非匿名用户还有用户名、电子邮箱等信息，并且注册用户还可以通过模块为其增加一些其它信息。例如，如果启用了 Drupal 核心的 Profile 模块，就能够为用户定义和添加不同的配置文件字段。</p>
+<p>　　匿名用户的 uid 是 0，安装 Drupal 时创建的超级用户的 uid 是 1。uid = 1 是 Drupal 中的一个特殊用户，他具备在 Drupal 站点中执行所有操作的权限。</p>
+<p>　　除 uid 0 和 uid 1 用户之外，Drupal 中的其它用户通常都通过分配角色（roles）来为他们赋予不同的权限。通过创建新的角色，为角色赋予不同的权限，然后再将用户分配为某种角色，从而使用户具备在网站中执行某些特定操作的能力，例如创建文章、发表评论等。用户所能执行的操作，依照分配给他所属的角色的权限而定。</p>
+<p>　　Drupal 默认有 匿名用户 和 注册用户 两个角色，管理员同样可以通过权限管理页面为这两个角色分配不同的权限。Drupal 的权限管理功能十分精细和灵活，能够为特定的角色分配不同的权限组合。</p>
+<h2>节点（Node）</h2>
+<p>　　节点是 Drupal 中的一个通用术语，表示网站中的各种内容（content）。通俗来讲，节点就是网站中的各种文章页面，以下这些在 Drupal 中都称为“节点”：</p>
+<ul><li>手册中的页面</li>
+	<li>论坛中的主题</li>
+	<li>博客文章</li>
+	<li>新闻文章</li>
+</ul><p>　　每个节点都有与之对应的内容类型（Content Type）、节点ID（nid）、标题、正文、作者、发布日期等字段。也可以通过启用核心的 Taxonomy 模块来为节点增加分类/标签字段、使用第三方的 Location 模块为节点增加地点字段，以及使用功能十分强大的 <a href="http://lugir.com/drupal/module/cck.html" target="_blank">CCK 模块</a>为内容增加各种其它字段。</p>
+<h2>评论（Comment）</h2>
+<p>　　评论是 Drupal 站点中的另一种内容，需要启用核心的 comment 模块才可以使用。评论是用户提交到某个节点下的一小段内容，例如，对博客的回复/留言都是评论，论坛主题的回帖也是评论。</p>
+<h2>术语表（Taxonomy）</h2>
+<p>　　Drupal 通过核心的 Taxonomy 模块为内容提供了一个分类系统。它允许管理用户定义词汇表（Vocabularies），并向词汇表中添加术语（Terms）。每个词汇表可以关联到一个或多个内容类型，如此一来，就可以通过不同的词汇实现对网站内容的分类。</p>
+<h2>数据库（Database）</h2>
+<p>　　Drupal 的信息存储在数据库中，不同类型的信息有各自的数据库表，例如节点的基本信息都存储在 node 表中，此外评论、用户、角色、权限、术语表及其它信息都有各自对应的数据库表。</p>
+<h2>路径（Path）</h2>
+<p>　　当你通过 URL 访问 Drupal 站点时，URL中位于站点根目录后的部分被称为路径。当你在访问一个 Drupal 路径时，Drupal 将判断将哪种信息返回给浏览器。Drupal 允许启用的模块定义各自的路径，并对这些路径的请求进行响应。当有人访问这些路径的时候，Drupal 就会通过指定的模块将页面内容返回显示给用户。</p>
+<p>　　例如，当你访问 http://lugir.com/node/447 这个URL，路径就是 node/447。对这个路径进行响应的模块是核心的 node 模块，当你访问这个路径时，node 模块将处理这个请求，并将内容返回给你。</p>
+<p>　　当 Drupal 站点没有启用“简洁链接”，路径是URL中位于 '?q=' 之后的部分。当站点启用了简洁链接后，路径则是URL中位于站点根目录后的部分。</p>
+<h2>主题（Theme）</h2>
+<p>　　Drupal 通过主题（Theme）来控制网站的显示，其它包括网站的外观、色彩、布局和效果。一个 Drupal 主题通常包含一个或多个PHP文件，它们用于控制页面不同部分的 HTML 输出。主题中通常也会包含 CSS、JS 和 图片，它们用户定义网页的布局、字体、颜色和其它风格。</p>
+<h2>区域（Region）和区块（Block）</h2>
+<p>　　Drupal 的页面可以分为不同的区域（Regions），也可以说，Drupal 的页面由不同的区域组成。Drupal 主题中包含的常见区域有页头（header）、页脚（footer）、侧边栏（sidebar）、主内容（content），不同的主题定义的区域并不相同，例如 zen 主题中还有左边栏（first sidebar）、右边栏（second sidebar）、内容上方区域（content top）和 内容正文区域（content bottom）。</p>
+<p>　　区块（Blocks）是一些用于放置到区域（region）中的内容块，因此被称为区块。</p>
+<h2>菜单（Menu）</h2>
+<p>　　Drupal 默认包含三个菜单——主菜单、次菜单和导航。在大多数主题中，只要向主菜单和次菜单中添加了菜单项，它们便会自动出现在网站的页头或页脚部分，如果没有显示，则可能需要对主题进行一些配置。导航菜单包含了管理菜单中的所有菜单项，方便用户通过导航进行一些操作。用户也可以创建自己的菜单。</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/623">Drupal 基础</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-383" class="section-2">
+  <h1 class="book-heading">Drupal 中文安装教程</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　Drupal 中文安装教程以图文结合的方式，一步步讲解如何安装Drupal，只需要按照教程，就可以简单的安装Drupal。</p>
+<p>　　目前 Drupal 有 5,6,7,8 四大版本（分别简称 D5,D6,D7,D8），以下是这几大版本的状态：</p>
+<ul><li>D5 已经过时，不推荐使用；</li>
+<li>D6 是目前用得最多、最稳定、支持模块最多的 Drupal 版本，推荐使用；</li>
+<li>D7 刚刚完成开发，稳定版释出不久，可用的第三方模块不多，建议暂不使用，但从D6转移到D7是日后的趋势；</li>
+<li>D8 尚处于开发阶段，不推荐使用</li>
+</ul></div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/543">Drupal 安装教程</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  <div id="node-391" class="section-3">
+  <h1 class="book-heading">如何安装 Drupal 6？Drupal 6 中文安装教程</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/drupal-6-installation.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Drupal 6 中文安装教程</p>
+<h2>准备工作</h2>
+<ol><li><strong>下载</strong>：到 Drupal 项目页面下载 drupal 程序包，项目地址: <a href="http://drupal.org/project/drupal">http://drupal.org/project/drupal</a></li>
+	<li><strong>解压</strong>：将下载下来 drupal 程序包进行解压缩，得到名为 drupal-<em>版本号</em> 的目录,为目录改名，如改成 drupal6</li>
+	<li><strike><strong>下载语言包文件</strong>：到 <a href="http://localize.drupal.org/translate/languages/zh-hans">http://localize.drupal.org/translate/languages/zh-hans</a> 页面下载对应版本的语言包（.po文件）</strike></li>
+	<li><strike><strong>安装语言包文件</strong>：将 .po 文件放置到 drupal6/profiles/default/translations 目录下（如没有 translations 目录请自行创建）</strike></li>
+	<li><strong>上传</strong>：将 drupal6 目录下的内容放置/上传到网站根目录</li>
+	<li><strong>创建配置文件</strong>：进入 sites/default 目录，将 default.settings.php 复制一份，命名为 settings.php</li>
+	<li><strong>创建用户文件目录</strong>：在 sites/default 目录下新建一个目录，名为 files</li>
+	<li><strong>设置权限</strong>：如果是Linux平台，请将 files 目录的权限设置为 777，settings.php 设置为web服务器用户可写，如果不清楚，也可先设置为777</li>
+</ol><h2>安装 Drupal 6</h2>
+<ol><li><strong>安装页面</strong>：执行完准备工作之后，便可通过浏览器访问drupal网站地址即可看到安装界面，如果执行了准备工作中的第3,4步，则可以对语言进行选择，选择安装中文语言包，如 drupal-6.22.zh-hans，点击按钮进行下一步；</li>
+	<li>如果没有完成准备工作中的第4,5,6步，则会出现错误提示，执行完准备工作中的第4,5,6步，错误消息就会消失</li>
+	<li><strong>数据库配置</strong>：填写数据库的配置配置信息，包括数据库名、数据库用户名 和 数据库用户密码，填好之后点击下一步，开始安装Drupal</li>
+	<li><strong>安装Drupal</strong>：这一步中系统执行Drupal的安装工作，然后进入Drupal站点配置页面</li>
+	<li><strong>修正配置文件权限</strong>：如果是Linux平台，执行完此步操作之后，请将 sites/default/settings.php 文件权限改为只读(444)</li>
+	<li><strong>站点设置</strong>：在站点设置页面，填写网站名称、网站邮箱、超级管理员帐号、超级管理员邮箱、超级管理员密码、默认时区和简洁链接，配置完成之后，点击"Save and Continue"即完成了 Drupal 的安装。</li>
+	<li>完成Drupal的安装，进入完成信息提示页面，点击最后面的 your new site 链接即可访问你的Drupal站点 :D</li>
+</ol><p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/543">Drupal 安装教程</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/547">Drupal 6</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-392" class="section-3">
+  <h1 class="book-heading">怎么导入Drupal中文语言包？怎么将Drupal界面翻译成中文</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　如果安装 Drupal 时没有导入中文语言包，则 Drupal 默认的语言界面是英文，我们可以根据需要导入 Drupal 中文语言包，然后开始使用中文版的 Drupal。</p>
+<p>1. <strong>下载中文语言包</strong></p>
+<p>　访问 http://localize.drupal.org/translate/languages/zh-hans 页面，根据 Drupal 版本类型，下载对应的语言包文件(.po)，以备稍后使用</p>
+<p> </p>
+<p>2. <strong>启用模块</strong></p>
+<p>　2-1. 通过导航 Administer &gt; Site Building &gt; Modules，或者通过在浏览器输入 http://<em>你的Drupal安装路径</em>/admin/build/modules 地址来访问模块管理页面</p>
+<p>　2-2. 找到 Locale 模块，勾选前面的复选框，然后到页面最下方点击保存(Save Configuration)按钮</p>
+<p> </p>
+<p>3. <strong>导入中文语言包</strong></p>
+<p>　3-1. 通过导航 Administer &gt; Site Building &gt; Translate interface，或者访问 admin/build/translate 页面，点击"Import"面板进入导入语言包界面</p>
+<p>　3-2. 向 Language File 文件框中加入第一步下载下来的 .po 语言包文件，将 Import into 选项设置为“Chinese, Simplified（简体中文）”，点击页面最下方的"Import"按钮</p>
+<p> </p>
+<p>4. <strong>将中文设置为默认的界面语言</strong></p>
+<p>　完成 3-2 步的操作即会返回到翻译界面的概览页面，可点击此页面的 language page 链接，或者通过导航 Administrator &gt; Site Configuraton &gt; Languages 访问"语言设置"页面</p>
+<p>　在语言设置页面，选中“简体中文”语言项后面的 Default 单选项，点击下面的保存(Save Configuration)按钮</p>
+<p>　哇啦……之后我们就不用中英结合着来看教程了 :D</p>
+<p> </p>
+<p> </p></div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/554">Drupal 语言包</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/555">Drupal 中文</a></li><li class="taxonomy-term-reference-4"><a href="/taxonomy/term/556">Drupal 汉化</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-399" class="section-3">
+  <h1 class="book-heading">Drupal 7 中文安装教程</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><h3>准备工作</h3>
+<ol><li><strong>下载 Drupal 7</strong>：到 Drupal 项目页面下载 drupal 程序包，项目地址: http://drupal.org/project/drupal</li>
+<li><strong>解压 Drupal 7</strong>：将下载下来 drupal 程序包进行解压缩，得到名为 drupal-<em>版本号</em> 的目录，为目录改名，如改成 drupal7</li>
+<li><strong>下载语言包文件</strong>：到 http://localize.drupal.org/translate/languages/zh-hans 页面下载对应版本的语言包（.po文件）</li>
+<li><strong>安装语言包文件</strong>：将 .po 文件放置到 drupal7/profiles/standard/translations 目录下</li>
+<li><strong>上传</strong>：将 drupal7 目录下的所有内容放置/上传到网站根目录</li>
+<li><strong>创建配置文件</strong>：进入 sites/default 目录，将 default.settings.php 复制一份，命名为 settings.php</li>
+<li><strong>创建用户文件目录</strong>：在 sites/default 目录下新建一个目录，名为 files</li>
+<li><strong>设置权限</strong>：如果是Linux平台，请将 files 目录的权限设置为 777，settings.php 设置为web服务器用户可写，如果不清楚，也可先设置为777</li>
+</ol><h2>Drupal 7 中文安装教程</h2>
+<ol><li><strong>安装页面</strong>：执行完准备工作之后，便可通过浏览器访问drupal网站地址即可看到安装界面，默认选中“Standard”，点击 Save and continue 执行下一步</li>
+<li><strong>选择语言</strong>：如果执行了准备工作中的第3,4步，则此页面会出现语言选择项，选中 Chinese,Simplified（简体中文），点击 Save and continue 执行下一步</li>
+<li>Drupal 7 需要 php dom 扩展，如果没有安装 dom 扩展则会出现错误，为PHP安装dom扩展后，重启web服务器即可；如果没有完成准备工作中的第4,5,6步，也会出现错误提示，执行完准备工作中的第4,5,6步，错误消息就会消失</li>
+<li><strong>数据库配置</strong>：填写数据库的配置配置信息，包括数据库名、数据库用户名 和 数据库用户密码，填好之后点击下一步，开始安装Drupal</li>
+<li><strong>安装Drupal</strong>：这一步中系统执行Drupal的安装工作，然后进入Drupal站点配置页面</li>
+<li><strong>导入翻译</strong>：这一步也由系统自动执行</li>
+<li><strong>修正配置文件权限</strong>：如果是Linux平台，执行完此步操作之后，请将 sites/default/settings.php 文件权限改为只读(444)</li>
+<li><strong>站点设置</strong>：在站点设置页面，填写网站名称、网站邮箱、超级管理员帐号、超级管理员邮箱、超级管理员密码、默认时区和简洁链接，配置完成之后，点击"Save and Continue"即完成了 Drupal 的安装。</li>
+<li>完成Drupal的安装，进入完成信息提示页面，点击"访问你的新网站"链接即可访问你的Drupal站点 :D</li>
+</ol></div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/549">Drupal 7</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/568">安装教程</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-395" class="section-3">
+  <h1 class="book-heading">使用 Drupal 安装配置文件(Installation Profiles)</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/using-an-installation-profile.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　安装配置文件(Installation Profiles)为 Drupal 网站实现一站式安装。通过使用安装配置文件，可以轻松地安装具备某些特性和功能的网站（如企业网站、电影网站、SNS社区），而无需手动一个个地启用和配置模块。</p>
+<p>　　安装配置文件中可能包含 Drupal 核心文件、第三方模块、第三方主题，以及一些预定义的配置。</p>
+<p>　　要使用 Drupal 安装配置文件(Installation Profiles)，可以先到<a href="http://drupal.org/project/Installation+profiles" style="text-decoration: none; color: rgb(37, 151, 221); ">Drupal 安装配置文件</a>页面进行下载。下载下来的安装配置文件分为两种，一种是与Drupal 核心一起打包的安装配置文件，一种是单独的Profile(配置文件)包。如果下载下来的安装配置文件名为 project-<em>版本号</em>-core.tar.gz，则是包含了 Drupal 核心的安装配置文件。</p>
+<meta content="text/html; charset=utf-8" http-equiv="content-type" /><p>　　使用整合了 Drupal 核心的安装配置文件，直接解压缩，按照普通的 <a href="http://lugir.com/drupal/documentation/install-drupal-6.html">Drupal 安装教程</a> 执行安装即可，只是注意在第一个安装界面选择需要使用的安装配置文件</p>
+<p>　　如果下载的是单独的Profile包，则按以下步骤进行安装</p>
+<meta content="text/html; charset=utf-8" http-equiv="content-type" /><ol><li>可以到 <a href="http://drupal.org/project/Installation+profiles">Drupal 安装配置文件</a> 页面下载需要的安装配置文件，下载得到 project-<em>版本号</em>.tar.gz, 如 foo-6.x-2.x.tar.gz</li>
+	<li>解压 .tar.gz 或 .zip 文件，得到以安装配置文件项目命令的目录，如 foo</li>
+	<li>将解压得到的 profile（安装配置文件）目录（如 foo）移动到 Drupal 安装目录下的 profiles 目录下，得到 profiles/foo</li>
+	<li>查看配置文件目录下的安装文档，通常是 README 或 INSTALL 文档</li>
+	<li>按照安装文档中的要求，下载需要的第三方模块和主题，通常下载到 sites/all/modules 和 sites/all/themes 下</li>
+	<li>访问 install.php 文件，在安装界面选择要使用的配置文件，开始安装 Drupal </li>
+</ol><p> </p>
+<p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/560">Drupal 安装</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/561">Drupal 配置文件</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/562">Installation Profile</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+</div>
+<div id="node-388" class="section-2">
+  <h1 class="book-heading">Drupal 如何安装主题</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><ol><li><strong>下载主题</strong>。从 http://drupal.org/project/themes 可以查找和下载主题，注意所下载的主题版本与Drupal版本相兼容。带 dev 标识的主题说明它还处于开发阶段，功能和稳定性还不够成熟，请谨慎使用。推荐下载标记为 recommended（推荐）版本的主题；</li>
+	<li><strong>解压模块压缩包</strong>。从 drupal.org 下载来的主题是压缩包形式，以 .tar.gz 或 .zip 结尾。使用 WinRAR, 7-Zip 或者任何适合的解压缩工具或命令进行解压缩。解压缩之后可得到一个以主题名称命令的目录(文件夹)；</li>
+	<li><strong>上传主题目录(文件夹)</strong>。使用 FTP 或者其它工具将主题目录上传到你的 Drupal 中。请注意，安装目录下有一个 themes 目录，但此目录用于放置 Drupal 自带的核心主题，请不要将第三方主题放置于其中。所有第三方模块建议放置于 sites/all/themes 下，如没有此 themes 目录，请自行创建；</li>
+	<li><strong>阅读说明文件</strong>。如果模块中包含了说明文件，通常如 INSTALL.txt 或 README.txt，了解安装主题的一些特殊配置需求。有时这些文件没有 .txt 后缀，双击无法直接打开，可使用任意文字编辑器来打开；</li>
+	<li><strong>启用主题</strong>。<br /><strong>Drupal 6</strong>: 访问 管理 &gt; 站点构建 &gt; 主题（admin/build/themes），勾选要启用的主题中的勾选框；<br /><img alt="Drupal 6 启用主题" src="/sites/default/files/u3-lugir/drupal-6-enable-theme.png" style="width: 515px; height: 135px; " /><br />
+		PS：如果想要把主题设置为对所有用户启用的默认主题，请选中主题中的默认单选框；<br /><strong>Drupal 7</strong>: 访问 外观（admin/appearance），点击主题下方的“启用”或“启用并设置”<br /><img alt="Drupal 7 启用主题" src="/sites/default/files/u3-lugir/drupal-7-enable-theme.png" style="width: 644px; height: 284px; " /></li>
+	<li>点击“<strong>保存</strong>”按钮保存主题配置</li>
+</ol><p>　　如果使用模块时遇到问题，可以到模块项目页面(http://drupal.org/project/主题名称)搜索issues，或者到论坛或QQ群去寻求他人帮助。</p>
+<p>　　说明：建议将使用的主题保持为最新的稳定版本，以保证大多数已经的问题都已被修复。可以通过在 drupal.org 上创建帐户，跟踪你所使用的模块，以获得主题的最新动态。</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/549">Drupal 7</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/550">Drupal 主题</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  <div id="node-445" class="section-3">
+  <h1 class="book-heading">Drupal 7 在线添加/安装主题新特性介绍</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/node/445#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　D7 安装主题较D6有一些改进，除了通过下载主题，手动放置/上传到主题目录下进行安装之外，D7还提供了2种在线安装新主题的新功能，一种是通过URL进行在线安装，一种是通过Drupal上传主题包进行安装。</p>
+<p><em><strong>　　需要注意的是，通过 URL 安装主题需要事先为 Drupal 配置好 FTP 信息，因为我没有配置 FTP 环境，这里只是简单介绍一下在线安装主题的流程。</strong></em></p>
+<p>　　访问 外观 &gt; 安装新主题（admin/appearance/install）页面，就可以看到 D7 在线安装主题的界面了</p>
+<p><img alt="Drupal 7 在线安装主题" src="/sites/default/files/u3-lugir/install-theme-d7.png" style="width: 467px; height: 257px; " /></p>
+<p>　　将主题包的 URL 粘贴到“从URL安装”的地址框中，或者选择本地文件上传主题包，点击“安装”来执行主题的安装操作。</p>
+<p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/361">主题</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/549">Drupal 7</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/622">安装主题</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-410" class="section-3">
+  <h1 class="book-heading">使用 zen 主题制作 Drupal 主题的推荐步骤</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　zen 主题是 Drupal 主题开发中用得最多的基主题(Base Theme)之一，通过使用 zen，创建 zen 的子主题做为网站的主题，可以节省大量主题开发工作，让主题开发人员将主要注意力集中的主题的结构和布局上，而较少关注一些函数的实现。</p>
+<p>　　本文介绍如何为 zen 主题创建子主题，此教程主要参考 zen 主题的 README 说明文档:</p>
+<ol><li><strong>下载 zen 主题</strong>：http://drupal.org/project/zen</li>
+	<li><strong>解压</strong>：将 zen 主题解压到 sites/all/themes 目录下，得到 sites/all/themes/zen</li>
+	<li><strong>复制</strong>：将 zen 目录下的 STARTERKIT 复制出来，得到 sites/all/themes/STARTERKIT，将 STARTERKIT 重命名为你的主题名称，例如 lugir，则得到 sites/all/themes/mytheme <br />
+		注意：目录名称只能是小写字母、数字和小划线。<br />
+		将 STARTERKIT 从 zen 目录中复制出来，是为了方便升级 zen 主题</li>
+	<li><strong>重命名info文件</strong>：进入你的主题目录(mytheme)，将 STARTERKIT.info.txt 文档去掉 .txt 后缀，并重命名为主题名称，如 mytheme.info<br />
+		例如：将 mytheme/STARTERKIT.info.txt 改名为 mytheme/mytheme.info</li>
+	<li><strong>编辑info文件</strong>：编辑 mytheme.info 文档，修改 name 和 description 的内容，如 name = "mytheme", description = "A Zen sub-theme"</li>
+	<li><strong>替换函数名称</strong>：编辑子主题中的 template.php 和 theme-settings.php 文档，将所有 STARTERKIT 替换成你的主题名称，如全部替换成 mytheme</li>
+	<li><strong>启用主题</strong>：登录到 Drupal 站点，访问 管理 &gt; 站点构建 &gt; 主题（admin/build/theme），找到并启用你的新主题即可，如果有需要也可以设为默认。</li>
+</ol><p>其它操作</p>
+<ul><li><strong>修改模块文件</strong>：zen 主题的 templates 目录下放置了一些 .tpl.php 模块文件，如果要对这些模块进行修改，应先将其复制到子主题下的 templates 目录下，然后再进行修改</li>
+</ul><p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/550">Drupal 主题</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/579">zen</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+</div>
+<div id="node-387" class="section-2">
+  <h1 class="book-heading">Drupal 如何安装模块（Drupal 6）</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><h2>简介</h2>
+<p>　　安装第三方Drupal模块十分简单，只需从 http://drupal.org/project/modules 下载第三方模块的压缩包，然后将压缩包解压放到 sites/all/modules 目录下，阅读模块说明文件(通常是模块目录下的 README 文档)，如果说明文档里面没有要求做其它操作，直接在模块管理页面（管理 &gt; 站点构建 &gt; 模块）选择并启用模块即可。</p>
+<h2>详细说明</h2>
+<ol><li><strong>下载模块</strong>。可以到 http://drupal.org/project/modules 查找模块，下载的 Drupal 模块必需与所使用的 Drupal 版本相兼容。dev 版本的模块说明当前正处于开发阶段，模块可能不够稳定，应该谨慎选用。推荐下载 recommended（推荐）状态的模块；</li>
+	<li><strong>解压模块压缩包</strong>。从 drupal.org 下载来的模块是压缩包形式，以 .tar.gz 或 .zip 结尾。使用 WinRAR, 7-Zip 或者任何适合的解压缩工具或命令进行解压缩。解压缩之后可得到一个以模块名称命令的目录(文件夹)；</li>
+	<li><strong>上传模块目录(文件夹)</strong>。使用 FTP 或者其它工具将模块目录上传到你的 Drupal 中。请注意，安装目录下有一个 modules 目录，但此目录用于放置 Drupal 核心模块，请不要将第三方模块放置于其中。所有第三方模块建议放置于 sites/all/modules 下，如没有此 modules 目录，请自行创建；</li>
+	<li><strong>阅读说明文件</strong>。如果模块中包含了说明文件，通常如 INSTALL.txt 或 README.txt，了解安装模块的一些特殊配置需求。有时这些文件没有 .txt 后缀，双击无法直接打开，可使用任意文字编辑器来打开；</li>
+	<li><strong>启用模块</strong>。打开 管理&gt;站点构建&gt;模块，找到新上传的模块，勾选前面的启用模块选框，然后点击“保存”即可。注意：如果是更新一个已经安装的模块，模块已经启用，但需要以超级管理员身份访问 http://你的域名.com/update.php 页面，根据提示对模块进行数据库更新。</li>
+	<li><strong>配置权限</strong>。一些模块需要对用户设置正确的权限才可便于使用。通常在 管理&gt;用户管理&gt;权限 页面进行用户权限管理，在此页面查看模块是否需要配置权限，如果有，请将权限分配给你希望的角色；</li>
+	<li><strong>调整配置</strong>。大部分模块会有配置页面，这些配置页面一般位于 管理&gt;站点构建 或 管理&gt;站点配置</li>
+</ol><p>　　如果使用模块时遇到问题，可以到模块项目页面(http://drupal.org/project/模块名)搜索issues，或者到论坛或QQ群去寻求他人帮助。</p>
+<p>　　说明：建议将使用的模块保持为最新的稳定版本，以保证大多数已经的问题都已被修复。可以通过在 drupal.org 上创建帐户，跟踪你所使用的模块，以获得模块的最新动态。</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/546">安装模块</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/547">Drupal 6</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-312" class="section-2">
+  <h1 class="book-heading">Drupal 升级指南：从 Drupal 6 升级到 Drupal 7</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　本手册参考 Drupal 7 发行包里面的 UPGRADE.txt 文档及 Drupal 在线文档，详解 Drupal 6 到 Drupal 7 的升级过程。</p>
+<p> </p></div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/130">升级</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/413">网站迁移</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  <div id="node-734" class="section-3">
+  <h1 class="book-heading">Drupal 6 到 Drupal 7 升级规划</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　在进行网站升级之前，还有一大堆事情需要先做。在升级前了解已有网站如何建设是非常重要的。在真正升级站点之前在开发环境先进行测试是最好不过的了。</p>
+<h2>现有模块和主题</h2>
+<p>找出网站上安装的模块（包括那些已安装，但之后被禁用的模块）</p>
+<p>找出网站上安装和使用的主题</p>
+<p>将这些模块和主题列成一张清单，这样有利于升级时进行核对，这份清单还为升级过程中禁用和重新启用模块带来方便。</p>
+<p> </p>
+<h2>禁用和卸载未使用的模块</h2>
+<p>当对网站中的模块进行完调查之后，能够知道哪些模块实际上并未使用。出于安全性和性能的考虑，我们总是推荐将未使用的模块卸载并移除。</p>
+<p> </p>
+<h2>第三方模块升级</h2>
+<p>在升级前调查关于模块的情况：</p>
+<ol><li>这个模块是否有 D7 版本？通过访问模块项目页面，就可以轻松的获知这一信息。</li>
+	<li>这个模块是否被整合到 D7 核心？不少实用的模块都被整合到 D7 的核心，详情可参考《<a href="http://lugir.com/drupal/documentation/drupal-6-modules-in-drupal-7-core.html" target="_blank">整合到 Drupal 7 核心的 Drupal 6 模块</a>》</li>
+	<li>这个模块是否可以升级到 D7 版本？（有些模块有多具版本，如 6.x-1.x 和 6.x-2.x，但其中只有一个版本能够升级到 Drupal 7）</li>
+	<li>这个模块的 D7 版本是否增加了一些新的依赖性？有时新版本的模块需要依赖其它的一些模块（例如 D7 版本的 Views 模块依赖于 ctools 模块，而 D6 版本并无此依赖性），因此确保升级时加上依赖的模块。</li>
+</ol><p> </p>
+<h2>主题升级</h2>
+<p>如果网站使用了第三方的主题，就需要研究主题是否能升级到 Drupal 7</p>
+<ol><li>这个主题是否有 D7 版本？</li>
+	<li>网站的主题是否基于一些基主题（如 Zen 或 960）？这样的主题应该如何进行升级？</li>
+</ol><p>如果网站的主题是自定义开发，或者修改自第三方的主题，则需要考虑到主题升级将会花上一些时间，可参考《<a href="http://drupal.org/update/theme/6/7" target="_blank">Converting 6.x themes to 7.x</a>》</p>
+<p> </p>
+<h2>内核及第三方模块的修改</h2>
+<p>使用 Drupal 的原则之一就是“<strong>绝对不要修改内核</strong>”，然而有时确实更改了内核的一些文件和模块。对于这些修改，进行操作的人应该承担起进行标注和升级的责任。对于第三方模块的修改也是如此。</p>
+<p> </p>
+<h2>创建升级规划文档</h2>
+<p>基于之前对于网站中模块和主题的调查创建网站升级规划文档，文档应包含《<a href="http://lugir.com/drupal/documentation/upgrade-drupal-6-to-7.html">从 Drupal 6 升级到 Drupal 7 步骤详解</a>》中的所有步骤。因为升级过程中有许多事情很可能会被遗漏，创建一份核对清单，便于自己查看升级完成的项目和跟踪进度，而且能够节省很多时间。将升级过程中遇到的问题做一些记录，这对以后再进行升级操作是非常宝贵的资源。</p>
+<p>以下内容可以考虑加入到文档中：</p>
+<ul><li>不能进行升级的模块的其它选择</li>
+	<li>哪些模块在升级数据库，需要先完成自身的升级</li>
+	<li>对升级有特殊要求的模块的相关说明</li>
+	<li>模块升级的顺序</li>
+	<li>升级是否成功的测试计划</li>
+</ul><p> </p>
+<p>参考文档：<a href="http://drupal.org/node/550130" target="_blank">Make an Upgrade Plan</a></p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/130">升级</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/549">Drupal 7</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-314" class="section-3">
+  <h1 class="book-heading">从 Drupal 6 升级到 Drupal 7 步骤详解</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/upgrade-drupal-6-to-7.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　对 Drupal 版本进行升级之前，建议先检查第三方代码与自定义代码与新版本的兼容性，在完成这些检查并了解新旧版本的可升级部分之后，便可通过以下步骤开始升级了。</p>
+<ol><li>检查第三方及自制模块、主题与 Drupal 7 的兼容性[1]，（如果你是开发人员，还应该了解如何对你的代码进行升级[2][3]）</li>
+<li>确保你目前使用的是最新版本的 Drupal 6.x（当前为 Drupal 6.20），如果当前不是使用最新版本的 Drupal 6，请先升级到 Drupal 6.20。可以参考 Drupal 6.20 发行包里面的 UPGRADE.txt 文档，或者是我以前译写的针对 6.x 版本间升级的《<a href="http://lugir.com/node/244">Drupal 的升级步骤</a>》</li>
+<li>使用 UID 1 用户登录到站点</li>
+<li>打开 Administer &gt; Site configuration &gt; Site mainenance，将“站点维护”更改为“离线”并保存配置</li>
+<li>打开 Administer &gt; Site building &gt; Themes，启用"Garland"并将其设置为默认主题</li>
+<li>打开 Administer &gt; Site building &gt; Modules，禁用所有第三方及自制模块。因为模块之前存在依赖关系，所以可能需要重复多次才能禁用所有的第三方和自制模块。如果你确定其中部分模块以后不会在 Drupal 7 中被使用，那么可以在禁用之后将其“卸载”；</li>
+<li>通过命令行或FTP删除以下文件：<br />
+		sites/default/default.settings.php</li>
+<li>除了 sites 文件夹和其它由你添加的文件，删除 Drupal 安装目录内其它的所有文件和文件夹。如果你对 .htaccess 或 robots.txt 进行的更改，则应该在稍后重新更改新版本的 .htaccess 和 robots.txt 文档，以保证满足你的需求；</li>
+<li>如果在第6步中卸载了某些模块，你应该将此模块文件从 sites/all/modules 或 sites/*/modules 中移除。但不要删除其它模块，即使它们与 Drupal 7 还不兼容，我们将稍后再处理</li>
+<li>从 http://drupal.org 下载最新版的 Drupal 7.x 发行包，将它解包到你的网站根目录</li>
+<li>重新修改在 Drupal 6 中修改过的核心文件，如 .htaccess 和 robots.txt</li>
+<li>将 settings.php 的权限改为可写，从而保证它能够被升级到 Drupal 7 格式。settings.php 文件通常位于 sites/default/settings.php</li>
+<li>通过浏览器访问 http://www.example.com/update.php 执行更新脚本 update.php（注意将其中的 example.com 改为你的站点域名）。如果无法访问 update.php，请执行以下操作：<br />
+		- 使用文本编辑器打开 settings.php<br />
+		- 找到以下内容：<br />
+		  $update_free_access = FALSE; （将 FALSE 改为 TRUE）<br />
+		注意：千万记得更新完成之后将这个选择改回 FALSE;</li>
+<li>执行完以上更新脚本便完成了 Drupal 核心的更新，备份一下更新后的数据库；</li>
+<li>参考《升级第三方模块及主题》[4]重置和更新非核心的 Drupal 模块及主题；</li>
+<li>访问 Administration &gt; Reports &gt; Status，确保所有内容都工作正常；</li>
+<li>确保 settings.php 文档中的 $update_free_access = FALSE;</li>
+<li>访问 Administration &gt; Configuration &gt; Development &gt; Maintenance mode，取消“将站点设为维护模式（Put site into maintenance mode）”，并保存配置；</li>
+</ol><p>　　执行完以上步骤，便完成了 Drupal 6 到 Drupal 7 的升级操作，有关 Drupal 7 的管理功能介绍，可参考 http://drupal.org/getting-started/7/admin</p>
+<p>　　到目前为止，以上步骤只完成了 Drupal 核心文件从 6.x 到 7.x 的升级，对于个别模块的升级，请单独参考模块对应的 7.x 版本中的 UPGRADE.txt 文件，并根据模块作者的说明进行升级。</p>
+<p><strong>参考资料：</strong></p>
+<ul><li>[1] 已经拥有 Drupal 7 版本的模块列表 - http://drupal.org/node/895314</li>
+<li>[2] 开发人员-升级模块 - http://drupal.org/update/modules</li>
+<li>[3] 开发人员-升级主题 - http://drupal.org/update/theme</li>
+<li>[4] 升级第三方模块及主题 - http://drupal.org/node/948216</li>
+</ul></div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/130">升级</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/415">更新</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-741" class="section-3">
+  <h1 class="book-heading">Drupal 6 升级到 Drupal 7 注意事项及技巧</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　本文档记录 Drupal 6 升级到 Drupal 7 的一些注意事项和处理技巧，从而避免在升级过程中遇到一些常见问题。</p>
+<p><strong>注意事项：</strong></p>
+<ul><li>禁用所有主题，并将 Garland 设为默认主题</li>
+	<li>禁用所有第三方模块和自定义模块</li>
+</ul><p>如果没有执行以上操作，常常会出现找到不指定函数而导致网站无法打开的情况，因此在执行升级前，请确保禁用了所有的主题和模块。</p>
+<p>如果升级之后网站不能打开，查看 Web 服务器日志，一般能够定位到出问题的原因。</p>
+<p><strong>技巧：</strong>在升级之后发现有模块和主题没有禁用，可以通过修改 Drupal 数据库中 system 表中 status 列的值来设置主题或模块的状态（并不推荐这个办法，但这样做确实能解决一些问题。大家最好还是在进行升级前确认禁用了所有第三方和自定义的模块和主题）</p>
+<p> </p>
+<p>如果网站数据较多，升级过程会变得十分漫长，可能会长达几个小时，因此在进行数据库更新之前，可以：</p>
+<ul><li>清空数据库中所有 cache 开头的数据库表</li>
+	<li>清空数据库中所有 search 开头的数据库表</li>
+</ul><p><strong>说明：</strong>cache 开头的数据库表都是缓存数据，search 开头的数据库表保存是的搜索相关的索引数据，尤其是 search_index 表中的数据量巨大（几百万、千万、上亿）。这些表中的数据都是可以自动再生成的内容，因此清空这些表对于减少数据库体积十分有效果。</p>
+<p><strong>注意：</strong>有关清空所有 search 开头数据库表的作法并不知道有没有什么副作用，有顾虑的朋友请进行一些研究。（cache 开头的表可以安全清空）。</p>
+<p> </p>
+<p><strong>技巧：</strong>对于中大型网站，建议使用 drush 来执行数据库更新操作（drush updatedb），因为对于数据库的升级可能长达几个小时，通过访问 update.php 来执行升级操作可能出现PHP脚本执行超时和AJAX的错误。</p>
+<p> </p>
+<p>如果您在升级过程中遇到其它一些常见问题，欢迎分享您的经验或者提问 :)</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/130">升级</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/549">Drupal 7</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/642">技巧</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-313" class="section-3">
+  <h1 class="book-heading">备份 Drupal 数据库与文件</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　执行 Drupal 升级进行之前，请务必先备份好所有的文件和数据库。因为，如果升级过程中出现任何问题，除了使用备份，没有其它更好的办法让你的站点恢复原状。并且，如果在升级过过程中遇到任何错误，都不应该再执行任何更进一步的操作。</p>
+<p><strong>备份数据库：</strong></p>
+<p>　　备份 Drupal 数据库，可根据用户的实际情况使用命令行或者 PhpMyAdmin 进行备份。因为 PHP 脚本有最大执行时间限制，因此在使用PhpMyAdmin备份较大的数据库文件时可能会因超时而导致备份失败。MySQLDumper 和 Bigdump 是两个可选的数据库备份工具。</p>
+<p><strong>备份文件</strong></p>
+<p>　　升级 Drupal 前需要备份的文件包核心文件与非核心文件，核心文件即为 Drupal 发行包中包含的文件，非核心文件通常是指第三方模块、第三方主题或其它用户生成的文件，默认情况下，这些非核心文件都位于Drupal安装目录的 sites 目录下。</p>
+<p>　　所以升级之前，应该<strong>备份 Drupal 数据库与 Drupal 安装目录下的所有文件</strong>，以确保升级出错后可以使用这些备份来还原站点。</p>
+<p> </p>
+<p>参考文档：</p>
+<ul><li>Make Backups - http://drupal.org/upgrade/backing-up-the-db</li>
+<li>Backing up a site - http://drupal.org/node/22281</li>
+</ul></div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/130">升级</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/414">备份</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-735" class="section-3">
+  <h1 class="book-heading">整合到 Drupal 7 核心的 Drupal 6 模块</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　本文档提供了一份模块清单，这些模块有 Drupal 6 版本，在升级到 Drupal 7 之后，这些模块的功能已经部分或已完全被整合到 D7 的核心了。</p>
+<p>　　以个列表还在不断更新，因此并非最终版本，最新版本的原文可以查看《<a href="http://drupal.org/node/895314" target="_blank">Drupal 6 contributed modules that are in Drupal 7 core</a>》</p>
+<h2>可卸载的模块</h2>
+<p>以下这些模块的功能已经包含在 Drupal 7 的核心中，它们的升级不涉及数据迁移。当网站从 D6 升级到 D7 时，可以将这些模块从模块目录下移除。升级完成后，可能需要对这些模块进行重新配置以便恢复 D6 时的功能。（对于包含复杂配置的模块，我们也希望模块维护人员提供自动化升级能力）</p>
+<ul><li><a href="http://drupal.org/project/blocks404" rel="nofollow">404 Blocks</a></li>
+	<li><a href="http://drupal.org/project/abssrc" rel="nofollow">Absolute src</a></li>
+	<li><a href="http://drupal.org/project/admin_hover" rel="nofollow">Admin:hover</a></li>
+	<li><a href="http://drupal.org/project/adminrole" rel="nofollow">Admin Role</a></li>
+	<li><a href="http://drupal.org/project/tar" rel="nofollow">Archive::Tar</a></li>
+	<li><a href="http://drupal.org/project/ahah_helper" rel="nofollow">AHAH helper</a></li>
+	<li><a href="http://drupal.org/project/autoload" rel="nofollow">Autoload</a></li>
+	<li><a href="http://drupal.org/project/auto_menutitle" rel="nofollow">Auto Menu Title</a></li>
+	<li><a href="http://drupal.org/project/automaticmenu" rel="nofollow">AutomaticMenu</a></li>
+	<li><a href="http://drupal.org/project/automenu" rel="nofollow">Auto Menu</a></li>
+	<li><a href="http://drupal.org/project/block_edit" rel="nofollow">Block edit</a></li>
+	<li><a href="http://drupal.org/project/block_node_visibility" rel="nofollow">Block Node Visibility</a></li>
+	<li><a href="http://drupal.org/project/canonical_url" rel="nofollow">Canonical URL</a></li>
+	<li><a href="http://drupal.org/project/checkbox_validate" rel="nofollow">Checkbox Validate</a></li>
+	<li><a href="http://drupal.org/project/comment_display" rel="nofollow">Comment Display</a></li>
+	<li><a href="http://drupal.org/project/dbtng" rel="nofollow">DBTNG</a></li>
+	<li><a href="http://drupal.org/project/documentation" rel="nofollow">Documentation</a></li>
+	<li><a href="http://drupal.org/project/drupal_queue" rel="nofollow">Drupal Queue</a></li>
+	<li><a href="http://drupal.org/project/edit_term" rel="nofollow">Edit term</a></li>
+	<li><a href="http://drupal.org/project/elements" rel="nofollow">Elements</a></li>
+	<li><a href="http://drupal.org/project/element_themehook" rel="nofollow">Element theme hook</a></li>
+	<li><a href="http://drupal.org/project/hook_file" rel="nofollow">File API</a></li>
+	<li><a href="http://drupal.org/project/filter_default" rel="nofollow">Filter Default</a></li>
+	<li><a href="http://drupal.org/project/imageapi" rel="nofollow">Image API</a></li>
+	<li><a href="http://drupal.org/project/imagecache" rel="nofollow">Image Cache</a></li>
+	<li><a href="http://drupal.org/project/imagefield" rel="nofollow">Image Field</a></li>
+	<li><a href="http://drupal.org/project/input_format_permissions" rel="nofollow">Input Format Permissions</a></li>
+	<li><a href="http://drupal.org/project/jq" rel="nofollow">jQ</a></li>
+	<li><a href="http://drupal.org/project/jquery_cookie" rel="nofollow">jQuery Cookie</a></li>
+	<li><a href="http://drupal.org/project/jquery_form_update" rel="nofollow">jQuery Form Update</a></li>
+	<li><a href="http://drupal.org/project/jqp" rel="nofollow">jQuery Plugin Handler (JQP)</a></li>
+	<li><a href="http://drupal.org/project/plugins" rel="nofollow">jQuery plugin manager</a></li>
+	<li><a href="http://drupal.org/project/jquery_ui" rel="nofollow">jQuery UI</a></li>
+	<li><a href="http://drupal.org/project/jsalter" rel="nofollow">JS Alter</a></li>
+	<li><a href="http://drupal.org/project/login_security" rel="nofollow">Login Security</a></li>
+	<li><a href="http://drupal.org/project/menuless_nodetype" rel="nofollow">Menuless Node Type</a></li>
+	<li><a href="http://drupal.org/project/ctm" rel="nofollow">Menu Settings per Content Type</a></li>
+	<li><a href="http://drupal.org/project/nodepreview_by_type" rel="nofollow">Node Preview by Content type</a></li>
+	<li><a href="http://drupal.org/project/parallel" rel="nofollow">Parallel</a></li>
+	<li><a href="http://drupal.org/project/permissions_api" rel="nofollow">Permissions API</a></li>
+	<li><a href="http://drupal.org/project/plugin_manager" rel="nofollow">Plugin Manager</a></li>
+	<li><a href="http://drupal.org/project/poormanscron" rel="nofollow">Poor man's cron</a></li>
+	<li><a href="http://drupal.org/project/preview" rel="nofollow">Preview</a></li>
+	<li><a href="http://drupal.org/project/rdf" rel="nofollow">RDF</a></li>
+	<li><a href="http://drupal.org/project/phpass" rel="nofollow">Secure Password Hashes (phpass)</a></li>
+	<li><a href="http://drupal.org/project/shortlink" rel="nofollow">Shortlink</a></li>
+	<li><a href="http://drupal.org/project/simplecdn" rel="nofollow">Simple CDN</a></li>
+	<li><a href="http://drupal.org/project/simpletest" rel="nofollow">Simpletest</a></li>
+	<li><a href="http://drupal.org/project/config_perms" rel="nofollow">Site Configuration Permissions</a></li>
+	<li><a href="http://drupal.org/project/storage_api" rel="nofollow">Storage API</a></li>
+	<li><a href="http://drupal.org/project/taxidermy" rel="nofollow">Taxidermy</a></li>
+	<li><a href="http://drupal.org/project/tinymce_ahah" rel="nofollow">TinyMCE AHAH Integration</a></li>
+	<li><a href="http://drupal.org/project/tinymce_dragdrop" rel="nofollow">TinyMCE Drag and Drop Integration</a></li>
+	<li><a href="http://drupal.org/project/transaction" rel="nofollow">Transaction</a></li>
+	<li><a href="http://drupal.org/project/upload_element" rel="nofollow">Upload element</a></li>
+	<li><a href="http://drupal.org/project/upload_preview" rel="nofollow">Upload preview</a></li>
+	<li><a href="http://drupal.org/project/url_alter" rel="nofollow">URL alter</a></li>
+	<li><a href="http://drupal.org/project/user_cancellation" rel="nofollow">User Cancellation</a></li>
+	<li><a href="http://drupal.org/project/user_default_filter" rel="nofollow">User Default Filter</a></li>
+	<li><a href="http://drupal.org/project/user_delete" rel="nofollow">User Delete</a></li>
+	<li><a href="http://drupal.org/project/vertical_tabs" rel="nofollow">Vertical Tabs</a></li>
+	<li><a href="http://drupal.org/project/view_unpublished" rel="nofollow">View unpublished</a></li>
+	<li><a href="http://drupal.org/project/vocabperms" rel="nofollow">Vocabulary Permissions</a></li>
+	<li><a href="http://drupal.org/project/wysiwygcck" rel="nofollow">Wysiwyg API CCK Integration</a></li>
+</ul><p> </p>
+<h2>其它可卸载的模块（视所使用的功能而已）</h2>
+<p>以下模块的部分功能被集成到 D7 核心，但其自身仍然具备一些额外的功能，如果你没有用到这些额外的功能，则可以卸载这些模块。</p>
+<ul><li><a href="http://drupal.org/project/token" rel="nofollow">Token</a><br />
+		- 此模块依然是 D7 版本，用于提供一些token的用户界面（UI）功能，如 field 和 profile tokens.</li>
+	<li><a href="http://drupal.org/project/better_formats" rel="nofollow">Better Formats</a><br />
+		- 核心以外的 D7 版本的此模块具备以下功能：基于用户角色显示: 输入格式提示, 输入格式提示链接及 format selection for [entity]</li>
+</ul><p> </p>
+<h2>包含数据迁移的模块</h2>
+<p>以下这些模块在站点升级时需要被保留，首先需要完成《<a href="http://lugir.com/drupal/documentation/upgrade-drupal-6-to-7.html" target="_blank">从 Drupal 6 升级到 Drupal 7 步骤详解</a>》中的所有步骤，然后安装一些处理数据迁移的辅助模块。</p>
+<ul><li><a href="http://drupal.org/project/cck" rel="nofollow">Content Construction Kit (CCK)</a><br />
+		- 除了整合到 D7 核心之外，CCK 中的一些功能被做为独立的模块发布出来，其中包含了数据迁移的功能，如 Node 和 User references 的功能包含到 <a href="http://drupal.org/project/references" rel="nofollow">References</a> 模块中. <a href="http://drupal.org/project/field_permissions" rel="nofollow">Content permissions</a>, <a href="http://drupal.org/project/field_group" rel="nofollow">fieldgroups</a> 及 content copy 也被做为独立模块发布。</li>
+	<li><a href="http://drupal.org/project/content_taxonomy" rel="nofollow">Content Taxonomy</a><br />
+		- 需要迁移数据，模块的项目页面提到将提供数据迁移功能。</li>
+	<li><a href="http://drupal.org/project/date" rel="nofollow">Date Timezone</a><br />
+		- 这是 Date 的子模块之一.</li>
+	<li><a href="http://drupal.org/project/field_taxonomy" rel="nofollow">Field Taxonomy</a><br />
+		- 需要迁移数据，目前项目页面没有提到自动化数据迁移功能的消息</li>
+	<li><a href="http://drupal.org/project/filefield" rel="nofollow">Filefield/Imagefield</a><br />
+		- 这两个模块的数据迁移的初步方案是借助 CCK 的 Content Migrate 模块</li>
+	<li><a href="http://drupal.org/project/image" rel="nofollow">Image</a><br />
+		- 相关的图片节点（Image Nodes）需要使用 <a href="http://drupal.org/project/field_convert" rel="nofollow">Field Converter 模块</a>迁移到 FieldAPI. 部分功能（如：导入）依然存在于独立的模块中。</li>
+	<li><a href="http://drupal.org/project/taxonomy_delegate" rel="nofollow">Taxonomy Delegate</a><br />
+		- 需要迁移数据，目前项目页面没有提到自动化数据迁移功能的消息</li>
+	<li><a href="http://drupal.org/project/taxonomy_intro" rel="nofollow">Taxonomy Intro</a><br />
+		- 需要迁移数据，目前项目页面没有提到自动化数据迁移功能的消息</li>
+	<li><a href="http://drupal.org/project/term_fields" rel="nofollow">Term fields</a><br />
+		- 需要迁移数据，目前项目页面没有提到自动化数据迁移功能的消息</li>
+</ul><p> </p>
+<p>参考文档：<a href="http://drupal.org/node/895314" target="_blank">Drupal 6 contributed modules that are in Drupal 7 core</a></p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/354">模块</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/549">Drupal 7</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+</div>
+<div id="node-415" class="section-2">
+  <h1 class="book-heading">Drupal 使用教程</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　本文档整理了一些与使用 Drupal 相关的教程，如 Drupal 的配置、如何使用 Drupal 实现某些功能、如何使用和配置 Drupal 模块、Drupal 使用小技巧等。</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  <div id="node-448" class="section-3">
+  <h1 class="book-heading">使用术语表为内容添加分类（D6）</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　使用 Drupal 核心模块的 Taxonomy 模块，将创建的词汇表（Vocabulary）与指定的内容类型想关联，很容易就可以实现对内容进行分类。一旦对内容进行分类之后，就可以执行一些基于分类的操作，比如显示某一分类下的所有内容，基于分类显示内容列表区块等。</p>
+<h2>创建词汇表</h2>
+<p>访问 管理 &gt; 内容管理 &gt; 分类 &gt; 添加词汇表（admin/content/taxonomy/add/vocabulary）页面</p>
+<p>填写“术语表标识”</p>
+<p><img alt="填写“术语表标识”【图】" src="/sites/default/files/u3-lugir/add-category-for-content-type-1.png" style="width: 309px; height: 205px; " /></p>
+<p>选择将使用此术语表的内容类型。内容类型配置项会列出 Drupal 中所有的内容类型，我这里并没有添加其它内容类型，所以只有默认的新闻（Story）和页面（Page）</p>
+<p><img alt="选择使用此术语表的内容类型【图】" src="/sites/default/files/u3-lugir/add-category-for-content-type-2.png" style="width: 261px; height: 151px; " /></p>
+<p>设置术语表类型。</p>
+<p><img alt="设置术语表类型" src="/sites/default/files/u3-lugir/add-category-for-content-type-3.png" style="width: 565px; height: 276px; " /></p>
+<p>术语表类型配置的前两项会决定术语表在添加节点页面的显示方式。</p>
+<ul><li>如果不勾选“标签”和“多重选择”，则会以下拉菜单的形式显示术语表中的词汇，如下图的“内容分类”所示；</li>
+	<li>如果只勾选“多重选择”，则会以多选框的形式显示词汇，按住 ctrl 键进行多选；</li>
+	<li>如果勾选“标签”，则会显示普通文本框，用户可通过文本框输入词汇，词汇之间用英文逗号进行分隔；“标签”分类大致如下图的“标签”所示；</li>
+</ul><p><img alt="设置术语表类型【图】" src="/sites/default/files/u3-lugir/add-category-for-content-type-4.png" style="width: 408px; height: 196px; " /></p>
+<h2>添加词汇</h2>
+<p>创建完词汇表之后，便可以在术语表管理页面（admin/content/taxonomy）看到刚才新建的“栏目分类”词汇表</p>
+<p><img alt="词汇列列表【图】" src="/sites/default/files/u3-lugir/add-category-for-content-type-5.png" style="width: 600px; height: 62px; " /></p>
+<p>点击词汇表后面的“添加术语”链接，进入添加术语页面，简单创建几个术语，然后对术语层级进行一下调整，得到如下的词汇结构：</p>
+<p><img alt="栏目分类【图】" src="/sites/default/files/u3-lugir/add-category-for-content-type-6.png" style="width: 211px; height: 163px; " /></p>
+<h2>创建内容</h2>
+<p>　　经过前面创建词汇表（将词汇表关联到内容类型Story），然后向词汇表中添加了词汇，之后，便可以在管理 &gt; 内容管理 &gt; 创建内容 &gt; Story（node/add/story）页面，看到并使用新添加的“栏目分类”术语表了</p>
+<p><img alt="创建内容【图】" src="/sites/default/files/u3-lugir/add-category-for-content-type-7.png" style="width: 179px; height: 231px; " /></p>
+<p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/627">术语表</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/628">Taxonomy</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/629">分类</a></li><li class="taxonomy-term-reference-4"><a href="/taxonomy/term/630">Term</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-449" class="section-3">
+  <h1 class="book-heading">使用术语表为内容添加分类（D7）</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/d7-add-category-for-content-type.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　在 Drupal 7 中，使用术语表为内容添加分类，与《<a href="http://lugir.com/drupal/documentation/add-category-for-content-type.html" target="_blank">Drupal 6使用术语表为内容添加分类</a>》的步骤基本一样，稍有不同的一点在于，D7 没有在词汇表的配置页面将词汇表与内容类型进行关联，而是需要稍后将术语表做为内容类型的一个字段添加到内容编辑表单。</p>
+<p>　　本文将介绍如何在 Drupal 7 中，使用术语表为内容添加分类的做法。</p>
+<h2>创建术语表</h2>
+<p>访问 管理 &gt; 结构 &gt; 分类 &gt; 添加词汇表（admin/structure/taxonomy/add）页面，填写词汇表的基本信息并点击保存</p>
+<p><img alt="创建词汇表【图】" src="/sites/default/files/u3-lugir/d7-add-category-for-content-type-1.png" style="width: 600px; height: 260px; " /></p>
+<h2>添加词汇</h2>
+<p>创建完词汇表之后，便可以在术语表管理页面（admin/structure/taxonomy）看到刚才新建的“栏目分类”词汇表</p>
+<p><img alt="术语表列表【图】" src="/sites/default/files/u3-lugir/d7-add-category-for-content-type-2.png" style="width: 600px; height: 185px; " /></p>
+<p>点击词汇表后面的“添加术语”链接，进入添加术语页面，简单创建几个术语，然后对术语层级进行一下调整，得到如下的词汇结构：</p>
+<p><img alt="词汇层级结构【图】" src="/sites/default/files/u3-lugir/d7-add-category-for-content-type-3.png" style="width: 313px; height: 221px; " /></p>
+<h2>添加内容类型字段</h2>
+<p>　　访问 管理 &gt; 结构 &gt; 内容类型（admin/structure/types）页面，可以看到系统中存在的内容类型的列表</p>
+<p><img alt="Drupal 7 内容类型列表【图】" src="/sites/default/files/u3-lugir/d7-add-category-for-content-type-4.png" style="width: 600px; height: 142px; " /></p>
+<p>点击“基本页面”所在行的“管理字段”链接，进入“基本内容”内容类型的字段管理页面。在添加新字段处填写以下信息，然后点击“保存”：</p>
+<ul><li>标签：栏目分类</li>
+	<li>字段名称：field_category</li>
+	<li>存储的数据类型：术语来源</li>
+	<li>编辑此数据的表单元素：选择列表</li>
+</ul><p><img alt="Drupal 7 字段管理页面【图】" src="/sites/default/files/u3-lugir/d7-add-category-for-content-type-5.png" style="width: 600px; height: 284px; " /></p>
+<p>在字段设置页面，选择术语来源，然后点击“保存字段设置”</p>
+<p><img alt="Drupal 7 术语来源字段设置【图】" src="/sites/default/files/u3-lugir/d7-add-category-for-content-type-6.png" style="width: 326px; height: 256px; " /></p>
+<p>选择“术语来源”之后，点击“保存字段设置”之后，会进入到字段详细配置页面，根据自己的需要对字段进行配置，因为这里只是做演示，直接点击页面最下方的“保存设置”即可</p>
+<p>在返回的字段管理页面中，就可以看到“栏目分类”字段已经成功显示在内容类型的字段列表中了。拖动标签前面的十字架，将栏目分类移动到Title后面，结果如图示</p>
+<p><img alt="Drupal 7 内容类型字段列表【图】" src="/sites/default/files/u3-lugir/d7-add-category-for-content-type-7.png" style="width: 600px; height: 163px; " /></p>
+<h2>创建内容</h2>
+<p>访问 管理 &gt; 信息面板 &gt; 添加内容 &gt; 基本页面（node/add/page）页面，已经可以在标题（Title）字段下方看到“栏目分类”字段了</p>
+<p><img alt="Drupal 7 创建内容【图】" src="/sites/default/files/u3-lugir/d7-add-category-for-content-type-8.png" style="width: 308px; height: 318px; " /></p>
+<p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/549">Drupal 7</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/627">术语表</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/628">Taxonomy</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/629">分类</a></li><li class="taxonomy-term-reference-4"><a href="/taxonomy/term/630">Term</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-508" class="section-3">
+  <h1 class="book-heading">Drupal 幻灯片制作教程</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/how-to-create-a-slideshow.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　各种类型的网站都可以用到幻灯片，不论是用途网站首页的图片展示还是用于制作大气的图片轮换Banner。Drupal 中用得较多的幻灯片模块有 Views Slideshow 和 DDBlock 两种，本文将以 Views Slideshow 为例，详细介绍使用 Drupal 制作幻灯片的步骤：</p>
+<p>　　用到的模块：</p>
+<ul><li>Views Slideshow (6.x-2.x)</li>
+	<li>ImageField</li>
+	<li>Link</li>
+	<li>ImageCache</li>
+</ul><p>　　确认安装并启用以上模块之后，便可以按照以下步骤来创建 Drupal 幻灯片了 :D</p>
+<p>　　<strong>提示</strong>：本文最后提供了一个打包好的幻灯片配置包，大家直接下载并启用就可以得到按照本文配置的基本幻灯片了 :D</p>
+<p> </p>
+<h2>Drupal 幻灯片制作流程：</h2>
+<p> </p>
+<h3>1.创建幻灯片 (Slideshow) 内容类型</h3>
+<p><strong>添加内容类型</strong>，访问管理 &gt; 内容管理 &gt; 内容类型 &gt; 添加内容类型页面 (admin/content/types/add)，按以下配置创建内容类型之后点击保存<br />
+	名称: slideshow<br />
+	类型: 幻灯片</p>
+<p><img alt="添加幻灯片内容类型" src="/sites/default/files/u3-lugir/add-slideshow-content-type.png" style="width: 501px; height: 340px;" /></p>
+<p>新添加的 Slideshow 会出现在内容类型管理列表中，点击 Slideshow 对应的“管理字段" (manage fields) 链接，进入 Slideshow 编辑页面</p>
+<p><img alt="进入管理字段页面" src="/sites/default/files/u3-lugir/content-types-list1.png" style="width: 560px; height: 280px;" /></p>
+<p><strong>添加幻灯片图片字段</strong>：在管理字段页面，按以下配置添加图片 (ImageField) 字段后点击“保存字段设置”按钮</p>
+<ul><li>标签：幻灯片图片</li>
+	<li>字段名称：field_slideshow_image</li>
+	<li>数据类型：文件</li>
+	<li>表单元素：图片</li>
+</ul><p><img alt="添加幻灯片图片字段" src="/sites/default/files/u3-lugir/add-slideshow-image-field.png" style="width: 600px; height: 96px;" /></p>
+<p><strong>配置幻灯片图片字段</strong>：在图片字段配置页面，配置以下信息及根据你的需要进行配置后点击“保存”</p>
+<ul><li>路径设置-&gt; 文件路径: slideshow (这会将所有上传的幻灯片图片保存到 slideshow 目录下)</li>
+	<li>全局设置 -&gt; 必须</li>
+</ul><p><strong>添加幻灯片链接字段</strong>：在管理字段页面，按以下配置添加链接 (Link) 字段后点击“保存”</p>
+<ul><li>标签：幻灯片链接</li>
+	<li>字段名称：field_slideshow_link</li>
+	<li>数据类型：链接</li>
+	<li>表单元素：链接</li>
+</ul><p><img alt="添加幻灯片链接字段" src="/sites/default/files/u3-lugir/add-slideshow-link-field.png" style="width: 600px; height: 88px;" /></p>
+<p><strong>配置幻灯片链接字段</strong>：在链接字段配置页面，根据需要配置后点击“保存字段配置”按钮</p>
+<p><strong>调整字段顺序</strong>：在管理字段页面，将幻灯片图片和幻灯片链接拖动到正文的前面，然后点击“保存”</p>
+<p><img alt="调整幻灯片字段顺序" src="/sites/default/files/u3-lugir/adjust-slideshow-fields-order.png" style="width: 580px; height: 180px;" /></p>
+<p> </p>
+<!--pagebreak--><h3>2. 添加幻灯片图片</h3>
+<p>访问创建内容 &gt; 幻灯片 (node/add/slideshow) 页面，填写标题、上传图片、填写幻灯片链接标题和URL，正文可以留空，然后保存即可</p>
+<p>重复此步骤创建大概5张不同的幻灯片图片</p>
+<p> </p>
+<h3>3. 创建 ImageCache 规则</h3>
+<p>访问管理 &gt; 站点构建 &gt; ImageCache &gt; 添加 ImageCache 预设页面 (admin/build/imagecache/add)，设置名称后点击保存<br />
+	ImageCache 预设名称：Slideshow</p>
+<p><img alt="添加幻灯片预设" src="/sites/default/files/u3-lugir/add-slideshow-preset.png" style="width: 430px; height: 240px;" /></p>
+<p>在运作中，点击"添加 Scale And Crop "链接，在新窗口设置幻灯片大小后点击"创建动作"</p>
+<ul><li>宽度：300</li>
+	<li>高度：240</li>
+</ul><p><span style="color:#ff0000;"><strong>　　注意</strong>：点击创建动作后，可以在页面下方看到缩放成 300 x 240 大小的图片，如果看不到图片预览，请查看模块管理页面，确保 ImageAPI GD2 和 ImageAPI ImageMagick 至少有一个是启用状态。</span></p>
+<!--pagebreak--><h3>4. 创建 View</h3>
+<p>访问管理 &gt; 站点构建 &gt; 视图 &gt; 添加 页面(admin/build/views/add)，配置以下信息后点击“前进”</p>
+<ul><li>视图名称：slideshow</li>
+	<li>视图描述：幻灯片</li>
+	<li>视频标签：幻灯片</li>
+</ul><p><img alt="添加幻灯片视图" src="/sites/default/files/u3-lugir/add-slideshow-view.png" style="width: 500px; height: 314px;" /></p>
+<p><strong>添加区块</strong>：在 View 配置页面的最左边，从下拉框中选择“区块”, 点击“添加显示”</p>
+<p><img alt="添加幻灯片区块" src="/sites/default/files/u3-lugir/add-slideshow-view-block.png" style="width: 130px; height: 112px;" /></p>
+<p>配置幻灯片区块：按照以下顺序和配置对幻灯片区块进行配置</p>
+<ul><li>字段
+		<ul><li>添加字段：内容：幻灯片链接(field_slideshow_link)幻灯片链接(field_slideshow_link)
+				<ul><li>排除显示：勾选</li>
+					<li>标签：无</li>
+					<li>格式：URL, as plain text</li>
+				</ul></li>
+			<li>添加字段：内容: 幻灯片图片 (field_slideshow_image)幻灯片图片 (field_slideshow_image)
+				<ul><li>将这个字段作为链接输出：勾选
+						<ul><li>链接路径：[field_slideshow_link_url]</li>
+						</ul></li>
+					<li>标签：无</li>
+					<li>格式：Slideshow image</li>
+				</ul></li>
+		</ul></li>
+	<li>过滤
+		<ul><li>添加过滤器：节点: 类型
+				<ul><li>操作符：其中之一</li>
+					<li>节点类型：幻灯片</li>
+				</ul></li>
+			<li>添加过滤器：节点：已发表
+				<ul><li>已发表：是</li>
+				</ul></li>
+		</ul></li>
+	<li>基本设置
+		<ul><li>样式：幻灯片<br /><span style="color:#0000cd;">选择幻灯片之后，点击样式列后面的齿轮可以对幻灯片进行详细配置。可以用于创建带缩略图的幻灯片、添加幻灯片控件、幻灯片效果等等（可参见文章最后的幻灯片示例）</span></li>
+			<li>要显示的条目数：5</li>
+		</ul></li>
+</ul><p><img alt="幻灯片视图设置" src="/sites/default/files/u3-lugir/slideshow-view-block-settings.png" style="width: 590px; height: 360px;" /></p>
+<!--pagebreak--><h3>5. 将幻灯片分配到指定区域</h3>
+<p>访问管理 &gt; 站点构建 &gt; 区块管理页面 (admin/build/block)，找到 slideshow: 区块，将其分配到指定的区域后，点击保存。</p>
+<h3>6. 幻灯片美化</h3>
+<p>为幻灯片区块添加 CSS，做一些美化，使幻灯片看起来更漂亮。</p>
+<p> </p>
+<p>　　本文介绍了配合 Views Slideshow 创建幻灯片的<span style="color: rgb(255, 0, 0);"><strong>基本</strong></span>用法，大家可以根据需要，自行添加一些字段以及更改 Views Slideshow 的配置更幻灯片变得更加丰富。使用 Views Slideshow 可以创建各种类型的幻灯片片，下面提供几个幻灯片示例以供大家参考交流。<strong><span style="color: rgb(0, 0, 205);">欢迎留言交流 :D</span></strong></p>
+<p>1. 只带页码的幻灯片</p>
+<p><img alt="Views Slideshow 示例，只带页码的简单幻灯片" src="/sites/default/files/u3-lugir/slideshow-sample-1.png" style="width: 336px; height: 210px;" /></p>
+<p>2. 包含页面和标题的幻灯片</p>
+<p><img alt="Views Slideshow 示例：带页码和标题的幻灯片" src="/sites/default/files/u3-lugir/slideshow-sample-2.png" style="width: 292px; height: 240px;" /></p>
+<p>3. 纵向带页码的幻灯片</p>
+<p><img alt="Views Slideshow 示例：纵向带页码的幻灯片" src="/sites/default/files/u3-lugir/slideshow-sample-3.png" style="width: 313px; height: 413px;" /></p>
+<p>4. 带标题、缩略图和控件的复杂幻灯片</p>
+<p><img alt="Views Slideshow 示例：带标题、缩略图和控件的幻灯片" src="/sites/default/files/u3-lugir/slideshow-sample-4.png" style="width: 303px; height: 282px;" /></p>
+<p>  　　虽然本文介绍了制作幻灯片的步骤，但每次在不同的网站上又重新配置一遍也比较辛苦，为了节省重复的配置工作，我制作了一个特性包，大家直接下载且启用就可以得到一个基于本教程的简单幻灯片了，详情请参考《<a href="http://lugir.com/drupal/features/fox-slideshow.html" target="_blank">Fox Slideshow - 基于 Views Slideshow 的幻灯片 Features 包下载</a>》</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/365">ImageCache</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/435">CCK</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/595">幻灯片</a></li><li class="taxonomy-term-reference-4"><a href="/taxonomy/term/678">Views</a></li><li class="taxonomy-term-reference-5"><a href="/taxonomy/term/679">Views Slideshow</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-414" class="section-3">
+  <h1 class="book-heading">使注册用户在发表评论时可设置昵称</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　Drupal 的评论功能，默认可以配置成允许匿名用户填写联系信息，使匿名用户可以使用任意昵称发表评论。而 Drupal 注册用户，在登录之后，默认只能使用用户名进行回复，无法像匿名用户那样使用任意昵称。</p>
+<p>　　本文通过创建一个简单的 Drupal 模块，为拥有 set comment name 权限的登录用户，能够在发布评论时手动设置昵称。</p>
+<p><strong>创建模块文件夹</strong>: sites/all/modules/comment_name</p>
+<p><strong>创建模块信息文件</strong>：在comment_name模块目录下创建模块信息文件， comment_name.info，并将以下内容写入到 comment_name.info 文件中</p>
+<p><code><br />
+name = "Comment Name"<br />
+description = "Let authenticated user post comments as an anomyouse user with a name."<br />
+core = 6.x<br />
+package = Other<br />
+dependencies[] = comment<br /></code></p>
+<p><strong>创建模块文件</strong>：在 comment_name 目录下创建 comment_name.module 文件，将以下内容写入到 comment_name.module 文件中</p>
+<p><code type="php"><br />
+/**<br />
+ * Implementation of hook_perm().<br />
+ */<br />
+function comment_name_perm() {<br />
+  return array('set comment name');<br />
+}</code></p>
+<p>/**<br />
+ * Implementation of hook_form_alert().<br />
+ */<br />
+function comment_name_form_alter(&amp;$form, $form_state, $form_id) {<br />
+ //dsm($form);</p>
+<p>  global $user;</p>
+<p>  if ($form_id == 'comment_form' &amp;&amp; $user-&gt;uid != 0 &amp;&amp; (user_access('set comment name') || $user-&gt;uid == 1) ) {</p>
+<p>    // add comment name textfield<br />
+    $form['comment_name'] = array(<br />
+      '#type' =&gt; 'textfield',<br />
+      '#title' =&gt; t('Authored by'),<br />
+      '#size' =&gt; 30,<br />
+      '#maxlength' =&gt; 60,<br />
+      '#default_value' =&gt; '',<br />
+      '#weight' =&gt; -1,<br />
+    );</p>
+<p>  }</p>
+<p>}</p>
+<p>/**<br />
+ * Implementation of hook_comment().<br />
+ */<br />
+function comment_name_comment(&amp;$comment, $op) {</p>
+<p>  switch ($op) {</p>
+<p>    case 'view':<br />
+      // When comment load, use comment_name value replace username<br />
+      $_comment = _comment_load($comment-&gt;cid);<br />
+      $comment-&gt;name = $_comment-&gt;name;<br />
+      break;</p>
+<p>    case 'insert':<br />
+      // After comment saved, use comment_name value replace username<br />
+      $query = "UPDATE {comments} SET name = '%s' WHERE cid = %d";<br />
+      db_query($query, $comment['comment_name'], $comment['cid']);<br />
+      break;</p>
+<p>  }</p>
+<p>}</p>
+<p></p>
+<p><strong>启用模块</strong>：访问 管理 &gt; 站点构建 &gt; 模块（admin/build/modules）页面，启用 Comment Name 模块</p>
+<p><strong>设置权限：</strong>访问 管理 &gt; 用户管理 &gt; 权限（admin/user/permissions）页面，为指定的用户角色启用 set comment name 权限</p>
+<p>　　完成以上操作之后，访问某个可评论的节点，拥有 set comment name 权限用户和 Drupal 管理员在发布评论时就能够以匿名用户的身份，使用任意名称发表评论了。</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/364">Snippet</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/551">Drupal 模块</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-413" class="section-3">
+  <h1 class="book-heading">如何为 Drupal 站点添加在线电子书阅读功能</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/create-online-books-with-swftools-and-flexpaper.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　像 <a href="http://books.google.com/">Google Book</a> 和 <a href="http://wenku.baidu.com/">百度文库</a> 那样的文档在线阅读功能非常实用，要想为 Drupal 站点实现这样的文档在线阅读功能，可以通过 SWF Tools 模块来实现。</p>
+<p><strong>A. 启用并配置 SWF Tools 和 FlexPaper</strong></p>
+<ol><li>首先，到 SWF Tools 项目页面下载 swftools 模块：http://drupal.org/project/swftools<br /><span style="color:#ff0000;"><strong>注意</strong>：请下载 <strong>swftools-6.x-3.0-beta5</strong> 或以上版本，此前的版本未集成对 FlexPaper 的支持；</span></li>
+	<li>将模块解压到 sites/all/modules 目录下；</li>
+	<li>到 Flexpaper 官方网站下载，Flexpaper（Flash版本），地址：http://flexpaper.devaldi.com/download/</li>
+	<li>将下载下来的 flexpaper_x.x.x_flash.zip 解压到 sites/all/libraries/flexpaper 目录下；</li>
+	<li>访问 管理&gt;站点构建&gt;模块（admin/build/modules） 页面，启用 SWF Tools 和 FlexPaper 模块；</li>
+	<li>访问 管理 &gt; 站点设置 &gt; SWF Tools &gt; File Handling（admin/settings/swftools/handling）页面，展开 File Handling 区块，将 Default player for a single swf movie 的值设置为 FlexPaper；</li>
+	<li>访问 管理 &gt; 站点设置 &gt; SWF Tools &gt; FlexPaper（admin/settings/swftools/flexpaper）页面，对 FlexPaper 配置进行设置</li>
+	<li>访问 管理 &gt; 站点设置 &gt; 输入格式（admin/settings/filters），找到想要使用 SWF Tools 标签的 Filter，如 Filtered HTML，点击配置。在 Filtered HTML 配置页面，找到“过滤”区块，勾选中 SWF Tools Filter，保存；</li>
+</ol><p> </p>
+<p><strong>B. 制作可通过 FlexPaper 在线浏览的电子书</strong></p>
+<ol><li>访问 SWF Tools 官方网站的下载页面，下载 SWF Tools: http://swftools.org/download.html<br />
+		Linux 用户下载 .tar.gz 包, Windows 下载 .exe 安装程序</li>
+	<li>安装 SWF Tools</li>
+	<li>使用 SWF Tools 提供的 pdf2swf 功能，将要在线阅读 PDF 文档转换成 .swf 格式</li>
+</ol><p> </p>
+<p><strong>C. 上传转换后的 .swf 格式电子书</strong></p>
+<ol><li>创建新的内容，可以通过 CCK Field，附件或FTP上传等方式，将 .swf 文件上传到网站中</li>
+	<li>在创建内容页面，将输入格式更改为第A-8步中启用了 SWF Tools Filter 的输入格式，如 Filtered HTML</li>
+	<li>按照 swf tools filter 提示的格式在<strong>正文</strong>中写入以下代码，保存之后即可以看到以 FlexPaper 显示的在线电子书。</li>
+</ol><p><code>[swf file="http://lugir.com/sites/default/files/test.swf"] </code></p>
+<p>以下是使用 SWF Tools 模块和 FlexPaper 实现的在线电子书的效果截图</p>
+<p><img alt="FlexPaper 预览" src="/sites/default/files/u3-lugir/flexpaper.jpg" style="width: 600px; height: 547px; " /></p>
+<p><strong>PS</strong>: 安装好的 FlexPaper 无法显示放大缩小的工具条，我为SWF Tools的这个功能写了一些补丁文件，有需要可以到下面的地址下载和使用：</p>
+<p>http://drupal.org/node/1159076</p>
+<p> </p>
+<p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/551">Drupal 模块</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/580">SWF Tools</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/581">FlexPaper</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-417" class="section-3">
+  <h1 class="book-heading">为 Drupal 添加评论数量最多的前N位用户排行榜</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/documentation/417.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　如果想要为 Drupal 站点生成一个评论数量最多的用户排行榜，可以在区块或内容中使用以下 PHP 代码片段来实现</p>
+<p><code type="php"><br />
+$query = "SELECT COUNT(*) AS count, c.uid, u.name FROM {comments} c<br />
+  LEFT JOIN {users} u ON c.uid = u.uid WHERE c.uid != 0 AND c.uid != 1<br />
+  GROUP BY c.uid ORDER BY count DESC LIMIT 10";<br />
+$result = db_query($query);</code></p>
+<p>$output = "
+</p><ul>";
+<p>while ($user = db_fetch_object($result)) {<br />
+  $output .= "
+</p><li>" . l($user-&gt;name, drupal_get_path_alias("user/{$user-&gt;uid}")) . " (" . $user-&gt;count . ")</li>
+<p>";<br />
+}</p>
+<p>$ouput .= "</p></ul><p>";<br />
+echo $output;<br /></p>
+<p>　　以上代码默认显示10位用户，要更改显示的用户数量，更改 "LIMIT 10" 中的数值即可。</p>
+<p>　　另外，此代码将匿名用户(uid=0)和管理用户(uid=1)排除在统计之外，如有需要，可更改 WHERE 选择语句的条件。</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/364">Snippet</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-416" class="section-3">
+  <h1 class="book-heading">使用 Boost 模块为网站提供高性能静态页面缓存机制</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/documentation/416.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　本文介绍如何为 Drupal 站点准备和安装 <a href="http://lugir.com/drupal/module/boost.html">Boost</a> 模块，以及在成功配置 boost 模块后如何检验模块是否正常工作。</p>
+<h2>安装 Boost 模块</h2>
+<ul><li><strong>下载模块</strong>：访问 boost 模块的项目地址，下载 boost 模块 http://drupal.org/project/boost，本文以 boost-6.x-1.18 为例</li>
+<li><strong>解压模块</strong>：将下载来的 boost 模块包解压并放置于网站的 sites/all/modules 目录下，得到 sites/all/modules/boost </li>
+<li><strong>启用模块</strong>：访问 管理 &gt; 站点构建 &gt; 模块（admin/build/modules）页面，找到并启用 boost 模块</li>
+<li><strong>配置模块</strong>：访问 管理 &gt; 站点设置 &gt; 性能 &gt; Boost Settings（admin/settings/performance/boost）页面，设置缓存目录（建议使用默认值cache不变），及配置其它 boost 选项</li>
+<li><strong>查看状态报告</strong>：访问 管理 &gt; 报告 &gt; 状态报告（admin/reports/status）页面，会看到一些错误信息，接下来的操作将会逐个地解决这些错误</li>
+<li><strong>创建缓存目录</strong>：在 drupal 安装目录下创建 cache 目录，如果运行在 Linux 平台，还需要配置目录访问权限，使 web 服务器用户对 cache 目录有写权限</li>
+<li><strong>备份 .htaccess 文件</strong>：将 drupal 安装目录下的 .htaccess 文件复制一份，命名为 .htaccess.bak，并用文本编辑器打开 .htaccess 文件</li>
+<li><strong>编辑 .htaccess 文件</strong>：访问 管理 &gt; 站点设置 &gt; 性能 &gt; Boost htaccess rules generation（admin/settings/performance/boost-rules）页面，复制文本框中的所有内容，将其粘贴到 .htaccess 文件中以下位置，保存 .htaccess 文件。</li>
+</ul><p><code><br />
+  # RewriteBase /<br />
+      ----------将复制出来的内容粘贴到这个位置----------<br />
+  # Rewrite URLs of the form 'x' to the form 'index.php?q=x'.<br /></code></p>
+<ul><li><strong>编辑 robots.txt 文件</strong>：编辑 drupal 安装目录下的 robots.txt 文件，在最后面加入以下条目</li>
+</ul><p><code><br />
+# Boost<br />
+Disallow: /boost_stats.php<br />
+Disallow: /CHANGELOG.txt<br /></code></p>
+<ul><li><strong>查看状态报告</strong>：刷新 管理 &gt; 报告 &gt; 状态报告（admin/reports/status）页面，所有错误信息都处理完毕</li>
+<li><strong>启用 boost 缓存</strong>：访问 管理 &gt; 站点设置 &gt; 性能（admin/settings/performance）页面，根据需要配置 Drupal 站点的缓存机制</li>
+</ul><p>完成以上所有操作后，Boost 就可以正常运行了</p>
+<h3><strong>测试并验证 Boost 的工作</strong></h3>
+<ul><li>登出 Drupal 或者使用另一个浏览器匿名浏览启用了 boost 模块的站点，对一些页面进行浏览</li>
+<li>登录并访问 管理 &gt; 站点设置 &gt; 性能（admin/settings/performance）页面，查看有多少页面被 Boost 进行了缓存</li>
+<li>访问 管理 &gt; 报告 &gt; 状态报告（admin/reports/status）页面，看是否有任何错误信息</li>
+<li>要验证匿名用户查看的某个页面是静态缓存页面还是动态页面，只需查看网页源代码，如果在源代码的最后面有类似以下代码，则是 Boost 提供的缓存页面。</li>
+</ul><p><code type="html4strict"></code></p>
+<!-- Page cached by Boost @ 2011-06-30 12:09:30, expires @ 2011-06-30 13:09:30 --><p></p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/275">缓存</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/551">Drupal 模块</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/582">boost</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-418" class="section-3">
+  <h1 class="book-heading">使用 diff 命令创建 patch 文件</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　使用 diff 命令可以为文件创建 patch 文件，通过执行以下代码即可</p>
+<p><code type="bash"><br />
+diff -Naur file_new file_old &gt; file.patch<br /></code></p>
+<p>以上命令的意思是，对比 file_new 与 file_old 的不同，将两者的差异导入到 file.patch 文件中。以便于其它人可以使用这个 file.patch 为 file_old 文件打补丁</p>
+<p>　　关于如何应用 .patch（补丁）文件，可参考《<a href="http://lugir.com/node/419" target="_blank">使用 patch 命令为文件打补丁</a>》http://lugir.com/node/419</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/592">diff</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/593">patch</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-420" class="section-3">
+  <h1 class="book-heading">安装 DDBlock</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p><strong>下载及安装</strong></p>
+<ol><li>下载 JQuery_Update 模块</li>
+	<li>下载 DDBlock 模块</li>
+	<li>将 jquery_update 和 ddblock 模块解压到 sites/all/modules 目录</li>
+	<li>访问 管理 &gt; 站点构建 &gt; 模块（admin/build/modules）页面，启用 JQuery Update 和 Dynamic display block 模块，点击保存</li>
+</ol><p> </p>
+<p>可选，如果希望 JQuery Easing 效果，可以到下载 JQuery Easing 插件</p>
+<ol><li>到 http://plugins.jquery.com/project/Easing 页面下载 1.1.1 版本的 easing 插件</li>
+	<li>将 easing.1.1.1.js 文件复制到 sites/all/modules/ddblock 下</li>
+</ol><p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/594">DDBlock</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/595">幻灯片</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-421" class="section-3">
+  <h1 class="book-heading">DDBlock 基本用法，使用 DDBlock 创建简单的图片幻灯片</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/documentation/421.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　本文介绍 DDBlock 的基础用法，即使用指定目录下的图片，创建一个简单的图片幻灯片</p>
+<p><strong>添加、启用和配置 DDBlock</strong></p>
+<ol><li>访问 管理 &gt; 站点设置 &gt; Dynamic display block（admin/settings/ddblock）页面；</li>
+	<li>找到 add dynamic display block 区域，在区块标题中填写要添加的区块标题，如“DDBlock 测试区块”，然后点击添加区块；</li>
+	<li>添加区块后可以页面的列表中看到新增的区块，以本教程为例，则是“DDBlock 测试区块”。点击“DDBlock 测试区块”后面的设置区块链接，进入区块设置页面；</li>
+	<li>将 Image Folder 设置为 ddblock，这里设置的路径为 Drupal 文件系统，即在 管理 &gt; 站点设置 &gt; 文件系统（admin/settings/file-system）中设置的文件系统路径，默认为 sites/default/files</li>
+	<li>根据需要修改其它配置，然后点击页面最下方的“保存区块”</li>
+	<li>在 sites/default/files 目录下创建 ddblock 目录；</li>
+	<li>向 sites/default/files/ddblock 目录上传入一些图片；</li>
+	<li>访问 管理 &gt; 站点构建 &gt; 区块（admin/build/blocks）页面，找到“DDBlock 测试区块”区块，将其分配到某个想要让它显示的区域（Region），点击“保存区块”即可。</li>
+</ol><p> </p>
+<p><strong>说明</strong>：所创建的 DDBlock 会按照第4, 5步的配置，从指定的目录中取得图片并显示。</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/594">DDBlock</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/595">幻灯片</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-432" class="section-3">
+  <h1 class="book-heading">使用 Drupal 创建多语言站点</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/create-multilingual-sites-using-drupal-and-i18n-module.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　Drupal 核心提供了 Locale 模块用于为 Drupal 站点提供本地化的功能，使用 Locale 模块创建本地化的站点非常实用，并且能够制作较为简单的多语言站点。不过，我们更推荐使用 i18n 模块，通过 Drupal 创建多语言站点。有关 i18n 模块及其它多语言站点相关的模块的使用，将会再本教程中陆续介绍。</p>
+<p>　　本教程将介绍以下内容：</p>
+<ul><li>界面多语言化（本文）</li>
+	<li><a href="http://lugir.com/drupal/documentation/multilingual-variables.html" target="_blank">内置变量多语言化</a></li>
+	<li>术语表多语言化</li>
+	<li><a href="http://lugir.com/drupal/documentation/translate-content.html" target="_blank">内容多语言化</a></li>
+	<li>CCK多语言化</li>
+	<li><a href="http://lugir.com/drupal/documentation/multilingual-menu-and-primary-secondary-links.html" target="_blank">菜单多语言化</a></li>
+	<li><a href="http://lugir.com/drupal/documentation/multilingual-blocks.html" target="_blank">区块多语言化</a></li>
+	<li>一些多语言站点适用的模块</li>
+</ul><p>　　</p>
+<p>　　接下来我们就开始使用 Drupal 创建包含中文和英文两种语言的多语言站点 :D</p>
+<h2>使用 Drupal 创建多语言站点</h2>
+<ol><li><a href="http://lugir.com/drupal/documentation/install-drupal-6.html" target="_blank">安装 Drupal 6</a></li>
+	<li><a href="http://lugir.com/drupal/documentation/translate-drupal-language-to-simple-chinese.html" target="_blank">启用 Locale 模块并导入中文语言包</a></li>
+	<li>访问 管理 &gt; 站点设置 &gt; 语言（admin/settings/language）页面，点击“英文”语言后面的“编辑”链接（admin/settings/language/edit/en），在编辑语言页面，将“路径前缀”设置为 en（默认英语语言的路径前缀为空），点击“保存语言”；</li>
+	<li>访问 管理 &gt; 站点设置 &gt; 语言 &gt; 配置（admin/settings/language/configure）页面，将“语言协定”配置为“仅使用路径前缀”，点击“保存设置”</li>
+	<li>访问 管理 &gt; 站点构建 &gt; 区块（admin/build/blocks）页面，将名为“语言转换”的区块分配到右边栏，点击“保存区块”<br /><em><strong>注意：若没有正确配置第4步的操作，“语言转换”区块将不会显示</strong></em></li>
+	<li>保存区块后，网站的右边栏会显示如下图示的链接，点击“简体中文”和“English”的链接，试试语言的切换<br /><img alt="Drupal 多语言站点，语言切换" src="/sites/default/files/u3-lugir/language-switcher.png" style="width: 151px; height: 104px; " /><br /><em><strong>注意：如果在第2步中将默认语言设置为“简体中文”，但未在第3步中为英文语言设置路径前缀，则不能正确执行语言切换</strong></em></li>
+</ol><p>　　现在，我们已经创建了可以切换语言界面的 Drupal 站点，以下分别是站点的中文界面截图和英文界面截图</p>
+<p>Drupal 多语言站点中文界面截图</p>
+<p><img alt="Drupal 多语言站点中文界面截图" src="/sites/default/files/u3-lugir/drupal-multilingual-site-chinese.jpg" style="width: 490px; height: 285px; " /></p>
+<p>Drupal 多语言站点英文界面截图</p>
+<p><img alt="Drupal 多语言站点英文界面截图" src="/sites/default/files/u3-lugir/drupal-multilingual-site-english.jpg" style="width: 490px; height: 285px; " /></p>
+<p>　　相信大家也发现了，在切换语言时，尽管界面语言都进行了中英文的切换，但是像“网站标题”这样存储在数据库里面的配置项，却没能被翻译过来。Locale 能够做到界面内容的翻译已经很不错，至于网站变量的多语言化，以及术语表、内容、CCK、菜单、区块等元素的多语言化，就交给接下来要介绍的 i18n 模块来做吧。</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/607">多语言</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/608">i18n</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  <div id="node-434" class="section-4">
+  <h1 class="book-heading">站点变量（Variables）多语言化</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　上一节我们已经使用 Drupal 核心的 Locale 模块为 Drupal 站点启用了多语言的功能，并且对 Drupal 界面进行了翻译。不过还遗留了一点点小问题，就是 Drupal 的站点标题没有翻译过来。</p>
+<p>　　Drupal 中的一些文本和配置存储在数据库的variables表中。比如“站点名称”和“站点口号”这样的配置文本，Drupal 核心的 Locale 模块不能实现这些配置变量的多语言化。因此创建一个更彻底的多语言站点，还需要用到 Internationalization（i18n）模块，i18n 模块提供了 Drupal 变量多语言化的功能。</p>
+<p>　　要实现对 Drupal 变量的多语言化操作，需要知道要翻译的变量的名称，这一步可以通过搜索 Drupal 数据库的 variables 表来实现。</p>
+<p>　　当你确定要对哪些变量进行多语言化操作时，你只需要按照以下格式，将变量添加到 settings.php 文件中即可。以下添加了 Drupal 站点的一些常见变量：</p>
+<p><code><br />
+/**<br />
+ * Multilingual settings<br />
+ *<br />
+ * This is a collection of variables that can be set up for each language when i18n is enabled.<br />
+ * These are the basic ones for Drupal core, but you can add your own here.<br />
+ */</code></p>
+<p>$conf['i18n_variables'] = array(</p>
+<p>  // Site name, slogan, mission, etc..<br />
+  'site_name',<br />
+  'site_slogan',<br />
+  'site_mission',<br />
+  'site_footer',<br />
+  'anonymous',</p>
+<p>  // Different front page for each language<br />
+  'site_frontpage',</p>
+<p>  // Primary and secondary links<br />
+  'menu_primary_links_source',<br />
+  'menu_secondary_links_source',</p>
+<p>  // Contact form information<br />
+  'contact_form_information',</p>
+<p>  // For theme variables, read more below<br />
+  'theme_settings',<br />
+  'theme_garland_settings',</p>
+<p>);<br /></p>
+<p>　　当启用了 i18n 模块，并且向 settings.php 配置文件中添加了以上代码之后，可以在 管理 &gt; 站点设置 &gt; 语言 &gt; Multilingual system &gt; Variables（admin/settings/languages/i18n/variables）页面中，看到可以实现多语言化的变量名称及翻译状态。</p>
+<h3>Drupal 站点信息多语言化</h3>
+<ol><li>访问 管理 &gt; 站点设置 &gt; 站点信息（admin/settings/site-information），可以看到一些表单项的后面加上了 <strong>This is a multilingual varibles</strong> 的提示，说明这些配置已经可以多语言化了</li>
+<li>使用中文填写站点信息表单项，如：<br />
+  名称：Drupal 多语言化测试站点<br />
+  口号：使用 Drupal 创建多语言站点<br />
+  ...<br />
+  然后，点击“保存设置”。
+  </li>
+<li>切换到英语界面（如果你阅读了本教程的前面章节，并跟着教程进行的配置，那么，点击右边栏语言切换区块中的 English 链接即可切换到英文界面。如果你是路途看到这一篇文章，而不知如何切换，推荐你先看看前面的章节）</li>
+<li>在英语界面中，使用英文填写 Site Information（站点信息）表单项，如：<br />
+  Name：Drupal Multilingual Test Sites<br />
+  Slogan：Using Drupal create a multilinugal website<br />
+  ...<br />
+  然后，点击“Save Configuration”。</li>
+</ol><p>　　尝试在语言间进行一些切换，可以看到中文界面使用了中文的标题和口号，英文界面则使用英文的标题和口号</p>
+<p>Drupal 多语言站点中文界面截图</p>
+<p><img alt="Drupal 站点变量多语言化-中文" src="/sites/default/files/u3-lugir/variable-multilingual-chinese.jpg" style="width: 522px; height: 292px; " /></p>
+<p>Drupal 多语言站点英文界面截图</p>
+<p><img alt="Drupal 站点变量多语言化-英文" src="/sites/default/files/u3-lugir/variable-multilingual-english.jpg" style="width: 522px; height: 292px; " /></p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/607">多语言</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/608">i18n</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-433" class="section-4">
+  <h1 class="book-heading">为内容创建不同语言的翻译版本</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　Drupal 核心提供的 Content translation 模块，为创建多语言的 Drupal 站点提供了内容多语言化的支持，本教程将介绍如何为内容创建不同语言的翻译版本。 </p>
+<h2>为内容创建不同语言的翻译版本</h2>
+<p> </p>
+<h3>启用内容翻译功能</h3>
+<ol><li>访问 管理 &gt; 站点构建 &gt; 模块（admin/build/modules）页面，启用 Content translation 模块，点击“保存”；</li>
+	<li>确定想要启用多语言翻译功能的内容类型，如新闻（Story），访问 内容管理 &gt; 内容类型 &gt; Story（admin/content/node-type/story）页面；</li>
+	<li>展开“流程设定”选项，将“多语言支持”配置为“启用，与翻译一起”，点击“保存内容类型”；</li>
+</ol><p> </p>
+<h3>创建内容及翻译版本</h3>
+<ol><li>访问 内容 &gt; 创建内容 &gt; Story（admin/content/story/add）页面；</li>
+	<li>使用中文填写标题和内容，并将语言设置为“Chinese, Simplified(简体中文)”，点击“保存”；</li>
+	<li>在节点页面点击“翻译”链接<br />
+		这里可以看到一个网站启用的语言列表，以及内容的翻译情况</li>
+	<li>点击 English 那一行的“添加翻译”</li>
+	<li>在加载的翻译编辑页面，语言选项被限定为“English(英文)”，并使用英文编写翻译版本的标题和内容，然后点击“保存”；</li>
+</ol><p> </p>
+<p>　　创建翻译之后，可以在节点页面的下方看到一个翻译链接，点击翻译链接即可看到内容的翻译版本。</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/607">多语言</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/608">i18n</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-436" class="section-4">
+  <h1 class="book-heading">菜单与主链接/次链接多语言化</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/multilingual-menu-and-primary-secondary-links.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　只使用 Drupal 核心所提供的功能，还不能菜单项的多语言化/翻译。不过使用 i18n 模块包中提供的 Menu translation 模块，可能很好的实现菜单、主链接/次链接的多语言化功能。</p>
+<p>　　i18n 模块包中的 Menu translation 模块，提供了以下特性：</p>
+<ul><li>允许创建菜单时为菜单设置语言项（如中文、英文等等），设置了语言的菜单项只会在与当前使用语言一致时才会显示；</li>
+	<li>可以为未设置语言项的菜单内容进行多语言化。实现可通过 Drupal 的翻译页面对菜单项进行翻译；</li>
+</ul><p> </p>
+<h3>创建可翻译的多语言化菜单</h3>
+<p> </p>
+<ol><li><strong>启用模块</strong>：启用 i18n 模块的 Menu translation 模块；</li>
+	<li>访问 管理 &gt; 站点构建 &gt; 菜单 &gt; 主链接（Primary links） &gt; 增加菜单项（admin/build/menu-customize/primary-links/add）</li>
+	<li><strong>创建可翻译菜单项</strong>：根据以下信息填写菜单创建表单后，点击“保存”<br />
+		路径：&lt;front&gt;<br />
+		菜单链接标题：首页<br />
+		语言：所有语言<br /><em><strong>说明：将语言设置为所有语言的菜单项，会在所有语言界面下显示，可尝试在中英文界面之前进行切换，都能菜单项“首页”，不过在英文界面下也还是显示中文</strong></em></li>
+	<li><strong>搜索翻译项</strong>：访问 管理 &gt; 站点构建 &gt; 翻译 &gt; 搜索（admin/build/translate/search），按照以下信息填写表单后，点击“搜索”<br />
+		字符串包括：首页<br />
+		将搜索限制在：菜单</li>
+	<li>从搜索结果中找到要翻译的菜单项目，点击后面的“编辑”链接</li>
+	<li><strong>翻译菜单项</strong>：在翻译界面中，填写翻译内容，Home。然后点击保存翻译；</li>
+	<li>现在再在中英文之间进行切换，就可以看到，在中文界面下，主链接显示菜单项“首页”，在英文界面下，主链接显示菜单项“Home”</li>
+</ol><p> </p>
+<h3>创建只在指定语言环境下显示的菜单</h3>
+<p> </p>
+<ol><li>访问 管理 &gt; 站点构建 &gt; 菜单 &gt; 主链接（Primary links） &gt; 增加菜单项（admin/build/menu-customize/primary-links/add）</li>
+	<li><strong>创建可翻译菜单项</strong>：根据以下信息填写菜单创建表单后，点击“保存”<br />
+		路径：node<br />
+		菜单链接标题：内容<br />
+		语言：Chinese Simplified (简体中文)<br /><em><strong>说明：在这里为菜单语言项，该菜单只有在与当前语言环境一致时，才会显示出来。</strong></em></li>
+	<li>重复第2步，使用以下信息创建一个英语菜单项路径：node<br style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; " />
+		菜单链接标题：Node<br style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; " />
+		语言：English (英语)</li>
+	<li>现在再在中英文之间进行切换，就可以看到，在中文界面下，会显示语言设置为 Chinese Simplified (简体中文)的菜单项“内容”，在英文界面下，则会显示语言设置为 English (英文)的菜单项“Node”</li>
+</ol><p> </p>
+<h3>使用多语言化变量设置不同的主链接/次链接</h3>
+<p> </p>
+<p>　　访问 管理 &gt; 站点构建 &gt; 菜单 &gt; 设置（admin/build/menu/settings）页面，可以看到“主导航菜单来源”及“次级菜单来源”都被标识为“多语言化变量（This is a multilingual variable）”，这说明这两项值，在不同的语言环境下，可以设置不同的值，并被数据库分开保存。（更多关于多语言化变量请参考《<a href="http://lugir.com/drupal/documentation/multilingual-variables.html" target="_blank">站点变量（Variables）多语言化</a>》）</p>
+<p>　　在中文语言下，为主链接/次链接选择恰当的中文链接，在英文语言下，为主链接/次链接选择恰当的英文链接，从而实现在不同语言下，使用不同语言的菜单项，以此来实现 Drupal 网站中菜单的多语言化。</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/385">菜单</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/542">Drupal 教程</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/607">多语言</a></li><li class="taxonomy-term-reference-4"><a href="/taxonomy/term/608">i18n</a></li><li class="taxonomy-term-reference-5"><a href="/taxonomy/term/609">主链接</a></li><li class="taxonomy-term-reference-6"><a href="/taxonomy/term/610">次链接</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-442" class="section-4">
+  <h1 class="book-heading">创建支持多语言化的区块</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/multilingual-blocks.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　为 Drupal 创建多语言化支持的区块，需要 i18n 模块包中的 Block Translation 提供相应的支持。有两种方式可以实现区块的多语言化，一种是对区块（Blocks）中的字段进行翻译，另一种是为每一种语言创建一个对应的区块。本文将介绍这两种区块多语言化的方法。</p>
+<h2>准备工作：</h2>
+<ol><li><strong>下载 i18n 模块包</strong>，下载地址：http://drupal.org/project/i18n</li>
+	<li><strong>模块管理页面</strong>：访问 管理 &gt; 站点构建 &gt; 模块（admin/build/modules）页面</li>
+	<li><strong>启用模块</strong>：启用 Internationalization 模块、String Translation 模块 和 Block Translation 模块，并点击“保存设置”</li>
+</ol><p> </p>
+<h2>创建基于字段翻译的多语言化区块</h2>
+<ol><li><strong>创建区块</strong>：访问 管理 &gt; 站点构建 &gt; 区块 &gt; 添加区块（admin/build/blocks/add）</li>
+	<li><strong>设置区块语言</strong>：在添加区块页面的 Multilingual settings 中，将<strong>语言</strong>设置为 Chinese Simplified(简体中文)</li>
+	<li><strong>添加中文区块</strong>：在添加区块页面，填写以下中文信息，然后点击“保存区块”<br />
+		区块描述：多语言化测试区块（描述）<br />
+		区块标题：多语言化测试区块<br />
+		区块内容：这是一个用于测试区块多语言化的区块 :D<br /><em><strong>注意：实际操作时，请根据你的需要为区块填写合适的描述、标题和内容等信息</strong></em></li>
+	<li><strong>分配区块</strong>：在区块管理页面（admin/build/blocks），找到刚创建的“多语言化测试区块（描述）”，将其分配到指定的区块，如左边栏，点击“保存区块”</li>
+	<li><strong>搜索区块中的字段</strong>：访问 管理 &gt; 站点构建 &gt; 翻译 &gt; 搜索（admin/build/translate/search），在页面的搜索框中搜索第3步中填写的信息，如"多语言化测试区块"，将得到如下搜索结果<br /><img alt="区块多语言化-搜索字段" src="/sites/default/files/u3-lugir/multilingual-blocks.png" style="width: 517px; height: 85px; " /><br /><em><strong>说明</strong></em>：基于字段的翻译好像不能对区块描述进行翻译，不过对区块标题和内容的多语言化翻译都是支持的。如果希望区块描述也能够被多语言化，可以参考第二种区块多语言化的方法</li>
+	<li><strong>翻译区块中的字段</strong>：点击“编辑”进入字段翻译页面，填写翻译内容后点击“保存翻译”<br /><img alt="区块多语言化-翻译字段" src="/sites/default/files/u3-lugir/multilingual-blocks-2.png" style="width: 245px; height: 141px; " /></li>
+	<li>重复第5,6步，完成区块内容的翻译</li>
+	<li><strong>查看效果</strong>：在默认中文语言界面下，创建的区块显示如下图：<br /><img alt="区块多语言化-中文" src="/sites/default/files/u3-lugir/multilingual-blocks-3.png" style="width: 211px; height: 85px; " /><br />
+		切换到英文语言界面下，创建的区块显示如下图：<br /><img alt="区块多语言化-英文" src="/sites/default/files/u3-lugir/multilingual-blocks-4.png" style="width: 211px; height: 80px; " /></li>
+</ol><p> </p>
+<h2>为不同的语言创建对应的多语言区块</h2>
+<ol><li><strong>创建区块</strong>：访问 管理 &gt; 站点构建 &gt; 区块 &gt; 添加区块（admin/build/blocks/add）</li>
+	<li><strong>设置区块语言</strong>：在添加区块页面的 Multilingual settings 中，将<strong>语言</strong>设置为 All languages (Translatable)</li>
+	<li><strong>添加区块</strong>：在添加区块页面，填写以下信息后，点击“保存区块”<br />
+		区块描述：多语言化测试区块（描述）<br />
+		区块标题：多语言化测试区块<br />
+		区块内容：这是一个用于测试区块多语言化的区块 :D<br /><em><strong>注意：实际操作时，请根据你的需要为区块填写合适的描述、标题和内容等信息</strong></em></li>
+	<li><strong style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">添加其它语言区块</strong>（如英语）：重复第2步，将语言设置为 English(英语)，重复第3步，填写以下<strong>英文</strong>信息，然后点击“保存区块”<br style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; " />
+		区块描述：Multilingual Test Block(Brief)<br style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; " />
+		区块标题：Multilingual Test Block<br style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; " />
+		区块内容：This is a multilingual test block, :D</li>
+	<li><strong>分配区块</strong>：在区块管理页面（admin/build/blocks），找到刚创建的“多语言化测试区块（描述）”和“Multilingual Test Block(Brief)”，将其分配到指定的区块，如左边栏，点击“保存区块”</li>
+	<li><strong>查看效果</strong>：i18n 提供的 language section 机制会自动判断多语言项目（如区块）与当前语言的关系，只有与当前语言相同的内容才会显示出来。因此当网站界面语言为中文时，站点左边栏将会显示“多语言化测试区块”，当网站界面语言为英语时，则会显示 "Multilingual Test Block"</li>
+</ol><p>　　</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/608">i18n</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/619">多语言化</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/620">区块</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+</div>
+<div id="node-457" class="section-3">
+  <h1 class="book-heading">Drupal 数据库迁移技巧</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/documentation/457.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　在迁移 Drupal 站点时，数据库迁移是非常重要的一步。一般来讲，数据库迁移包含从老服务器上导出数据库，及在新服务器上导入数据库。</p>
+<p>　　备份数据库非常简单，使用 phpMyAdmin 或者其它数据库管理工具都可以实现。但是在将数据导入到新的服务器时，常常会遇到一些错误而导致数据库迁移失败(如图)。通常情况下，都是因为缓存数据的原因。即 cache 表及以 cache_ 作为前缀的数据库表。</p>
+<p><img alt="Migrate a drupal database" src="/sites/default/files/u3-lugir/migrate_a_durpal_database.png" style="width: 422px; height: 191px;" /></p>
+<p>　　Drupal 在启用缓存的情况下，会在 cache 及 cache_ 前缀的数据库表中写入许多缓存数据，但这些数据对于数据迁移并不是必须的，因为当站点转移到新服务器之后，这些缓存数据又可以重新生成。但是这两个表里面的数据结构，常会出现SQL语法错误而导致数据库导入失败。</p>
+<p>　　以下是处理这些问题的一些方法：</p>
+<ol><li>在执行数据库备份前，关闭并清除 Drupal 缓存</li>
+	<li>在导出数据库前，清空所有 cache 及 cache_ 为前缀的表中的数据</li>
+	<li>分两次导出数据：第一次导出除 cache 及 cache_ 为前缀以外的表；第二次导出 cache 及 cache_ 为前缀的数据表的结构（不含数据）</li>
+</ol><p> </p>
+<p>　　总之，导出时保证 cache 及 cache_ 为前缀的表中无数据即可。</p>
+<p>　　然后将备份的数据导入到新的服务器中，即可完成 Drupal 数据库的迁移。</p>
+<p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/414">备份</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/452">数据库</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/549">Drupal 7</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-524" class="section-3">
+  <h1 class="book-heading">Taobaoke - Drupal 淘宝客模块使用指南</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/taobaoke-manual.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　<a href="http://lugir.com/drupal/module/taobaoke.html">Taobaoke（淘宝客）模块</a>使 Drupal 连接淘宝开放平台，通过淘宝网（http://www.taobao.com）提供的海量商品数据，可以迅速地创建基于 Drupal 的淘宝客商城。</p>
+<p>　　本教程将介绍 Taobaoke 模块的安装及使用。</p>
+<p> </p>
+<p>　　使用 taobaoke 模块需要用到淘宝开放平台（TOP）提供的 SDK，即 TopSDK，大家可通过以下链接进行下载：</p>
+<p>　　淘宝开放平台淘宝客SDK下载：<a href="/sites/default/files/taobao-sdk-php-taobaoke.zip">taobao-sdk-php-taobaoke.zip</a></p>
+<p><em>　　<strong>说明：</strong>本SDK为淘宝官方2011年11月4日版本，也是 taobaoke 模块当前开发所使用的版本，推荐使用。</em></p>
+<p> </p>
+<p>　　淘宝客模块目前还在开发中，但不影响使用，大家可以到我的沙盒用下载：</p>
+<p>　　Taobaoke（淘宝客）模块项目主页：<a href="http://drupal.org/sandbox/lugir/1170452">http://drupal.org/sandbox/lugir/1170452</a></p>
+<p> </p>
+<p><span style="color:#0000cd;"><em><strong>　　详细教程编写中，稍安勿躁…… :)</strong></em></span></p>
+<p> </p>
+<p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/693">Taobaoke</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/694">淘宝客</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/695">教程</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+</div>
+<div id="node-721" class="section-2">
+  <h1 class="book-heading">Drupal 代码规范</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　本代码规范翻译自 Drupal 官方网站的代码规范文档（http://drupal.org/coding-standards），方便国内的 Drupal 开发人员更好的学习和遵循代码规范。优秀的开发人员应该有遵循高标准以及编写高质量代码的意识。:)</p>
+<p> </p>
+<h2>索引</h2>
+<ul><li><a href="#indenting-and-whitespace">缩进与空白字符（Indenting and Whitespace）</a></li>
+<li><a href="#operators">运算符（Operators）</a></li>
+<li><a href="#casting">转型（Casting）</a></li>
+<li><a href="#control-structures">控制结构（Control Structures）</a></li>
+<li><a href="#linelength">行长度与封装（Line length and wrapping）</a></li>
+<li><a href="#function-calls">函数调用（Function Calls）</a></li>
+<li><a href="#function-declarations">函数声明（Function Declarations）</a></li>
+<li><a href="#class-constructor-call">类构造器调用（Class Constructor Calls）</a></li>
+<li><a href="#array">数组（Array）</a></li>
+<li><a href="#quotes">引号（Quotes）</a></li>
+<li><a href="#string-concatenations">字符串连接（String Concatenations）</a></li>
+<li><a href="#comment">注释（Comment）</a></li>
+<li><a href="#php-code-tags">PHP 代码标签（PHP Code Tags）</a></li>
+<li><a href="#semicolons">分号（Semicolons）</a></li>
+<li><a href="#naming-conventions">命名规范（Naming Conventions）</a></li>
+<li><a href="#functions-and-variables">函数与变量（Functions and Variables）</a></li>
+<li><a href="#persistent-variables">持久变量（Persistent Variables）</a></li>
+<li><a href="#constants">常量（Constants）</a></li>
+<li><a href="#global-variables">全局变量（Global Variables）</a></li>
+<li><a href="#class-object">类（Class）</a></li>
+<li><a href="#filename">文件名（Filename）</a></li>
+<li><a href="#helper-modules">辅助模块及工具</a></li>
+</ul><p><a name="indenting-and-whitespace" id="indenting-and-whitespace"></a></p>
+<h2>缩进与空白字符（Indenting and Whitespace）</h2>
+<ul><li>使用 2 个空格而不使用 tab 键进行代码缩进（notepad++, Eclipse 等编辑器均支持此项配置）;</li>
+<li>行尾不应该有空白字符</li>
+<li>应使用 \n （Unix换行符），而不是 \r\n （Windows 换行符）</li>
+<li>所有文件均应以一个空行结尾</li>
+</ul><p><a name="operators" id="operators"></a></p>
+<h2>运算符（Operators）</h2>
+<ul><li>所有二元运算符（二个值之间的运算符），如 +, -, =, !=, ==, &gt; 等等，在运算符两端均需留有一个空格，如应该使用 $foo = $bar 而不是 $foo=$bar。</li>
+<li>所有一元运算符（只操作一个值班的运算符），例如 ++，在值与运算符之间则不应加入空格</li>
+</ul><p><a name="casting" id="casting"></a></p>
+<h2>转型（Casting）</h2>
+<ul><li>在 (type) 与要转型的变量之间应加入一个空格，如 (int) $mynumber.</li>
+</ul><p><a name="control-structures" id="control-structures"></a></p>
+<h2>控制结构（Control Structures）</h2>
+<p>控制结构包含 if, for, while, switch 等等，下面是一个简单的 if 语句结构示例：</p>
+<p><code><br />
+if (condition1 || condition2) {<br />
+  action1;<br />
+}<br />
+elseif (condition3 &amp;&amp; condition4) {<br />
+  action2;<br />
+}<br />
+else {<br />
+  defaultaction;<br />
+}</code></p>
+<p>控制语句的关键词与左边括号之间应该有一个空格，以此来与函数调用进行区分。</p>
+<p>即使在大括号是可选的情况下，也应当总是使用大括号。这样可以加强代码的可读性以及减少因嵌套带来的逻辑错误。</p>
+<p>switch 语句结构示例：</p>
+<p><code><br />
+switch (condition) {<br />
+  case 1:<br />
+    action1;<br />
+    break;</code></p>
+<p>  case 2:<br />
+    action2;<br />
+    break;</p>
+<p>  default:<br />
+    defaultaction;<br />
+}<br /></p>
+<p>do-while 语句结构示例：</p>
+<p><code><br />
+do {<br />
+  actions;<br />
+} while ($condition);<br /></code></p>
+<p><a name="linelength" id="linelength"></a></p>
+<h2>行长度与封装（Line length and wrapping）</h2>
+<ul><li>通常情况下，每行代码的长度不应超过80个字符</li>
+<li>以下情况，行长度可超过80个字符：当行内包含过长的函数名称、函数/类定义、变量声明等</li>
+<li>为方便阅读和理解，控制结构的行长度可超过80个字符<br /><code><br />
+if ($something['with']['something']['else']['in']['here'] == mymodule_check_something($whatever['else'])) {<br />
+  ...<br />
+}<br />
+if (isset($something['what']['ever']) &amp;&amp; $something['what']['ever'] &gt; $infinite &amp;&amp; user_access('galaxy')) {<br />
+  ...<br />
+}<br />
+// Non-obvious conditions of low complexity are also acceptable, but should<br />
+// always be documented, explaining WHY a particular check is done.<br />
+if (preg_match('@(/|\\)(\.\.|~)@', $target) &amp;&amp; strpos($target_dir, $repository) !== 0) {<br />
+  return FALSE;<br />
+}<br /></code>
+</li>
+<li>控制条件（condition）不应该写作多行</li>
+<li>控制条件应该适当拆分以便于阅读和理解，编写代码时要避免以下情形：<br /><code><br />
+if ((isset($key) &amp;&amp; !empty($user-&gt;uid) &amp;&amp; $key == $user-&gt;uid) || (isset($user-&gt;cache) ? $user-&gt;cache : '') == ip_address() || isset($value) &amp;&amp; $value &gt;= time())) {<br />
+  ...<br />
+}<br /></code><br /><br />
+将控制条件进行拆分，不仅便于阅读，同时也方便添加注释让人知道为何进行这样的条件判断<br /><code type="php"><br />
+  // Key is only valid if it matches the current user's ID, as otherwise other<br />
+  // users could access any user's things.<br />
+  $is_valid_user = (isset($key) &amp;&amp; !empty($user-&gt;uid) &amp;&amp; $key == $user-&gt;uid);
+<p>  // IP must match the cache to prevent session spoofing.<br />
+  $is_valid_query = (isset($user-&gt;cache) ? $user-&gt;cache == ip_address() : FALSE);</p>
+<p>  // Alternatively, if the request query parameter is in the future, then it<br />
+  // is always valid, because the galaxy will implode and collapse anyway.<br />
+  $is_valid_query = $is_valid_cache || (isset($value) &amp;&amp; $value &gt;= time());</p>
+<p>  if ($is_valid_user || $is_valid_query) {<br />
+    ...<br />
+  }<br /></p></code>
+</li>
+</ul><p><a name="function-calls" id="function-calls"></a></p>
+<h2>函数调用（Function Calls）</h2>
+<p>调用函数时，函数名与左括号之间没有空格，除最后一个参数外，每个参数后的 , 都应跟上一个空格，如：</p>
+<p><code type="php"><br />
+$var = foo($bar, $baz, $quux);<br /></code></p>
+<p>如之前所说，等号两边应该各有一个空格。当有一系列相关语句时，出于可读性的考虑，可以适当增加空格的数量，如：</p>
+<p><code type="php"><br />
+$short         = foo($bar);<br />
+$long_variable = foo($baz);<br /></code></p>
+<p><a name="function-declarations" id="function-declarations"></a></p>
+<h2>函数声明（Function Declarations）</h2>
+<p>包含默认值的参数应当放在最后，当函数拥有返回值时，尽量返回便于理解的值：</p>
+<p><code type="php"><br />
+function funstuff_system($system, $field = 'description') {<br />
+  $system["description"] = t("This module inserts funny text into posts randomly.");<br />
+  return $system[$field];<br />
+}<br /></code></p>
+<p><a name="class-constructor-call" id="class-constructor-call"></a></p>
+<h2>类构造器调用（Class Constructor Calls）</h2>
+<p>当调用不带参数的类构造器时，始终包含括号</p>
+<p><code type="php"><br />
+$foo = new MyClassName();<br /></code></p>
+<p>带参数的类构造器</p>
+<p><code type="php"><br />
+$foo = new MyClassName($arg1, $arg2);<br /></code></p>
+<p>如果使用变量做为类名，需先为变量赋值，然后才调用类构造器：</p>
+<p><code type="php"><br />
+$bar = 'MyClassName';<br />
+$foo = new $bar();<br />
+$baz = new $bar($arg1, $arg2);<br /></code></p>
+<p><a name="array" id="array"></a></p>
+<h2>数组（Array）</h2>
+<p>数组的值之间应使用空格分隔，赋值操作符号（=&gt;）左右也应包含空格：</p>
+<p><code type="php"><br />
+$some_array = array('hello', 'word', 'foo' =&gt; 'bar');<br /></code></p>
+<p>当声明数组的字符长度超过80个字符（通常在构造表单和菜单时），应该将各元素分行、缩进编写：</p>
+<p><code type="php"><br />
+$form['title'] = array(<br />
+  '#type' =&gt; 'textfield',<br />
+  '#title' =&gt; t('Title'),<br />
+  '#size' =&gt; 60,<br />
+  '#maxlength' =&gt; 128,<br />
+  '#description' =&gt; t('The title of your node.'),<br />
+);<br /></code></p>
+<p>注意：最后一个数组元素末尾有一个逗号，这并不是手误，而是避免有新元素加入到最后之后因缺少逗号而出现解析错误。（从某种程度上来讲，在最后一个数组元素末尾加上逗号是一种推荐的做法，甚至在向drupal.org提交代码时，一些代码规范检测脚本会因为最后一个元素没有添加逗号而出现警告提示。）</p>
+<p><a name="quotes" id="quotes"></a></p>
+<h2>引号（Quotes）</h2>
+<p>Drupal 对于单引号和双引号的使用并没有很强硬的标准，只需在同一模块内保持用法的统一即可。</p>
+<p>使用单引号的效率要高于双引号，因为解析器不需要到引号之间查找变量。以下是使用双引号的两种情况：</p>
+<ul><li>引号中间带有变量，如<br /><code><br />
+"<br /><h2>$header</h2>
+<p>"<br /></p></code>
+</li>
+<li>引号中间带有单引号，使用双引号可避免对单引号的转义<br /><code><br />
+"He's a good person."<br /></code><br />
+当然也可以使用单引号，但 .pot 解析器不能很好的处理这种情况，而且看起来怪怪的<br /><br /><code><br />
+'He\'s a good person.'<br /></code>
+</li>
+</ul><p><a name="string-concatenations" id="string-concatenations"></a></p>
+<h2>字符串连接（String Concatenations）</h2>
+<p>在点与要连接字符串之间需要加入空格以加强代码可读性：</p>
+<p><code type="php"><br />
+$string = 'Foo' . $bar;<br />
+$string = $bar . 'foo';<br />
+$string = bar() . 'foo';<br />
+$string = 'foo' . 'bar';<br /></code></p>
+<p>如果只是简单地连接变量，可以使用双引号</p>
+<p><code type="php"><br />
+$string = "foo $bar";<br /></code></p>
+<p>使用连接赋值符（.=）时，需要在符号两侧预留空格</p>
+<p><code type="php"><br />
+$string .= 'Foo';<br />
+$string .= $bar;<br />
+$string .= baz();<br /></code></p>
+<p><a name="comment" id="comment"></a></p>
+<h2>注释（Comment）</h2>
+<p>注释规范单独在 <a href="http://drupal.org/node/1354" target="_blank">Doxygen及注释格式规范页面</a> 讨论</p>
+<p>引入代码（Including Code）</p>
+<p>任何无条件引用文件的情况下，使用 require_once(), 任何有条件引用文件的情况，则使用 include_once(). 这两条语句都会保证文件只被引入一次。</p>
+<p>当从当前目录或子目录引入代码时，始终以点路径开头</p>
+<p><code type="php"><br />
+include_once ./includes/mymodule_formatting.inc<br /></code></p>
+<p>在 Drupal 7 及更新版本中，使用 DRUPAL_ROOT 常量：</p>
+<p><code type="php"><br />
+require_once DRUPAL_ROOT . '/' . variable_get('cache_inc', 'includes/cache.inc');<br /></code></p>
+<p><a name="php-code-tags" id="php-code-tags"></a></p>
+<h2>PHP 代码标签（PHP Code Tags）</h2>
+<p>始终使用 <?php ??> 来界定PHP代码而不使用要  ?&gt;。这是为了遵循Drupal规范，同时也便于代码在其它系统和平台中被引用。</p>
+<p>自 Drupal 4.7 开始，最后的 ?&gt; 都故意被忽略不写，原因如下：</p>
+<ul><li>移除它可以避免在文件末尾出现空白字符，这些空白字符可能导致“文件头已发送（header already sent）”错误，XHTML/XML验证错误，及其它问题</li>
+<li>PHP 官方说明<a href="http://cn2.php.net/basic-syntax.instruction-separation" target="_blank">结尾的PHP界定符是可选项</a></li>
+<li>PHP.net 自身也移除了文件末尾的界定符（如 <a href="http://www.php.net/source.php?url=/include/prepend.inc" target="_blank">prepend.inc</a> ）</li>
+</ul><p><a name="semicolons" id="semicolons"></a></p>
+<h2>分号（Semicolons）</h2>
+<p>PHP 语言要求除了代码块以外，大多数行尾都要跟上分号。Drupal 代码规范同样有此要求，并且对于代码块也是如此。以下是一个单行代码块的示例：</p>
+<p><code><br /><?php print $tax; ??> -- YES<br /><?php print $tax ??> -- NO<br /></code></p>
+<p>示例 URL（Example URL）</p>
+<p>使用 example.com 表示所有示例 URLs</p>
+<p><a name="naming-conventions" id="naming-conventions"></a></p>
+<h2>命名规范（Naming Conventions）</h2>
+<p><a name="functions-and-variables" id="functions-and-variables"></a></p>
+<h3>函数与变量（Functions and Variables）</h3>
+<p>函数与变量名称应该使用小写字母，且单词之间使用下划线分隔。函数应该使用模块组/模块名称作为前缀，以避免与不同模块间的冲突。</p>
+<p><a name="persistent-variables" id="persistent-variables"></a></p>
+<h3>持久变量（Persistent Variables）</h3>
+<p>持久变量是指通过 variable_get()/variable_set() 函数取得和设置的变量，变量名称应该使用小写字母，且单词之间使用下划线进行分隔。持久变量也应该使用模块组/模块名称作为前缀，以避免与不同模块间的冲突。</p>
+<p><a name="constants" id="constants"></a></p>
+<h3>常量（Constants）</h3>
+<ul><li>常量始终要求使用全大写字母，且单词之间使用下划线进行分隔。（包括PHP内置常量 TRUE, FALSE, NULL）</li>
+<li>模块中定义的常量需始终使用大写的模块名称作为前缀。</li>
+<li>在 Drupal 8 及之后，应使用 const 关键词代替 define() 函数来定义常量，因为效率更高<br /><code type="php"><br />
+/**<br />
+* Indicates that the item should be removed at the next general cache wipe.<br />
+*/<br />
+const CACHE_TEMPORARY = -1;<br /></code><br />
+注意 const 不能用于PHP表达式，因此在条件判断和非字面值（non-literal value ???）时，还是应当使用 define() 函数<br /><code type="php"><br />
+if (!defined('MAINTENANCE_MODE')) {<br />
+  define('MAINTENANCE_MODE', 'error');<br />
+}<br /></code>
+</li>
+</ul><p><a name="global-variables" id="global-variables"></a></p>
+<h3>全局变量（Global Variables）</h3>
+<p>定义全局变量时，应当使用下划线加模块/主题名称开头</p>
+<p><a name="class-object" id="class-object"></a></p>
+<h3>类（Class）</h3>
+<p>类名应使用驼峰式命名（即单词首字母大写）</p>
+<p><code type="php"><br />
+abstract class DatabaseConnection extends PDO {<br /></code></p>
+<p>类中的方法（函数）和属性（成员变量）应使用首字母小写的驼峰式</p>
+<p><code type="php"><br />
+public $lastStatement;<br /></code></p>
+<p>定义访问权限时，使用 protected 而代替 private，从而其它的类可以在必要时扩展和更新方法。Protected 和 public 函数和变量不应以下划线开头。</p>
+<p>更多关于<a href="http://drupal.org/node/608152" target="_blank">面向对象的编码规范</a></p>
+<p><a name="filename" id="filename"></a></p>
+<h3>文件名（Filename）</h3>
+<p>所有文档文件都应加上 .txt 后缀，以便于 Windows 用户查看。同时，所有文件名称应该全部大写，而文件后缀应该全部小写。</p>
+<p>如 README.txt, INSTALL.txt, TODO.txt, CHANGELOG.txt 等等。</p>
+<p><a name="helper-modules" id="helper-modules"></a></p>
+<h2>辅助模块及工具</h2>
+<ul><li><a href="http://drupal.org/project/coder" target="_blank">Coder</a> 模块：可以遵循部分以上代码规范，对代码进行审查及修改建议</li>
+<li><a href="http://drupal.org/project/drupalcs" target="_blank">Drupal Code Sniffer</a>：代码规范检测工具</li>
+<li><a href="http://drupal.org/sandbox/klausi/1320008" target="_blank">PAReview.sh</a>：还处理沙盒中的代码规范检测脚本，几乎严格遵守以上所有代码规范并给出修改建议。</li>
+</ul></div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/363">代码</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/721">规范</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-459" class="section-2">
+  <h1 class="book-heading">Drupal 开发文档及资源</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/develop#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　本部分为各种 Drupal 开发文档及资源，包含 Drupal API 示例、模块开发教程、模块开发技巧文档等各类与 Drupal 开发相关的文档及资源。</p>
+<p> </p>
+<p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/354">模块</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/576">Drupal 开发</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/640">文档</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/641">资源</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  <div id="node-357" class="section-3">
+  <h1 class="book-heading">Drupal 模块 .info 文件的基本写法</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><h2>Drupal 6 模块 .info 文件示例</h2>
+<p><code><br />
+name = "Example module"<br />
+description = "Gives an example of a module."<br />
+core = 6.x<br />
+package = Views<br />
+dependencies[] = views<br />
+dependencies[] = panels<br /></code></p>
+<p>详细说明请参见官方文档：<a href="http://drupal.org/node/231036" target="_blank">Writing .info files (Drupal 6.x)</a></p>
+<p> </p>
+<h2>Drupal 7 模块 .info 文件示例</h2>
+<p><code><br />
+name = Example module<br />
+description = Gives an example of a module.<br />
+core = 7.x<br />
+package = Views<br />
+dependencies[] = views<br />
+dependencies[] = panels<br />
+files[] = example.test<br />
+configure = admin/config/content/example<br /></code></p>
+<p>详细说明请参见官方文档：<a href="http://drupal.org/node/542202" target="_blank">Writing .info files (Drupal 7.x)</a></p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/354">模块</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/486">info</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-521" class="section-3">
+  <h1 class="book-heading">Drupal 模块包中的 README.txt 文件模板</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　要写一个符合标准的 Drupal 模块，确实有很多标准需要遵循，下面提供模块中要用到的 README.txt 文件的模板，需要创建 README.txt 文档时复制粘贴再稍作修改就行了。（懒人有懒福，呵呵）</p>
+<p> </p>
+<p><code><br />
+-- SUMMARY --</code></p>
+<p>[Module summary]</p>
+<p>-- REQUIREMENTS --</p>
+<p>None.</p>
+<p>-- INSTALLATION --</p>
+<p>* Install as usual.</p>
+<p>-- CONFIGURATION --</p>
+<p>[Configuration and Usage info]</p>
+<p>-- CONTACT --</p>
+<p>Current maintainers:<br />
+* Lugir - http://drupal.org/user/842094<br />
+* Homepage - http://lugir.com</p>
+<p></p>
+<p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/354">模块</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/357">模板</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/551">Drupal 模块</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/690">README.txt</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-522" class="section-3">
+  <h1 class="book-heading">Drupal 模块包中的 CHANGELOG.txt 文件模板</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>  CHANGELOG.txt 用于记录模块的变更记录，是 Drupal 模块包的一部分。下面提供一个 CHANGELOG.txt 的文件模板，在创建自己的 CHANGELOG.txt 文档时按以下格式编写即可：</p>
+<p> </p>
+<p><code><br />
+Image Link 6.x-1.1, 2011-11-01<br />
+------------------------------<br />
+by Lugir: Changed add link action from 'node_view' stage to 'node_load'.<br />
+by Lugir: Fixed can't add links to images which in teaser mode or RSS.</code></p>
+<p>Image Link 6.x-1.0, 2011-10-29<br />
+------------------------------<br />
+by Lugir: Initial release of ImageLink module.</p>
+<p></p>
+<p> </p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/357">模板</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/551">Drupal 模块</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/691">文件模板</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/692">CHANGELOG.txt</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-515" class="section-3">
+  <h1 class="book-heading">hook_block() 代码示例</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　hook_block() 用于为自己的模块添加一系列区块。</p>
+<p><code type="php"><br />
+function mymodule_block($op = 'list', $delta = 0, $edit = array()) {</code></p>
+<p>  if ($op == 'list') {<br />
+    $blocks[0] = array(<br />
+      'info' =&gt; t('My Module Block'),<br />
+    );<br />
+    return $blocks;<br />
+  }<br />
+  elseif ($op == 'view') {</p>
+<p>    switch ($delta) {<br />
+      case 0:</p>
+<p>        $block = array(<br />
+          'subject' =&gt; t('My Block'),<br />
+          'content' =&gt; "My Block Content",<br />
+        );<br />
+        break;<br />
+    }</p>
+<p>    return $block;<br />
+  }</p>
+<p>}<br /></p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/364">Snippet</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/577">Drupal API</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/685">hook_block</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-460" class="section-3">
+  <h1 class="book-heading">使用模块的 weight 值调整模块加载/调用顺序</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/documentation/460.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　熟悉 Drupal 开发的人都知道 API 中的 hook_xxx 函数是可被调用的钩子函数，比如 book_nodeapi(), comment_nodeapi()  都是应用了 hook_nodeapi() 这个钩子。一般情况下，大家都知道应用钩子后， 应用了钩子的函数就会在调用时执行。但是，一般都不会太关注模块被调用的顺序，比如 book_nodeapi() 和 comment_nodeapi() ，Drupal 是先调用 book_nodeapi()，还是先调用 comment_nodeapi() 呢？</p>
+<p>　　Drupal 在调用模块时，遵循两个顺序，首先是模块的权重，即 weight 值，其次是按模块的名称首字母排序。默认时，book 模块和 comment 的模块权重都为 0，因此这两个模块在被调用时是根据名称首字母来排序，即先调用 book_nodeapi(), 再调用 comment_nodeapi().</p>
+<p>　　大多数情况下，并不需要关心模板的权重，因为模块之前通常都是独立工作，因此模块的调用顺序如何并不会对函数执行的效果形成影响。——不过，在一些情况下，开发人员需要为模块设置一个权重值，以确保某个模块最先被调用，或最后被调用。或者更复杂的调用顺序（当然这种情况就更难遇上了）。</p>
+<p>　　模块的权重存储在 Drupal 数据库的 system 表名为 weight 的字段中，默认情况下，模块的权重都是0。通过改变模块的 weight 值，就能够改变模块在调用时的调用顺序了。例如 devel 模块希望比其它的模块都后被调用到，所以作者把它的权重设置成了 88.</p>
+<h2>如何改变模块的权重（weight）?</h2>
+<p>　　改变模块的权重有两种方式，一种是直接对数据库中的 system 表进行修改——找到 name 为模块名的对应的条目，编辑 weight 值就可以。也许有些人觉得直接操作数据库不够优雅，也可以选择使用 util 模块。util 模块同 devel 模块一样是个开发辅助模块，util 提供了一个更改模块权重的子模块，使得管理员可以在模块管理页面对模块权重值进行修改。</p>
+<p><img alt="Util 模块 module weights 子模块" src="/sites/default/files/u3-lugir/module_weights.png" style="width: 522px; height: 162px; " /></p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/354">模块</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/432">开发</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/642">技巧</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/643">weight</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-491" class="section-3">
+  <h1 class="book-heading">使用 Drupal API 添加内容类型</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　使用 Drupal API 函数 node_type_save($info) 可以为 Drupal 添加新的内容类型，使用这个API创建内容类型的主要工作，是构造一个包含内容类型所需要的信息的 $info 对象。</p>
+<p>　　$info 对象中用到的成员有 type, name, module, has_title, title_label, has_body, body_label, description, help, min_word_count, custom, modified, locked, orig_type 等，以下是有关各个成员的说明：</p>
+<ul><li>type - 内容类型的机器名，此字串应该只包含小写字符、数字和下划线，如"story", "page"等等</li>
+<li>name - 内容类型的用户可读名称，如“新闻”，“页面”等</li>
+<li>module - 创建此内容类型的模块，使用规范的模块名称，如"node"，（使用其它的名称结果不显示，必须是 node ???）</li>
+<li>has_title - 是否有标题，FALSE 为无，TRUE为有</li>
+<li>title_label - 标题标签，如“标题”</li>
+<li>has_body - 是否有正文，FALSE 为无，TRUE为有</li>
+<li>body_label - 正文标签，如“正文”</li>
+<li>description - 内容类型描述</li>
+<li>help - 帮助信息，会显示在创建内容类型的表单页面，</li>
+<li>min_word_count - 正文最少字符数</li>
+<li>custom - ?</li>
+<li>modified - ?</li>
+<li>locked - ?</li>
+<li>orig_type -? </li>
+</ul><p>新建内容类型的代码片段</p>
+<p><code type="php"><br />
+function foo_node_type() {<br />
+  // 定义数组<br />
+  $info = array(<br />
+	  'type' =&gt; 'foo',<br />
+	  'name' =&gt; t('foo'),<br />
+	  'module' =&gt; 'node',<br />
+	  'description' =&gt; t('Blah Blah Blah...'),<br />
+	  'help' =&gt; '',<br />
+	  'min_word_count' =&gt; 0,<br />
+	  'custom' =&gt; TRUE,<br />
+	  'modified' =&gt; TRUE,<br />
+	  'locked' =&gt; FALSE<br />
+  );</code></p>
+<p>  // 为 $info 数组中未定义的配置设置默认值<br />
+  $info = (object) _node_type_set_defaults($info);</p>
+<p>  // 将新的内容类型写入数据库<br />
+  node_type_save($info);</p>
+<p>  // 更新菜单.<br />
+  menu_rebuild();<br />
+}<br /></p>
+<p>与创建内容类型相对应，如果在卸载模块时希望删除创建的内容类型，可以使用 node_type_delete($type)</p>
+<p><code type="php"><br />
+function foo_node_type_delete() {<br />
+  // 删除机器名为 'foo' 的内容类型<br />
+  node_type_delete('foo');<br />
+}<br /></code></p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/364">Snippet</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/576">Drupal 开发</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/577">Drupal API</a></li><li class="taxonomy-term-reference-4"><a href="/taxonomy/term/578">内容类型</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-548" class="section-3">
+  <h1 class="book-heading">使用 Drupal API 添加词汇表</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Drupal 使用 taxonomy_save_vocabulary() 函数创建词汇表（Vocabulary），通过定义词汇表数组，然后作为参数传入 taxonomy_save_vocabulary() 函数，程序执行时便可将定义的词汇表添加进数据库。</p>
+<p><code type="php"><br />
+$article_category = array(<br />
+  'name' =&gt; t('Article Categories'),<br />
+  'description' =&gt; t('Select the appropriate category for your article.'),<br />
+  'nodes' =&gt; array('article' =&gt; st('Article')),<br />
+  'help' =&gt; '',<br />
+  'hierarchy' =&gt; 1,<br />
+  'relations' =&gt; 0,<br />
+  'tags' =&gt; 0,<br />
+  'multiple' =&gt; 0,<br />
+  'required' =&gt; 0,<br />
+);</code></p>
+<p>taxonomy_save_vocabulary($article_category);<br /></p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/577">Drupal API</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/701">Vocabulary</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/702">词汇表</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-622" class="section-3">
+  <h1 class="book-heading">Drupal 模块 master 主分支中的 README.txt 文件示例</h1>
+  <ul class="links inline"><li class="comment-add first last"><a href="/drupal/documentation/master-readme-template.html#comment-form" title="分享您有关本文的看法与观点。">添加新评论</a></li>
+</ul><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　向 drupal.org 社区提交模块时，通常会将代码放在分支上进行开发，而对于主分支 master，则习惯只在其下保留一个 README.txt 文件，这个 README.txt 文件中包含各个版本的模块的代码和位置，用于帮助人们找到合适的版本。</p>
+<p>　　以下是一个 master 主分支中的 README.txt 文件的样本，感谢 drupal.org 社区的 <a href="http://drupal.org/user/784944" target="_blank">ELC</a> 提供：</p>
+<p><code><br />
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<br />
++ Where is the module?                                                   +<br />
++========================================================================+</code></p>
+<p>Since branching to support D6 and D7, the master branch that you are looking at has been cleared of content to avoid old code being used.</p>
+<p>If you did a full git clone, then you should have all the code hidden away in two additional branches:</p>
+<p>- 6.x-1.x<br />
+- 7.x.1.x</p>
+<p>While "git branch" will only show locally tracked branches, in this case master, the other branches are hidden in the .git repository.</p>
+<p>Running "git branch -a" will show something like this:<br />
+* master<br />
+  remotes/origin/6.x-1.x<br />
+  remotes/origin/7.x-1.x<br />
+  remotes/origin/HEAD -&gt; origin/master<br />
+  remotes/origin/master</p>
+<p>To checkout one of those branches so you can use the code, type:<br />
+git checkout -b 7.x-1.x remotes/origin/7.x-1.x</p>
+<p>This created a local tracking branch called 7.x-1.x which tracks the remote remotes/origin/7.x-1.x branch. You will also now have all the files to use the git version of the module.</p>
+<p>Have fun!<br /></p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/354">模块</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/483">git</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/690">README.txt</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/714">示例文件</a></li><li class="taxonomy-term-reference-4"><a href="/taxonomy/term/715">master</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-615" class="section-3">
+  <h1 class="book-heading">处理节点表单提交之后的页面跳转</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　在普通情况下，当用户提交节点表单后会被重定向到对应的节点页面，如果在 URL 中传入了 ?destination=path/xxx 这样的参数，提交表单后用户就会被重定向到 destination 设置的页面。</p>
+<p>　　除此之外，开发人员还可以通过为节点表单设置重定向属性，来控制表单提交后的重定向路径。</p>
+<p>　　下面的代码通过应用 hook_form_alter()，判断当表单ID为"story_node_form"时，设置表单的重定向属性（<a href="http://api.drupal.org/api/drupal/developer--topics--forms_api_reference.html/6#redirect" target="_blank">#redirect</a>）</p>
+<p><code type="php"><br />
+/**<br />
+ * Implements hook_form_alter().<br />
+ */<br />
+function test_form_alter(&amp;$form, &amp;$form_state, $form_id) {</code></p>
+<p>  if ($form_id == 'story_node_form') {</p>
+<p>    // Your code goes here<br />
+    // ...</p>
+<p>    // Set a '#redirect' key and value for $form,<br />
+    // after users submit the node, they will be redirect to specific path.<br />
+    $form['#redirect'] = 'node';</p>
+<p>  }</p>
+<p>}<br /></p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/364">Snippet</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/577">Drupal API</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/707">hook_form_alter</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+</div>
+<div id="node-526" class="section-2">
+  <h1 class="book-heading">Drupal 问题与解决办法</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　使用 Drupal 过程中遇到的一些问题，问题的描述以及这些问题的解决办法。主要来自于实际项目过程中遇到的问题，是一些实用性强的技巧性资源。</p>
+<p> </p>
+<p> </p>
+</div></div></div>  <div id="node-525" class="section-3">
+  <h1 class="book-heading">CCK 富文本框字段拖拽 Bug 的解决办法</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　某个项目需要指定的节点包含多个可拖拽、无限数量、带富文本编辑器的文本输入区域。</p>
+<p> </p>
+<h3>实现方式</h3>
+<p>使用 CCK 模块为节点添加文本框字段</p>
+<p>在字段配置页面将文本框的数量设置为 Unlimited，将文本过滤设置为 Filtered text （这样就能应用富文本编辑器了，否则只有文本框）</p>
+<p> </p>
+<h3>问题描述</h3>
+<p>　　使用此方法，可以实现为指定内容类型添加可拖拽的、不限制数量、带富文本编辑器的文本框，但在实际使用过程中遇到一些问题。最主要的问题是在对文本框进行拖拽排序时，文本框内的内容会丢失。</p>
+<p> </p>
+<h3>处理办法</h3>
+<p>　　其实一开始不太好确定是哪个模块的问题，CCK? CKEditor? 还是 WYSIWYG? 所以试了 CKEditor 模块、Wysiwyg 模块 + CKEditor 编辑器、Wysiwyg 模块 + TinyMCE 编辑器等几种解决办法，最终确定是 wysiwyg 模块的问题。通过查询 wysiwyg 模块的问题队列，找到了这个问题的解决办法 —— 即安装一个（实际上是四个）专门针对这个问题而开发的模块 ——  <a href="http://drupal.org/project/wysiwygcck" target="_blank">Wysiwyg API CCK Integrate</a>。</p>
+<p>说明：最终安装以上模块之后，Wysiwyg 模块 + TinyMCE 编辑器表现不正常了。因为 Wysiwyg 模块 + CKEditor 编辑器在拖拽时还存在页面布局出错的问题，所以没有选用。</p>
+<p> </p>
+<p>参考文档：http://drupal.org/node/452678</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/435">CCK</a></li><li class="taxonomy-term-reference-1"><a href="/taxonomy/term/547">Drupal 6</a></li><li class="taxonomy-term-reference-2"><a href="/taxonomy/term/697">textares</a></li><li class="taxonomy-term-reference-3"><a href="/taxonomy/term/698">wysiwyg</a></li><li class="taxonomy-term-reference-4"><a href="/taxonomy/term/699">CKEditor</a></li><li class="taxonomy-term-reference-5"><a href="/taxonomy/term/700">TinyMCE</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+<div id="node-527" class="section-3">
+  <h1 class="book-heading">如何更改 CCK 字段类型</h1>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>　　如果在创建 CCK 字段之前没有很好的考虑字段的类型，那么在项目后期很可能就需要对字段进行修改。对于刚刚创建的 CCK 字段，如果字段的类型选择错了，最简单的办法就是把字段删除，然后添加一个类型正确的字段。这倒不会有什么伤害。</p>
+<p>　　不过并不是所有情况都是这么简单，有时候网站运行了很长时间之后才发现之前定义的字段类型已不能满足需要了。例如一开始创建的是 float 类型的字段，但因为数据的增长，发现需要将内容类型转换成 decimal。在这种情况下，如果删除 float 字段，所有存储在 float 字段里的数据也都一同被删除了。所以，要最大限度地保证原有数据不丢失，应该如何更改 CCK 字段的类型。</p>
+<p> </p>
+<h3>更改 CCK 字段类型的方法</h3>
+<p><span style="color:#ff0000;">注意：执行以下操作前，请先备份数据库</span></p>
+<ol><li>为内容类型新增加一个类型正确的字段，名为 field_&lt;tmp&gt;（这只是一个临时的字段，名称并不是很重要），并按照正确的配置对字段进行配置；</li>
+	<li>执行 SQL 语句将 field_&lt;origin&gt; 字段中的所有数据复制到 field_&lt;tmp&gt; 字段中；<br />
+		UPDATE content_type_&lt;your content type&gt; SET field_&lt;new fieldname&gt;_value = field_&lt;old fieldname&gt;_value<br /><span style="color:#ff0000;">注意：请在执行以上语句时，使用对应的内容类型名称和字段名称代替其中尖括号(&lt;&gt;)中的名称</span></li>
+	<li>删除原来的 CCK 字段 field_&lt;origin&gt;；</li>
+	<li>再建立一个类型正确的字段，使用删除的 CCK 字段的名称 field_&lt;origin&gt;，并按照正确的配置对字段进行配置；</li>
+	<li>执行类似第2步中的 SQL 语句，不过这些一次要将数据从 field_&lt;tmp&gt; 复制到 field_&lt;origin&gt; 中</li>
+	<li>删除临时字段 field_&lt;tmp&gt;；</li>
+	<li>完成。</li>
+</ol><p> </p>
+<p>　　按照以上步骤更改 CCK 字段的类型虽然有点麻烦，但最重要的是能够保全数据。因为数据类似不一样，可能会导致一些数据丢失精度，但小面积的损失远远好过于丢失全部数据 :D</p>
+<p> </p>
+<p>参考文档：http://drupal.org/node/769784</p>
+</div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">标签: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/435">CCK</a></li></ul></div><div class="field field-name-taxonomy-vocabulary-2 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">内容分类: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/taxonomy/term/487">Drupal</a></li></ul></div>  </div>
+</div>
+</div>
+      </body>
+</html>

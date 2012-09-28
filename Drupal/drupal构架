@@ -1,0 +1,39 @@
+Administration
+	Dashbord
+		Customize dashboard
+			Main menu		Active forum topics	Search form
+			Who's new		Recent content	Who's online
+			New forum topics	Recent blog posts	Recent comments
+	content
+	Structure
+		Blocks
+		Content types
+		Forums
+		Menus
+		Taxonomy
+	Appearance
+	People
+	Modules
+	Configuration
+		people
+			Account settings	IP address blocking
+		Content authoring
+			Text formats
+		Media
+			File system		Image styles		Image toolkit
+		Search and metadata
+			Search settings	URL aliases		Clean URLs
+		Regional and language
+			Regional settings	Date and time
+		System
+			Site information	Actions		Cron
+		Development
+			Performance		Logging and errors	Maintenance mode	Testing
+		Web services
+			RSS publishing	Feed aggregator
+	Reports
+		Status report	Available updates			Recent log messages	Field list
+		Top 'access denied' errors				Top 'page not found' errors
+		Top search phrases
+	help
+
